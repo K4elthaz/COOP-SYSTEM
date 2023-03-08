@@ -13,77 +13,54 @@
   <title>ERDB COOP | Home</title>
 </head>
 
-<body>
 
+<body>
 <div class="erdb-client-side-view-balan">
-      <div class="erdb-client-side-view-balan-child"></div>
-      
-      <b class="erdb-multi-purpose-cooperative" >ERDB Multi-Purpose Cooperative </b>
-      
-      <div class="erdb-client-side-view-balan-item"></div>
-      <div class="erdb-client-side-view-balan-inner"></div>
+  <div class="erdb-client-side-view-balan-child"></div>
       
       
+  <b class="erdb-multi-purpose-cooperative" >ERDB Multi-Purpose Cooperative </b>
+      
+      
+  <div class="erdb-client-side-view-balan-item"></div>
   
       
-      <b class="personal-information">Personal Information: </b>
+  <b class="personal-information">Personal Information: </b>
       
-      <div class="name">Name:</div>
-      <div class="birthday">Birthday: </div>
-      <div class="gender">Gender: </div>
-      <div class="contact-no">Contact No: </div>
-      <div class="address">Address: </div>
-      <div class="tax-identification-number" >TIN:</div>
+  <div class="name"> Name:</div>
+  <div class="birthday"> Birthday: </div>
+  <div class="gender"> Gender: </div>
+  <div class="contact-no"> Contact No: </div>
+  <div class="address"> Address: </div>
+  <div class="tax-identification-number"> TIN:</div>
+
       
-      <!-- <div class="button-open-links-navigate1"> </div> -->
+  <i class="greetings-ian">Greetings Ian!</i>
       
-      <!-- <div class="button-open-links-navigate2"> </div> -->
+  <div class="cda-reg-no" >CDA Reg. No. 9520-04000405</div>
+  <div class="cin-0103040418" >CIN: 0103040418</div>
+  <div class="tin-004-142-198-000" >TIN: 004-142-198-000</div>
       
-      <i class="greetings-ian">Greetings Ian!</i>
-      
-      <div class="cda-reg-no" >CDA Reg. No. 9520-04000405</div>
-      <div class="cin-0103040418" >CIN: 0103040418</div>
-      <div class="tin-004-142-198-000" >TIN: 004-142-198-000</div>
-      
-      <b class="contact-us">CONTACT US:</b>
-      <a
-        class="erdbmc78gmailcom"
-        href="mailto:erdbmc78@gmail.com"
-        target="_blank" >erdbmc78@gmail.com
-      </a>
+  <b class="contact-us">CONTACT US:</b>
+  
+  <a class="erdbmc78gmailcom" href="mailto:erdbmc78@gmail.com" target="_blank" >erdbmc78@gmail.com</a>
 
 
-      <img class="ellipse-icon" alt="" src="public/ellipse-2.svg" /><img
-        class="erdb-client-side-view-balan-child2"
-        alt=""
-        src="public/ellipse-2.svg"/>
-      <b class="erdb-multi-purpose-cooperative" >ERDB Multi-Purpose Cooperative </b>
+  <div class="cda-reg-no">CDA Reg. No. 9520-04000405</div>
+  <div class="cin-0103040418">CIN: 0103040418</div>
+  <div class="tin-004-142-198-000">TIN: 004-142-198-000</div>
+      
+      
+  <b class="id-1234567">ID: 1234567</b>
+  <b class="id-1234567">ID: 1234567</b>
+  <div class="email-address">Email Address:</div>
+      
+  <img class="coop3-removebg-preview-1-icon1" alt="" src="cooplogo.png"/>
+      
+  <img class="my-2x2-picture-1" alt="" src="IDPicture.jpg"/>
 
-      <div class="cda-reg-no">CDA Reg. No. 9520-04000405</div>
-      <div class="cin-0103040418">CIN: 0103040418</div>
-      <div class="tin-004-142-198-000">TIN: 004-142-198-000</div>
-      <img class="ellipse-icon" alt="" src="public/ellipse-2.svg" /><img
-        class="erdb-client-side-view-balan-child2"
-        alt=""
-        src="public/ellipse-2.svg"/>
-      
-      
-      <b class="id-1234567">ID: 1234567</b>
-      <b class="id-1234567">ID: 1234567</b>
-      <div class="clients-balance">CLIENT’S BALANCE</div>
-      <div class="email-address">Email Address:</div>
-      
-      <img
-        class="coop3-removebg-preview-1-icon1"
-        alt=""
-        src="cooplogo.png"/>
-      
-      <img
-        class="my-2x2-picture-1"
-        alt=""
-        src="IDPicture.jpg"/>
-    </div>
-  </body>
+</div>
+</body>
 </html>
 
 
