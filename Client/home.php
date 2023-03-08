@@ -6,59 +6,98 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <link rel="stylesheet" href="global.css" />
-  <link rel="stylesheet" href="ERDBClientSideViewBalance.css" />
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="ERDBClientSideViewBalance.css">
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,700&display=swap"/>
   <title>ERDB COOP | Home</title>
 </head>
 
 
 <body>
-<div class="erdb-client-side-view-balan">
-  <div class="erdb-client-side-view-balan-child"></div>
-      
-      
-  <b class="erdb-multi-purpose-cooperative" >ERDB Multi-Purpose Cooperative </b>
-      
-      
-  <div class="erdb-client-side-view-balan-item"></div>
-  
-      
-  <b class="personal-information">Personal Information: </b>
-      
-  <div class="name"> Name:</div>
-  <div class="birthday"> Birthday: </div>
-  <div class="gender"> Gender: </div>
-  <div class="contact-no"> Contact No: </div>
-  <div class="address"> Address: </div>
-  <div class="tax-identification-number"> TIN:</div>
-
-      
-  <i class="greetings-ian">Greetings Ian!</i>
-      
-  <div class="cda-reg-no" >CDA Reg. No. 9520-04000405</div>
-  <div class="cin-0103040418" >CIN: 0103040418</div>
-  <div class="tin-004-142-198-000" >TIN: 004-142-198-000</div>
-      
-  <b class="contact-us">CONTACT US:</b>
-  
-  <a class="erdbmc78gmailcom" href="mailto:erdbmc78@gmail.com" target="_blank" >erdbmc78@gmail.com</a>
-
-
-  <div class="cda-reg-no">CDA Reg. No. 9520-04000405</div>
-  <div class="cin-0103040418">CIN: 0103040418</div>
-  <div class="tin-004-142-198-000">TIN: 004-142-198-000</div>
-      
-      
-  <b class="id-1234567">ID: 1234567</b>
-  <b class="id-1234567">ID: 1234567</b>
-  <div class="email-address">Email Address:</div>
-      
-  <img class="coop3-removebg-preview-1-icon1" alt="" src="cooplogo.png"/>
-      
-  <img class="my-2x2-picture-1" alt="" src="IDPicture.jpg"/>
-
+<div class="container-xl px-4 mt-4">
+    <!-- Account page navigation-->
+    <nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Profile</a>
+    </nav>
+    <hr class="mt-0 mb-4">
+    <div class="row">
+        <div class="col-xl-4">
+            <!-- Profile picture card-->
+            <div class="card mb-4 mb-xl-0">
+                <div class="card-header">Profile Picture</div>
+                <div class="card-body text-center">
+                    <!-- Profile picture image-->
+                    <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                    <!-- Profile picture help block-->
+                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                    <!-- Profile picture upload button-->
+                    <button class="btn btn-primary" type="button">Upload new image</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8">
+            <!-- Account details card-->
+            <div class="card mb-4">
+                <div class="card-header">Account Details</div>
+                <div class="card-body">
+                    <form>
+                        <!-- Form Group (username)-->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
+                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="username">
+                        </div>
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (first name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputFirstName">First name</label>
+                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie">
+                            </div>
+                            <!-- Form Group (last name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLastName">Last name</label>
+                                <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna">
+                            </div>
+                        </div>
+                        <!-- Form Row        -->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (organization name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputOrgName">Organization name</label>
+                                <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Start Bootstrap">
+                            </div>
+                            <!-- Form Group (location)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLocation">Location</label>
+                                <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="San Francisco, CA">
+                            </div>
+                        </div>
+                        <!-- Form Group (email address)-->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com">
+                        </div>
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (phone number)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputPhone">Phone number</label>
+                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567">
+                            </div>
+                            <!-- Form Group (birthday)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputBirthday">Birthday</label>
+                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
+                            </div>
+                        </div>
+                        <!-- Save changes button-->
+                        <button class="btn btn-primary" type="button">Save changes</button>
+                        <script src="./assets/js/bootstrap.min.js"></script>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
