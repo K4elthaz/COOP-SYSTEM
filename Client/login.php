@@ -1,3 +1,86 @@
+<?php
+include("connections.php");
+
+
+if (isset($_SESSION["email"])) {
+    $email = $_SESSION["email"];
+
+    $query_account_type = mysqli_query($connections, "SELECT * FROM login WHERE email='$email'");
+
+    $get_acount_tpye = mysqli_fetch_assoc($query_account_type);
+
+    $account_type = $get_acount_tpye["account_type"];
+
+    if ($account_type == 1) {
+        echo "<script>window.location.href='Admin';</script>";
+    } else {
+        echo "<script>window.location.href='User';</script>";
+    }
+}
+
+
+
+
+$email = $password = "";
+$emailErr = $passwordErr = "";
+
+
+if (isset($_POST["btnLogin"])) {
+
+    if (empty($_POST["email"])) {
+        $emailErr = "Email is Required!";
+    } else {
+        $email = $_POST["email"];
+    }
+
+    if (empty($_POST["password"])) {
+        $passwordErr = "Password is Required!";
+    } else {
+        $password = $_POST["password"];
+    }
+
+    if ($email and $password) {
+        $check_email = mysqli_query($connections, "SELECT * FROM login WHERE email='$email'");
+        $check_row = mysqli_num_rows($check_email);
+
+        if ($check_row > 0) {
+            $fetch = mysqli_fetch_assoc($check_email);
+
+            $db_password = $fetch["password"];
+
+            $account_type = $fetch["account_type"];
+
+            if ($account_type == "1") {
+
+                if ($db_password == $password) {
+
+                    $_SESSION["email"] = $email;
+
+                    echo "<script>window.location.href='Admin';</script>";
+                } else {
+                    $passwordErr = "Hi Admin, Your Password is Incorrect!!";
+                }
+            } else {
+                if ($db_password == $password) {
+
+                    $_SESSION["email"] = $email;
+                    // header("Location:home.php");
+                    mysqli_query($connections, "UPDATE login WHERE email='$email'");
+                    echo "<script>window.location.href='User';</script>";
+                } else {
+                    mysqli_query($connections, "UPDATE login WHERE email='$email'");
+                    $passwordErr = "Password is incorrect! ";
+                }
+            }
+        } else {
+            $emailErr = "Email is not Registered!";
+        }
+    }
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,26 +114,35 @@
 <div class="login100-pic js-tilt" data-tilt>
 <img src="../assets/images/cooplogo.png" alt="IMG">
 </div>
-<form class="login100-form validate-form">
+
+<form class="login100-form validate-form" method="POST">
 <span class="login100-form-title">
 ERDB Multi-Purpose Cooperative
 </span>
 <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-<input class="input100" type="text" name="email" placeholder="Username">
+
+<input class="input100" type="text" name="email" placeholder="Username" value ="<?php echo $email;?>">
+
 <span class="focus-input100"></span>
 <span class="symbol-input100">
 <i class="fa fa-envelope" aria-hidden="true"></i>
 </span>
 </div>
+<span class="error"><?php echo $emailErr; ?></span>
 <div class="wrap-input100 validate-input" data-validate="Password is required">
-<input class="input100" type="password" name="pass" placeholder="Password">
+<input class="input100" type="password" name="password" placeholder="Password" value = "">
+
+
 <span class="focus-input100"></span>
 <span class="symbol-input100">
 <i class="fa fa-lock" aria-hidden="true"></i>
 </span>
 </div>
+<span class="error"><?php echo $passwordErr; ?></span>
 <div class="container-login100-form-btn">
-<button class="login100-form-btn">
+
+
+<button class="login100-form-btn" type="submit" name="btnLogin" value="Login">
 Login
 </button>
 </div>
