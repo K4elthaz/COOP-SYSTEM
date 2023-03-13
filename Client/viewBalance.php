@@ -17,7 +17,7 @@
   <div class="container-xl px-4 mt-4">
     <!-- Account page navigation-->
     <nav class="nav nav-borders">
-        <a class="nav-link active ms-0" href="login.php" target="__blank">Home</a>
+        <a class="nav-link active ms-0" href="login.php" target="__blank">View Balance</a>
         <a class="nav-link active ms-0" href="google.com" target="__blank">Edit Profile</a>
     </nav>
     <hr class="mt-0 mb-4">
@@ -25,139 +25,64 @@
         <div class="col-xl-4">
             <!-- Profile picture card-->
             <div class="card mb-4 mb-xl-0">
-                <div class="card-header">Profile Picture</div>
+                <div class="card-header">Personal Information</div>
                 <div class="card-body text-center">
-                    <!-- Profile picture image-->
                     <img class="img-account-profile rounded-circle mb-2" src="../Client/IDPicture.jpg" alt="">
-                    <!-- Profile picture help block-->
-                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                    <!-- Profile picture upload button-->
-                    <button class="btn btn-primary" type="button">Upload new image</button>
+                    <h2 class="fw-bold">IAN ROBIN C. BREVA</h2>
+                    <h3 class="fw-semibold">ID: 12345678</h3>
+
                 </div>
             </div>
         </div>
+
         <div class="col-xl-8">
-            <!-- Account details card-->
             <div class="card mb-4" id="form">
+
                 <nav class="card-header" id="btn">
-                    <a class="card-header active ms-0"   target="__blank">Edit Profile</a>
-                    <a class="card-header active ms-0"   target="__blank">Change password</a>
+                    <!-- <a class="card-header active ms-0" >YOUR BALANCE</a> -->
+                    <h4> YOUR BALANCE </h4>
                 </nav>
                 <div class="card-body">
-                    <form id="form-edit">
-                        <div class="row gx-3 mb-3">
-                            <!-- Form Group (surname)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputFirstName">Surname</label>
-                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your surname" value="">
-                            </div>
-                            <!-- Form Group (given name)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputLastName">Given name</label>
-                                <input class="form-control" id="inputLastName" type="text" placeholder="Enter your given name" value="">
-                            </div>
-                        </div>
-                        <!-- Form Row-->
-                        <div class="row gx-3 mb-3">
-                            <!-- Form Group (middle name)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputFirstName">Middle name</label>
-                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your middle name" value="">
-                            </div>
-                            <!-- Form Group (last name)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputLastName">Extension name</label>
-                                <input class="form-control" id="inputLastName" type="text" placeholder="Enter your extension name" value="">
-                            </div>
-                        </div>
-                        <!-- Form Row        -->
-                        <div class="row gx-3 mb-3">
-                            <!-- Form Group (organization name)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputOrgName">Email Address</label>
-                                <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your email address" value="">
-                            </div>
-                            <!-- Form Group (location)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputLocation">Contact No.</label>
-                                <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="09xxxxxxxxx">
-                            </div>
-                        </div>
-                        <!-- Form Group (email address)-->
-                        <div class="mb-3">
-                            <label class="small mb-1" for="inputEmailAddress">Address</label>
-                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your current address" value="">
-                        </div>
-                        <!-- Form Row-->
-                        <div class="row gx-3 mb-3">
-                            <!-- Form Group (phone number)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputPhone">TIN</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your TIN number" value="">
-                            </div>
-                            <!-- Form Group (gender)-->
-                            <div class="col-auto ">
-                                <label class="small mb-1" for="inputBirthday">Gender</label>
-                                <select class="form-control " id="inputBirthday" name="birthday" placeholder="Gender">
-                                    <option value="Option">Select Gender</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                            </div>
-                            <!-- Form Group (birthday)-->
-                            <div class="col-md-3">
-                                <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                <input class="form-control" id="inputBirthday" type="date" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
-                            </div>
-                        </div>
-                        <!-- Save changes button-->
-                        <button class="btn btn-primary" type="submit">Save changes</button>
-                        <script src="../assets//js//bootstrap.min.js"></script>
-                        
-                    </form>
-                    <form id="form-pass">
-                    <div class="row gx-3 mb-3" > 
-                            <!-- Form Group (Change password)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputPhone">Password</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your new password" value="">
-                            </div>
-                            <!-- Form Group (Confirm password)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputBirthday">Confirm Password</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Confirm your password" value="">
-                            </div>
-                            
-                    </div>
-                    <button class="btn btn-primary" type="submit">Save changes</button>
-                    <script src="../assts/e/js//bootstrap.min.js"></script>
-                    </form>
-                    
+                    <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                            <th>HEADER</th>
+                            <th>BALANCE</th>
+                            <th>DATE</th>
+                            <th>LOAN AMOUNT</th>
+                            <th>TERM</th>
+                            <th>MONTHLY</th>
+                            <th>MONTHS DEFAULT</th>
+                            <th>ARREARS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td>Tiger</td>
+                            <td>Nixon</td>
+                            <td>System</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+                            <td>2011/04/25</td>
+                            <td>$320,800</td>
+                            <td>5421</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
-  </body>
+<script src="../assts/e/js//bootstrap.min.js"></script>   
+</body>
 </html>
 
 <script>
-    const btn = document.getElementById('btn');
-
-        btn.addEventListener('click', () => {
-
-        const form = document.getElementById('form-edit');
-        const form1 = document.getElementById('form-edit');
-
-        
-
-        if (form.style.display === 'none') {
-            // 👇️ this SHOWS the form
-            form.style.display = 'block';
-        } else {
-            // 👇️ this HIDES the form
-            form.style.display = 'none';
-        }
-    });
+$(document).ready(function () {
+  $('#dtHorizontalExample').DataTable({
+    "scrollX": true
+  });
+  $('.dataTables_length').addClass('bs-select');
+});
 </script>
-
