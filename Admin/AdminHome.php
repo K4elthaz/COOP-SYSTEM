@@ -11,25 +11,24 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,700&display=swap"
     />
 
-    <link rel="stylesheet" href="./client.css">
+    <link rel="stylesheet" href="./AdminHome.css">
   </head>
   <body>
   <div class="container-xl px-4 mt-4">
     <!-- Account page navigation-->
     <nav class="nav nav-borders">
-        <a class="nav-link active ms-0" href="login.php" target="__blank">View Balance</a>
-        <a class="nav-link active ms-0" href="EditProfile.php" target="__blank">Edit Profile</a>
+        <a class="nav-link active ms-0" href="login.php" target="__blank">Admin</a>
         <a class="nav-link active ms-0" href="../login.php">Logout</a>
     </nav>
     <hr class="mt-0 mb-4">
     <div class="row">
         <div class="col-xl-4">
             <div class="card mb-4 mb-xl-0">
-                <div class="card-header">Personal Information</div>
+                <div class="card-header">Admin Information</div>
                 <div class="card-body text-center">
                     <img class="img-account-profile rounded-circle mb-2" src="../Client/IDPicture.jpg" alt="">
-                    <h2 class="fw-bold">IAN ROBIN C. BREVA</h2>
-                    <h3 class="fw-semibold">ID: 12345678</h3>
+                    <h2 class="fw-bold">SIR RR</h2>
+                    <p> President </p>
                 </div>
             </div>
         </div>

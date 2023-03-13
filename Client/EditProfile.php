@@ -40,7 +40,7 @@
         </div>
         <div class="col-xl-8">
             <!-- Account details card-->
-            <div class="card mb-4" >
+            <div class="card mb-4">
                 <nav class="card-header">
                     <a class="card-header active ms-0" id="edit-btn" target="__blank">Edit Profile</a>
                     <a class="card-header active ms-0" id="pass-btn" target="__blank">Change password</a>
@@ -171,7 +171,7 @@
             edit.style.display = 'block';
         } else {
             edit.style.display = 'none';
-        }
+        } 
     });
 
 
