@@ -18,7 +18,7 @@
     <!-- Account page navigation-->
     <nav class="nav nav-borders">
         <a class="nav-link active ms-0" href="login.php" target="__blank">View Balance</a>
-        <a class="nav-link active ms-0" href="google.com" target="__blank">Edit Profile</a>
+        <a class="nav-link active ms-0" href="EditProfile.php" target="__blank">Edit Profile</a>
     </nav>
     <hr class="mt-0 mb-4">
     <div class="row">
