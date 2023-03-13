@@ -20,7 +20,7 @@ body{margin-top:20px;
     .card-header {
         padding: 1rem 1.35rem;
         margin-bottom: 0;
-        background-color: rgba(33, 40, 50, 0.03);
+        background-color: rgba(33, 40, 50, 0);
         border-bottom: 1px solid rgba(33, 40, 50, 0.125);
     }
     .form-control, .dataTable-input {
@@ -57,3 +57,13 @@ body{margin-top:20px;
         margin-left: 1rem;
         margin-right: 1rem;
     }
+
+    #wrapper > :last-child {
+        display: none;
+      }
+      #wrapper.switched > :last-child {
+        display: block;
+      }
+      #wrapper.switched > :first-child {
+        display: none;
+      }

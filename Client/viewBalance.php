@@ -5,7 +5,6 @@
     <meta name="viewport" content="initial-scale=1, width=device-width" />
 
     <link rel="stylesheet" href="../assets//css//bootstrap.min.css"/>
-    <link rel="stylesheet" href="./ERDBClientSideEditProfile.css" />
 
     <link
       rel="stylesheet"
@@ -18,7 +17,7 @@
   <div class="container-xl px-4 mt-4">
     <!-- Account page navigation-->
     <nav class="nav nav-borders">
-        <a class="nav-link active ms-0" href="viewBalance.php" target="__blank">Home</a>
+        <a class="nav-link active ms-0" href="login.php" target="__blank">Home</a>
         <a class="nav-link active ms-0" href="google.com" target="__blank">Edit Profile</a>
     </nav>
     <hr class="mt-0 mb-4">
