@@ -5,6 +5,7 @@
     <meta name="viewport" content="initial-scale=1, width=device-width" />
 
     <link rel="stylesheet" href="../assets//css//bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <link
       rel="stylesheet"
@@ -119,6 +120,12 @@
                             <td>0.68</td>
                             <td>1,234.00</td>
                         </tr>
+
+                        <tr>
+							<td><a class="add" title="Add" data-toggle="tooltip"><i class="material-icons"></i></a></td>
+                            <td><a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"></i></a></td>
+                            <td><a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"></i></a></td>
+                        </tr>
                     </tbody>
                     </table>
                 </div>
@@ -132,3 +139,4 @@
 <script src="../assts/e/js//bootstrap.min.js"></script>   
 </body>
 </html>
+
