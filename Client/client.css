@@ -68,12 +68,17 @@ body{margin-top:20px;
         display: none;
       }
       
+
+      /* View Balance table */
       .dtHorizontalExampleWrapper {
         max-width: 100px;
         margin: 0 auto;
+        flex: auto;
       }
+
       #dtHorizontalExample th, td {
         white-space: nowrap;
+        
       }
       
       table.dataTable thead .sorting:after,

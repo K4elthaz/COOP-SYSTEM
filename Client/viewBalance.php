@@ -23,66 +23,112 @@
     <hr class="mt-0 mb-4">
     <div class="row">
         <div class="col-xl-4">
-            <!-- Profile picture card-->
             <div class="card mb-4 mb-xl-0">
                 <div class="card-header">Personal Information</div>
                 <div class="card-body text-center">
                     <img class="img-account-profile rounded-circle mb-2" src="../Client/IDPicture.jpg" alt="">
                     <h2 class="fw-bold">IAN ROBIN C. BREVA</h2>
                     <h3 class="fw-semibold">ID: 12345678</h3>
-
                 </div>
             </div>
         </div>
 
-        <div class="col-xl-8">
+        <div class="col-xl-8" style="display: inline-block">
             <div class="card mb-4" id="form">
-
                 <nav class="card-header" id="btn">
                     <!-- <a class="card-header active ms-0" >YOUR BALANCE</a> -->
                     <h4> YOUR BALANCE </h4>
                 </nav>
                 <div class="card-body">
-                    <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                            <th>HEADER</th>
-                            <th>BALANCE</th>
-                            <th>DATE</th>
-                            <th>LOAN AMOUNT</th>
-                            <th>TERM</th>
-                            <th>MONTHLY</th>
-                            <th>MONTHS DEFAULT</th>
-                            <th>ARREARS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <td>Tiger</td>
-                            <td>Nixon</td>
-                            <td>System</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
-                            <td>5421</td>
-                            </tr>
-                        </tbody>
+                <table class="table table-success table-striped">
+                    <thead>
+                        <tr>
+                        <th scope="col">Header</th>
+                        <th scope="col">Balance</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Loan Amount</th>
+                        <th scope="col">Term</th>
+                        <th scope="col">Monthly</th>
+                        <th scope="col">Months Default</th>
+                        <th scope="col">Arrears</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">EMERGENCY</th>
+                            <td>150,000.00</td>
+                            <td>03/01/2023</td>
+                            <td>200,000.00</td>
+                            <td>2</td>
+                            <td>1,000.00</td>
+                            <td>0.68</td>
+                            <td>1,234.00</td>
+                        </tr>
+                        
+                        <tr>
+                            <th scope="row">PETTY CASH</th>
+                            <td>150,000.00</td>
+                            <td>03/01/2023</td>
+                            <td>200,000.00</td>
+                            <td>4</td>
+                            <td>1,000.00</td>
+                            <td>0.68</td>
+                            <td>1,234.00</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">STL</th>
+                            <td>150,000.00</td>
+                            <td>03/01/2023</td>
+                            <td>200,000.00</td>
+                            <td>4</td>
+                            <td>1,000.00</td>
+                            <td>0.68</td>
+                            <td>1,234.00</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">SAVINGS REPORT</th>
+                            <td>150,000.00</td>
+                            <td>03/01/2023</td>
+                            <td>200,000.00</td>
+                            <td>2</td>
+                            <td>1,000.00</td>
+                            <td>0.68</td>
+                            <td>1,234.00</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">SHARE</th>
+                            <td>150,000.00</td>
+                            <td>03/01/2023</td>
+                            <td>200,000.00</td>
+                            <td>3</td>
+                            <td>1,000.00</td>
+                            <td>0.68</td>
+                            <td>1,234.00</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">SPECIAL-PROMO</th>
+                            <td>150,000.00</td>
+                            <td>03/01/2023</td>
+                            <td>200,000.00</td>
+                            <td>6</td>
+                            <td>1,000.00</td>
+                            <td>0.68</td>
+                            <td>1,234.00</td>
+                        </tr>
+                    </tbody>
                     </table>
                 </div>
             </div>
+
+            <button type="button" class="btn btn-danger"> Sign out</button>
+
         </div>
     </div>
 </div>
 <script src="../assts/e/js//bootstrap.min.js"></script>   
 </body>
 </html>
-
-<script>
-$(document).ready(function () {
-  $('#dtHorizontalExample').DataTable({
-    "scrollX": true
-  });
-  $('.dataTables_length').addClass('bs-select');
-});
-</script>
