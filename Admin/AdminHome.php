@@ -41,6 +41,11 @@
                     <h4> YOUR BALANCE </h4>
                 </nav>
                 <div class="card-body">
+                <td>
+							<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons"></i></a>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"></i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"></i></a>
+                    </td>
                 <table class="table table-success table-striped">
                     <thead>
                         <tr>
@@ -121,13 +126,10 @@
                             <td>1,234.00</td>
                         </tr>
 
-                        <tr>
-							<td><a class="add" title="Add" data-toggle="tooltip"><i class="material-icons"></i></a></td>
-                            <td><a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"></i></a></td>
-                            <td><a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"></i></a></td>
-                        </tr>
+
                     </tbody>
                     </table>
+
                 </div>
             </div>
 
