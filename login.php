@@ -12,7 +12,7 @@ if (isset($_SESSION["email"])) {
     $account_type = $get_acount_tpye["account_type"];
 
     if ($account_type == 1) {
-        echo "<script>window.location.href='Admin';</script>";
+        echo "<script>window.location.href='Client/viewBalance.php';</script>";
     } else {
         echo "<script>window.location.href='User';</script>";
     }
@@ -56,7 +56,7 @@ if (isset($_POST["btnLogin"])) {
 
                     $_SESSION["email"] = $email;
 
-                    echo "<script>window.location.href='Admin';</script>";
+                    echo "<script>window.location.href='Client/viewBalance.php';</script>";
                 } else {
                     $passwordErr = "Hi Admin, Your Password is Incorrect!!";
                 }
