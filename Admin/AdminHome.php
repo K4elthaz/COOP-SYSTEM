@@ -42,13 +42,13 @@
                 </nav>
                 <div class="card-body">
                 <td>
-							<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons"></i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"></i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"></i></a>
-                    </td>
+					<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons"></i></a>
+                    <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"></i></a>
+                    <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"></i></a>
+                </td>
                 <table class="table table-success table-striped">
                     <thead>
-                        <tr>
+                        <tr style="text-align: center;">
                         <th scope="col">Header</th>
                         <th scope="col">Balance</th>
                         <th scope="col">Date</th>
@@ -59,7 +59,7 @@
                         <th scope="col">Arrears</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="text-align: center;">
                         <tr>
                             <th scope="row">EMERGENCY</th>
                             <td>150,000.00</td>
