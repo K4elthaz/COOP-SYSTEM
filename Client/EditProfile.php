@@ -19,6 +19,7 @@
             <!-- Account page navigation-->
             <nav class="nav nav-borders">
                 <a class="nav-link active ms-0" href="viewBalance.php" target="__blank">View Balance</a>
+                <a class="nav-link active ms-0" href="forms.php" target="__blank">Loan & Petty Cash forms</a>
                 <a class="nav-link active ms-0" href="EditProfile.php" target="__blank">Edit Profile</a>
                 <a class="nav-link active ms-0" target="__blank">Logout</a>
             </nav>
