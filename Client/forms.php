@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,700&display=swap"
     />
     <link rel="stylesheet" href="./client.css">
-    <title> Loan Form </title>
+    <title> Forms </title>
   </head>
   <body>
   <div class="container-xl px-4 mt-4">

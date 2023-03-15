@@ -62,7 +62,9 @@ form.example::after {
 
 table {
   width: 100%;
+  height: 400px;
   border-collapse: collapse;
+  display: block; 
 }
 
 th, td {
