@@ -10,8 +10,8 @@
         <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,700&display=swap"
         />
-
         <link rel="stylesheet" href="AdminHome.css">
+        <title> Admin </title>
     </head>
     <body>
         <div class="container-xl px-4 mt-4">
@@ -161,29 +161,7 @@
                                             <td>Row 2, Column 6</td>
                                             <td>Row 2, Column 7</td>
                                             <td>Row 2, Column 8</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><b>Special Project Assistance Loan<b></td>
-                                            <td>Row 2, Column 2</td>
-                                            <td>Row 2, Column 3</td>
-                                            <td>Row 2, Column 4</td>
-                                            <td>Row 2, Column 5</td>
-                                            <td>Row 2, Column 6</td>
-                                            <td>Row 2, Column 7</td>
-                                            <td>Row 2, Column 8</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><b>Special Project Assistance Loan<b></td>
-                                            <td>Row 2, Column 2</td>
-                                            <td>Row 2, Column 3</td>
-                                            <td>Row 2, Column 4</td>
-                                            <td>Row 2, Column 5</td>
-                                            <td>Row 2, Column 6</td>
-                                            <td>Row 2, Column 7</td>
-                                            <td>Row 2, Column 8</td>
-                                        </tr>
+                                        </tr>                                        
                                     </tbody>
                                 </table>
                             </div>
