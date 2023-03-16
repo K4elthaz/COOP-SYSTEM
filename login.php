@@ -1,85 +1,55 @@
 <?php
-include("connections.php");
+session_start();
+include("dbcon.php");
+use Firebase\Auth\Token\Exception\InvalidToken;
 
+if (isset($_POST['login_btn'])){
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $idTokenString = "";
 
-if (isset($_SESSION["email"])) {
-    $email = $_SESSION["email"];
+    try {
+        $user = $auth->getUserByEmail("$email");
 
-    $query_account_type = mysqli_query($connections, "SELECT * FROM login WHERE email='$email'");
+        try{
+            $signInResult = $auth->signInWithEmailAndPassword($email, $password);
+            $idtokenString = $signInResult->idToken();
+        try {
+            $verifiedIdToken = $auth->verifyIdToken($idTokenString);
+            // $uid = $verifiedIdToken->claims()->get('sub');
 
-    $get_acount_tpye = mysqli_fetch_assoc($query_account_type);
+            // $_SESSION['verified_user_id'] = $uid;
+            $_SESSION["idTokenString"] = $idTokenString;
 
-    $account_type = $get_acount_tpye["account_type"];
+            $_SESSION = "Logged in Successfully!";
+            // echo'<script>alert("Type your message here")</script>';
+            header('location: /Client/viewBalance.php');
+            // exit();
 
-    if ($account_type == 1) {
-        echo "<script>window.location.href='Client/viewBalance.php';</script>";
-    } else {
-        echo "<script>window.location.href='User';</script>";
-    }
-}
-
-
-
-
-$email = $password = "";
-$emailErr = $passwordErr = "";
-
-
-if (isset($_POST["btnLogin"])) {
-
-    if (empty($_POST["email"])) {
-        $emailErr = "Email is Required!";
-    } else {
-        $email = $_POST["email"];
-    }
-
-    if (empty($_POST["password"])) {
-        $passwordErr = "Password is Required!";
-    } else {
-        $password = $_POST["password"];
-    }
-
-    if ($email and $password) {
-        $check_email = mysqli_query($connections, "SELECT * FROM login WHERE email='$email'");
-        $check_row = mysqli_num_rows($check_email);
-
-        if ($check_row > 0) {
-            $fetch = mysqli_fetch_assoc($check_email);
-
-            $db_password = $fetch["password"];
-
-            $account_type = $fetch["account_type"];
-
-            if ($account_type == "1") {
-
-                if ($db_password == $password) {
-
-                    $_SESSION["email"] = $email;
-
-                    echo "<script>window.location.href='Client/viewBalance.php';</script>";
-                } else {
-                    $passwordErr = "Hi Admin, Your Password is Incorrect!!";
-                }
-            } else {
-                if ($db_password == $password) {
-
-                    $_SESSION["email"] = $email;
-                    // header("Location:home.php");
-                    mysqli_query($connections, "UPDATE login WHERE email='$email'");
-                    echo "<script>window.location.href='User';</script>";
-                } else {
-                    mysqli_query($connections, "UPDATE login WHERE email='$email'");
-                    $passwordErr = "Password is incorrect! ";
-                }
-            }
-        } else {
-            $emailErr = "Email is not Registered!";
+        } catch (InvalidToken $e) {
+            // echo 'The token is invalid: '.$e->getMessage();
+        } catch (\InvalidArgumentException $e) {
+            // echo 'The token could not be parsed: '.$e->getMessage();
         }
+        }
+        catch(Exception $e){
+            $_SESSION = "Wrong Password";
+            header('location: login.php');
+            // exit(); 
+        }
+        
+    } catch (\Kreait\Firebase\Exception\Auth\UserNotFound $e) {
+        // echo $e->getMessage();
+        $_SESSION = "Invalid Email Address!";
+        // header('location: login.php');
+        // exit();
     }
+}else{
+    $_SESSION = "Not Allowed";
+    // header('location: login.php');
+    // exit();
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -120,16 +90,16 @@ ERDB <br>Multi-Purpose Cooperative
 
 <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
 
-<input class="input100" type="text" name="email" placeholder="Username" value ="<?php echo $email;?>">
+<input class="input100" id= "email" type="email" name="email" placeholder="Username">
 
 <span class="focus-input100"></span>
 <span class="symbol-input100">
 <i class="fa fa-envelope" aria-hidden="true"></i>
 </span>
 </div>
-<span class="error"><?php echo $emailErr; ?></span>
+<span class="error"></span>
 <div class="wrap-input100 validate-input" data-validate="Password is required">
-<input class="input100" type="password" name="password" placeholder="Password" value = "">
+<input class="input100" type="password" id= "password" name="password" placeholder="Password">
 
 
 <span class="focus-input100"></span>
@@ -137,11 +107,11 @@ ERDB <br>Multi-Purpose Cooperative
 <i class="fa fa-lock" aria-hidden="true"></i>
 </span>
 </div>
-<span class="error"><?php echo $passwordErr; ?></span>
+<span class="error"></span>
 <div class="container-login100-form-btn">
 
 
-                <button class="login100-form-btn" type="submit" name="btnLogin" value="Login">Login</button>
+                <button class="login100-form-btn" type="submit" id = "login_btn" name="login_btn" value="login_btn">Login</button>
                 </div>
 
                 <div class="text-center p-t-136">
