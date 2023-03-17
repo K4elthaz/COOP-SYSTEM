@@ -2,6 +2,10 @@
 session_start();
 include("dbcon.php");
 use Firebase\Auth\Token\Exception\InvalidToken;
+use Kreait\Firebase\Auth;
+
+$factory = // initialize $factory here
+$auth = $factory->createAuth();
 
 if (isset($_POST['login_btn'])){
     $email = $_POST['email'];
@@ -10,45 +14,43 @@ if (isset($_POST['login_btn'])){
 
     try {
         $user = $auth->getUserByEmail("$email");
-        try{
-            $signInResult = $auth->signInWithEmailAndPassword($email, $password);
-            $idtokenString = $signInResult->idToken();
+
         try {
-            $verifiedIdToken = $auth->verifyIdToken($idTokenString);
-            // $uid = $verifiedIdToken->claims()->get('sub');
+            $signInResult = $auth->signInWithEmailAndPassword($email, $password);
+            $idTokenString = $signInResult->idToken();
 
-            // $_SESSION['verified_user_id'] = $uid;
-            $_SESSION["idTokenString"] = $idTokenString;
+            try {
+                $verifiedIdToken = $auth->verifyIdToken($idTokenString);
+                // $uid = $verifiedIdToken->claims()->get('sub');
 
-            $_SESSION = "Logged in Successfully!";
-            // echo'<script>alert("Type your message here")</script>';
-            header('location: /Client/viewBalance.php');
-            // exit();
+                // $_SESSION['verified_user_id'] = $uid;
+                $_SESSION["idTokenString"] = $idTokenString;
+                $_SESSION['message'] = "Logged in Successfully!";
+                header('location: Client/viewBalance.php');
+                // exit();
 
-        } catch (InvalidToken $e) {
-            echo 'The token is invalid: '.$e->getMessage();
-        } catch (\InvalidArgumentException $e) {
-            echo 'The token could not be parsed: '.$e->getMessage();
-        }
-        }
-        catch(Exception $e){
-            $_SESSION = "Wrong Password";
+            } catch (InvalidToken $e) {
+                echo 'The token is invalid: '.$e->getMessage();
+            } catch (\InvalidArgumentException $e) {
+                echo 'The token could not be parsed: '.$e->getMessage();
+            }
+        } catch (\Kreait\Firebase\Auth\SignIn\FailedToSignIn $e) {
+            $_SESSION['message'] = "Wrong Password";
             // header('location: login.php');
             // exit(); 
         }
-        
     } catch (\Kreait\Firebase\Exception\Auth\UserNotFound $e) {
-        // echo $e->getMessage();
-        $_SESSION = "Invalid Email Address!";
+        $_SESSION['message'] = "Invalid Email Address!";
         // header('location: login.php');
         // exit();
     }
-}else{
-    $_SESSION = "Not Allowed";
+} else {
+    $_SESSION['message'] = "Not Allowed";
     // header('location: login.php');
     // exit();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
