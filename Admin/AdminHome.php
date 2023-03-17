@@ -57,11 +57,11 @@
                             </div>
                         </div>
                         
-                        <div class="row">
+                        <div class="row px-4">
                             <div class="card-body">
                                 <!-- table -->
                                 <div class="table-container">
-                                    <table class="table table-bordered">
+                                    <table class="table">
                                         <thead>
                                             <tr>
                                                 <th class="headcol">Name</th>
@@ -251,6 +251,11 @@ $(document).ready(function(){
             '<td><input type="text" class="form-control" name="name" id="name"></td>' +
             '<td><input type="text" class="form-control" name="department" id="department"></td>' +
             '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
+            '<td><input type="text" class="form-control" name="phone" id="loan-amount"></td>' +
+            '<td><input type="text" class="form-control" name="phone" id="term"></td>' +
+            '<td><input type="text" class="form-control" name="phone" id="monthly"></td>' +
+            '<td><input type="text" class="form-control" name="phone" id="months-default"></td>' +
+            '<td><input type="text" class="form-control" name="phone" id="arrears"></td>' +
 			'<td>' + actions + '</td>' +
         '</tr>';
     	$("table").append(row);		
