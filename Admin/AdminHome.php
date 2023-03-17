@@ -49,7 +49,7 @@
                             </div>
                             <h4> Control Panel </h4>     
                         </nav>
-                        <div class="row px-1">
+                        <div class="row px-4">
                             <div class="new-inp mt-2" >
                                 <button type="button" class="btn btn-primary add-new float-end" ><i class="fa fa-plus"></i> Add New</button>
                                 <button type="button" class="btn btn-success  export float-end mx-1" ><i class="fa fa-download"></i> Export</button>
