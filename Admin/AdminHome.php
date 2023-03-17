@@ -38,19 +38,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-9" >
-                    <div class="card mb-4" id="form" position="aboslute">
+                <div class="col-sm-9 " >
+                    <div class="card" id="form" position="aboslute">
                         <nav class="card-header" id="btn">
                             <div class="search float-end">
-                                <form class="example" action="">
+                                <form class="example mt-2" action="">
                                     <input type="text" placeholder="  Search.." name="search">
                                     <button type="submit"><i class="fa fa-search fa-outline-success" aria-hidden="true"></i></button>   
                                 </form>
                             </div>
                             <h4> Control Panel </h4>     
                         </nav>
-                        <div class="row px-4">
-                            <div class="new-inp mt-2" >
+                        <div class="row px-4 ">
+                            <div class="new-inp mt-4" >
                                 <button type="button" class="btn btn-primary add-new float-end" ><i class="fa fa-plus"></i> Add New</button>
                                 <button type="button" class="btn btn-success  export float-end mx-1" ><i class="fa fa-download"></i> Export</button>
                                 <button type="button" class="btn btn-warning import float-end" ><i class="fa fa-file-excel-o"></i> Import</button>
