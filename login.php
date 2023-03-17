@@ -10,7 +10,6 @@ if (isset($_POST['login_btn'])){
 
     try {
         $user = $auth->getUserByEmail("$email");
-
         try{
             $signInResult = $auth->signInWithEmailAndPassword($email, $password);
             $idtokenString = $signInResult->idToken();
@@ -27,14 +26,14 @@ if (isset($_POST['login_btn'])){
             // exit();
 
         } catch (InvalidToken $e) {
-            // echo 'The token is invalid: '.$e->getMessage();
+            echo 'The token is invalid: '.$e->getMessage();
         } catch (\InvalidArgumentException $e) {
-            // echo 'The token could not be parsed: '.$e->getMessage();
+            echo 'The token could not be parsed: '.$e->getMessage();
         }
         }
         catch(Exception $e){
             $_SESSION = "Wrong Password";
-            header('location: login.php');
+            // header('location: login.php');
             // exit(); 
         }
         

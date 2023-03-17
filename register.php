@@ -42,6 +42,7 @@ if(isset($_POST['register_btn'])){
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
     <input class="input100" type="password" id= "password" name="password" placeholder="Password">
+    <small class="form-text text-muted">7character password.</small>
   </div>
 
   <button type="submit" name="register_btn" value = "register_btn" id = "register_btn" class="btn btn-primary">Submit</button>
