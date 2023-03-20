@@ -155,6 +155,8 @@
                                                 <td>Sample Text</td>
                                                 <td>Sample Text</td>
                                             </tr> 
+
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -167,3 +169,7 @@
         <script src="../assts/e/js//bootstrap.min.js"></script>   
     </body>
 </html>
+
+<?php
+include("../connections.php");
+?>

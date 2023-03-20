@@ -24,7 +24,6 @@ table {
   height: 400px;
   border-collapse: collapse;
   display: inline-block; 
- 
 }
 
 th {
@@ -144,11 +143,11 @@ table.table td:first-child, table.table th:first-child {
 
 
 .img-account-profile {
-    height: 10rem;
+  height: 10rem;
 }
-    
+  
 .rounded-circle {
-    border-radius: 50% !important;
+  border-radius: 50% !important;
 }
 
 .btn {
