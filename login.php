@@ -56,7 +56,7 @@ if (isset($_POST["btnLogin"])) {
 
                     $_SESSION["email"] = $email;
 
-                    echo "<script>window.location.href='Admin';</script>";
+                    echo "<script>window.location.href='Admin/AdminHome.php';</script>";
                 } else {
                     $passwordErr = "Hi Admin, Your Password is Incorrect!!";
                 }
