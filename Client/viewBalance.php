@@ -20,7 +20,7 @@
                 <a class="nav-link active ms-0" href="EditProfile.php" target="__blank">Edit Profile</a>
                 <a class="nav-link active ms-0" target="__blank">Logout</a>
             </nav>
-            <hr class="mt-0 mb-2">
+            <hr class="mt-0 mb-4">
             <div class="row">
                 <div class="col-sm-3 mr-5" >
                     <div class="card mb-2 mb-xl-0" >
@@ -41,7 +41,7 @@
                             <div class="card-body">
                                 <!-- table -->
                                 <div class="table-container">
-                                    <table class="table ">
+                                    <table class="table">
                                         <thead>
                                             <tr>
                                                 <th class="headcol">Name</th>

@@ -1,3 +1,26 @@
+<?php
+// Get status message
+if(!empty($_GET['status'])){
+    switch($_GET['status']){
+        case 'succ':
+            $statusType = 'alert-success';
+            $statusMsg = 'Members data has been imported successfully.';
+            break;
+        case 'err':
+            $statusType = 'alert-danger';
+            $statusMsg = 'Some problem occurred, please try again.';
+            break;
+        case 'invalid_file':
+            $statusType = 'alert-danger';
+            $statusMsg = 'Please upload a valid CSV file.';
+            break;
+        default:
+            $statusType = '';
+            $statusMsg = '';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,21 +35,28 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet"href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,700&display=swap"/>
-        <link rel="stylesheet" href="AdminHome.css">
+        <link rel="stylesheet" href="adminHome.css">
         <title> Admin </title>
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
+
     <body>
-        <div class="container-xl px-10 mt-10 ">
+        <div class="container-xl px-4 mt-4">
             <!-- Account page navigation-->
             <nav class="nav nav-borders">
                 <a class="nav-link active ms-0" href="login.php" target="__blank">Admin</a>
                 <a class="nav-link active ms-0" href="../login.php">Logout</a>
             </nav>
-            <hr class="mt-0 mb-2">
+                <!-- Display status message -->
+<?php if(!empty($statusMsg)){ ?>
+    <div class="col-xs-12">
+        <div class="alert <?php echo $statusType; ?>"><?php echo $statusMsg; ?></div>
+    </div>
+<?php } ?>
+            <hr class="mt-0 mb-4">
             <div class="row">
                 <div class="col-sm-3 mr-5" >
                     <div class="card mb-2 mb-xl-0" >
@@ -52,8 +82,15 @@
                         <div class="row px-4 ">
                             <div class="new-inp mt-4" >
                                 <button type="button" class="btn btn-primary add-new float-end" ><i class="fa fa-plus"></i> Add New</button>
-                                <button type="button" class="btn btn-success  export float-end mx-1" ><i class="fa fa-download"></i> Export</button>
-                                <button type="button" class="btn btn-warning import float-end" ><i class="fa fa-file-excel-o"></i> Import</button>
+                                <a href="exportData.php" class="btn btn-success  export float-end mx-1" ><i class="fa fa-download"></i> Export</a>
+                                <!-- <button type="button" class="btn btn-success  export float-end mx-1" ><i class="fa fa-download"></i> Export</button> -->
+                                <button type="button" class="btn btn-warning import float-end" onclick="formToggle('importFrm');"><i class="fa fa-file-excel-o" ></i> Import</button>
+                                <div class="col-md-5" id="importFrm" style="display: none;">
+                                    <form action="importData.php" method="post" enctype="multipart/form-data">
+                                        <input type="file" name="file" />
+                                        <input type="submit" class="btn btn-primary" name="importSubmit" value="CONFIRM">
+                                    </form>
+                                </div>
                             </div>
                         </div>
                         
@@ -61,37 +98,61 @@
                             <div class="card-body">
                                 <!-- table -->
                                 <div class="table-container">
-                                    <table class="table">
+                                    <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th class="headcol">Name</th>
-                                                <th>Department</th>
-                                                <th>Phone</th>
-                                                <th>Loan Amount</th>
+                                                <th class="headcol">ID</th>
+                                                <th>MemberID</th>
+                                                <th>Name</th>
+                                                <th>Loan Type</th>
+                                                <th>Principal</th>
+                                                <th>Date Granted</th>
                                                 <th>Term</th>
-                                                <th>Monthly</th>
+                                                <th>Amort</th>
+                                                <th>Paid Amount</th>
+                                                <th>Balance</th>
+                                                <th>Expected Amount</th>
                                                 <th>Months Default</th>
-                                                <th>Arrears</th>
+                                                <th>Default Amount</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <?php
+
+                                        include("../connections.php");
+
+                                        // Get member rows
+                                        $result = $connections->query("SELECT * FROM members ORDER BY id");
+                                        if($result->num_rows > 0){
+                                            while($row = $result->fetch_assoc()){
+                                        ?>
                                             <tr>
-                                                <td class="headcol">Sample Text</td>
-                                                <td>Administration</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
+                                                <td><?php echo $row['id']; ?></td>
+                                                <td><?php echo $row['memberID']; ?></td>
+                                                <td><?php echo $row['name']; ?></td>
+                                                <td><?php echo $row['loanType']; ?></td>
+                                                <td><?php echo $row['principal']; ?></td>
+                                                <td><?php echo $row['dateGranted']; ?></td>
+                                                <td><?php echo $row['term']; ?> Months</td>
+                                                <td><?php echo $row['amort']; ?></td>
+                                                <td><?php echo $row['paidAmount']; ?></td>
+                                                <td><?php echo $row['balance']; ?></td>
+                                                <td><?php echo $row['expAmount']; ?></td>
+                                                <td><?php echo $row['monthsDefault']; ?></td>
+                                                <td><?php echo $row['defaultAmount']; ?></td>
                                                 <td>
                                                     <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons"></i></a>
                                                     <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"></i></a>
                                                     <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"></i></a>
                                                 </td>
                                             </tr>
-                                            <tr>
+                                        <?php } }else{ ?>
+                                            <tr><td colspan="5">No member(s) found...</td></tr>
+                                        <?php } ?>
+
+
+                                            <!-- <tr>
                                                 <td class="headcol">Sample Text</td>
                                                 <td>Administration</td>
                                                 <td>Sample Text</td>
@@ -105,127 +166,7 @@
                                                     <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"></i></a>
                                                     <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"></i></a>
                                                 </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="headcol">Sample Text</td>
-                                                <td>Administration</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>
-                                                    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                    <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                    <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="headcol">Sample Text</td>
-                                                <td>Administration</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>
-                                                    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                    <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                    <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="headcol">Sample Text</td>
-                                                <td>Administration</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>
-                                                    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                    <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                    <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="headcol">Sample Text</td>
-                                                <td>Administration</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>
-                                                    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                    <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                    <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="headcol">Sample Text</td>
-                                                <td>Administration</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>
-                                                    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                    <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                    <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="headcol">Sample Text</td>
-                                                <td>Administration</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>
-                                                    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                    <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                    <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="headcol">Sample Text</td>
-                                                <td>Administration</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>
-                                                    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                    <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                    <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="headcol">Sample Text</td>
-                                                <td>Administration</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>Sample Text</td>
-                                                <td>
-                                                    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                    <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                    <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"></i></a>
-                                                </td>
-                                            </tr> 
+                                            </tr> -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -248,6 +189,7 @@ $(document).ready(function(){
 		$(this).attr("disabled", "disabled");
 		var index = $("table tbody tr:last-child").index();
         var row = '<tr>' +
+            '<td><input type="text" class="form-control" name="name" id="id"></td>' +
             '<td><input type="text" class="form-control" name="name" id="name"></td>' +
             '<td><input type="text" class="form-control" name="department" id="department"></td>' +
             '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
@@ -298,9 +240,14 @@ $(document).ready(function(){
     });
 });
 
-</script>
+function formToggle(ID){
+    var element = document.getElementById(ID);
+    if(element.style.display === "none"){
+        element.style.display = "block";
+    }else{
+        element.style.display = "none";
+    }
+}
 
-<?php
-include("../connections.php");
-?>
+</script>
 

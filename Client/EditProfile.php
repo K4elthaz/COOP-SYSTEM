@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="./ERDBClientSideEditProfile.css" />
         <link rel="stylesheet"href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,700&display=swap"/>
         <link rel="stylesheet" href="./client.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     </head>
@@ -17,7 +18,7 @@
 
         <div class="container-xl px-4 mt-4">
             <!-- Account page navigation-->
-            <nav class="nav nav-borders">
+            <nav class="nav  navbar-light">
                 <a class="nav-link active ms-0" href="viewBalance.php" target="__blank">View Balance</a>
                 <a class="nav-link active ms-0" href="forms.php" target="__blank">Loan & Petty Cash forms</a>
                 <a class="nav-link active ms-0" href="EditProfile.php" target="__blank">Edit Profile</a>
@@ -27,7 +28,7 @@
             <hr class="mt-0 mb-4">
 
             <div class="row" id="pages">
-                <div class="col-xl-4">  
+                <div class="col-xl-3">  
                     <!-- Profile picture card-->
                     <div class="card mb-4 mb-xl-0">
                         <div class="card-header">Profile Picture</div>
@@ -86,7 +87,7 @@
                                         <!-- Form Group (location)-->
                                         <div class="col-md-6">
                                             <label class="small mb-1" for="inputLocation">Contact No.</label>
-                                            <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="09xxxxxxxxx">
+                                            <input class="form-control" id="inputLocation" type="text" placeholder="Enter your contact number" value="">
                                         </div>
                                     </div>
                                     <!-- Form Group (email address)-->
