@@ -3,15 +3,15 @@
 if(!empty($_GET['status'])){
     switch($_GET['status']){
         case 'succ':
-            $statusType = 'alert-success';
+            // $statusType = 'alert-success';
             $statusMsg = 'Members data has been imported successfully.';
             break;
         case 'err':
-            $statusType = 'alert-danger';
+            // $statusType = 'alert-danger';
             $statusMsg = 'Some problem occurred, please try again.';
             break;
         case 'invalid_file':
-            $statusType = 'alert-danger';
+            // $statusType = 'alert-danger';
             $statusMsg = 'Please upload a valid CSV file.';
             break;
         default:
@@ -52,10 +52,14 @@ if(!empty($_GET['status'])){
                 <a class="nav-link active ms-0" href="../login.php">Logout</a>
             </nav>
                 <!-- Display status message -->
-<?php if(!empty($statusMsg)){ ?>
-    <div class="col-xs-12">
-        <div class="alert <?php echo $statusType; ?>"><?php echo $statusMsg; ?></div>
-    </div>
+<?php if(!empty($statusMsg)){ 
+    function function_alert($statusMsg) {   
+        echo "<script>alert('$statusMsg');</script>";
+    }   
+    function_alert("$statusMsg");
+    ?>
+    
+    
 <?php } ?>
             <hr class="mt-0 mb-4">
             <div class="row">
