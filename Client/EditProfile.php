@@ -90,11 +90,13 @@
                                             <input class="form-control" id="inputLocation" type="text" placeholder="Enter your contact number" value="">
                                         </div>
                                     </div>
-                                    <!-- Form Group (email address)-->
+                                    <!-- Form Group (address)-->
                                     <div class="mb-3">
                                         <label class="small mb-1" for="inputEmailAddress">Address</label>
                                         <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your current address" value="">
                                     </div>
+                                    <!-- Form Group (civil status)-->
+                                    
                                     <!-- Form Row-->
                                     <div class="row gx-3 mb-3">
                                         <!-- Form Group (phone number)-->
@@ -102,6 +104,19 @@
                                             <label class="small mb-1" for="inputPhone">TIN</label>
                                             <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your TIN number" value="">
                                         </div>
+
+                                        <div class="col-md-2 ">
+                                            <label class="small mb-1" for="inputBirthday">Civil Status</label>
+                                            <select class="form-control " id="inputBirthday" name="birthday">
+                                                <option value="Option">Civil Status</option>
+                                                <option value="Male">Single</option>
+                                                <option value="Female">Married</option>
+                                                <option value="Divorced">Divorced</option>
+                                                <option value="Seperated">Seperated</option>
+                                                <option value="Widowed">Widowed</option>
+                                            </select>
+                                        </div>
+
                                         <!-- Form Group (gender)-->
                                         <div class="col-auto ">
                                             <label class="small mb-1" for="inputBirthday">Gender</label>
@@ -143,7 +158,7 @@
                             </div>
                         </div>
                     </div>
-                /</div>
+                </div>
             </div>
         </div>
     </body>
