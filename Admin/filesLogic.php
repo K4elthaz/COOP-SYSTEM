@@ -24,7 +24,7 @@
     
         if (!in_array($extension, ['zip', 'pdf', 'docx','png','jpg'])) {
             // echo "You file extension must be in .PDF and .DOCX";
-        } elseif ($_FILES['myfile']['size'] > 1000000) { // file shouldn't be larger than 1Megabyte
+        } elseif ($_FILES['myfile']['size'] > 100000000) { // file shouldn't be larger than 1Megabyte
             echo "File too large!";
         } else {
             // move the uploaded (temporary) file to the specified destination

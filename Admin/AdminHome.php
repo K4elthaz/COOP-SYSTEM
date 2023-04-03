@@ -48,6 +48,7 @@ if(!empty($_GET['status'])){
             <!-- Account page navigation-->
             <nav class="nav nav-borders">
                 <a class="nav-link active ms-0" href="login.php" target="__blank">Admin</a>
+                <a class="nav-link active ms-0" href="downloads.php" target="__blank">Forms</a>
                 <a class="nav-link active ms-0" href="../login.php">Logout</a>
             </nav>
                 <!-- Display status message -->
@@ -85,13 +86,13 @@ if(!empty($_GET['status'])){
                                 <a href="exportData.php" class="btn btn-success  export float-end mx-1" ><i class="fa fa-download"></i> Export</a>
                                 <!-- <button type="button" class="btn btn-success  export float-end mx-1" ><i class="fa fa-download"></i> Export</button> -->
                                 <button type="button" class="btn btn-warning import float-end" onclick="formToggle('importFrm');"><i class="fa fa-file-excel-o" ></i> Import</button>
-                                <div class="col-md-5" id="importFrm" style="display: none;">
+                            </div>
+                            <div class="col-md-5" id="importFrm" style="display: none;">
                                     <form action="importData.php" method="post" enctype="multipart/form-data">
                                         <input type="file" name="file" />
                                         <input type="submit" class="btn btn-primary" name="importSubmit" value="CONFIRM">
                                     </form>
                                 </div>
-                            </div>
                         </div>
                         
                         <div class="row px-4">
@@ -103,7 +104,7 @@ if(!empty($_GET['status'])){
                                             <tr>
                                                 <th class="headcol">ID</th>
                                                 <th>MemberID</th>
-                                                <th>Name</th>
+                                                <th class="third">Name</th>
                                                 <th>Loan Type</th>
                                                 <th>Principal</th>
                                                 <th>Date Granted</th>
@@ -130,7 +131,7 @@ if(!empty($_GET['status'])){
                                             <tr>
                                                 <td><?php echo $row['id']; ?></td>
                                                 <td><?php echo $row['memberID']; ?></td>
-                                                <td><?php echo $row['name']; ?></td>
+                                                <td class="th"><?php echo $row['name']; ?></td>
                                                 <td><?php echo $row['loanType']; ?></td>
                                                 <td><?php echo $row['principal']; ?></td>
                                                 <td><?php echo $row['dateGranted']; ?></td>
@@ -148,7 +149,7 @@ if(!empty($_GET['status'])){
                                                 </td>
                                             </tr>
                                         <?php } }else{ ?>
-                                            <tr><td colspan="5">No member(s) found...</td></tr>
+                                            <div>No member(s) found...</div>
                                         <?php } ?>
 
 
