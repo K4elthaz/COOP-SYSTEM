@@ -4,10 +4,10 @@
   
   
   /* table */
-  /* .table-container {
+  .table-container {
     overflow-x: auto;
     overflow-y: auto;
-  } */
+  }
   
   
   table {
@@ -17,6 +17,9 @@
     text-align: center;
   }
   
+  th {
+    background-color: gray;
+  }
   
   th, td {
     /* padding: 8px; */
@@ -25,7 +28,6 @@
     margin: 0;
     white-space: nowrap;
     border-top-width: 0px;
-    
   }
   
   /* table */
@@ -154,4 +156,3 @@
   .nav-link {
     font-weight: 400;
   }
-
