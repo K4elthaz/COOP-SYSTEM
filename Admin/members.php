@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/9c35be8496.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link rel="stylesheet" href="members.css">
     <title>Members</title>
   </head>
@@ -51,13 +52,89 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-danger">Yes</button>
+                                <?php
+                                    $dbc = mysqli_connect('localhost', 'root', '', 'coop-database') or die('Error connecting to MySQL server.'); 
+                                    if(isset($_POST['delete'])){
+                                        mysqli_query($dbc, 'TRUNCATE TABLE `members`');
+                                        header("Location: members.php" . $_SERVER['PHP_SELF']);
+                                        exit();
+                                    }
+                                ?>
+                                <form method="post" action="">
+                                    <input class="btn btn-danger" name="delete" type="submit" value="Yes" />
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- // TODO: Make popup for add new -->
-                <button type="button" class="btn btn-primary add-new float-end mx-1" ><i class="fa fa-plus"></i> Add New</button>
+                <!-- Button to trigger Add new -->
+                <button type="button" class="btn btn-primary add-new float-end mx-1" data-bs-toggle="modal" data-bs-target="#addModal">
+                    <i class="fa fa-plus"></i> Add New
+                </button>
+
+                <!-- Add new Modal -->
+                <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add New Member</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="text" class="form-control" placeholder="Member ID">
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" placeholder="Name">
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" placeholder="Loan Type">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col">
+                                            <input type="number" class="form-control" placeholder="Principal">
+                                        </div>
+                                        <div class="col">
+                                            <input type="date" class="form-control" placeholder="Date Granted">
+                                        </div>
+                                        <div class="col">
+                                            <input type="month" class="form-control" placeholder="Term">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col">
+                                            <input type="number" class="form-control" placeholder="Amort">
+                                        </div>
+                                        <div class="col">
+                                            <input type="number" class="form-control" placeholder="Paid Amount">
+                                        </div>
+                                        <div class="col">
+                                            <input type="number" class="form-control" placeholder="Balance">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col">
+                                            <input type="number" class="form-control" placeholder="Expected Amount">
+                                        </div>
+                                        <div class="col">
+                                            <input type="number" class="form-control" placeholder="Months Default">
+                                        </div>
+                                        <div class="col">
+                                            <input type="number" class="form-control" placeholder="Default Amount">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-primary" name="addSubmit" value="Add Member">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Button trigger Export modal -->
                 <button type="button" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#exportModal">
@@ -99,7 +176,7 @@
                                 <form action="importData.php" method="post" enctype="multipart/form-data">
                                     <input type="file" name="file" />
                                     <div class="modal-footer">
-                                        <input type="submit" class="btn btn-primary" name="importSubmit" value="CONFIRM">
+                                        <input type="submit" class="btn btn-warning" name="importSubmit" value="CONFIRM">
                                     </div>
                                 </form>
                             </div>
@@ -107,8 +184,8 @@
                     </div>
                 </div>
             </div>
-            <form class="d-flex mt-1 mx-1 justify-content-start">
-                <input class="form-control-sm me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex mt-1 mx-1 justify-content-start" action="search.php">
+                <input class="form-control-sm me-2" type="search" placeholder="Search" aria-label="Search" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
@@ -143,10 +220,11 @@
                                         if($result->num_rows > 0){
                                             while($row = $result->fetch_assoc()){
                             ?>
+                            
                             <tr>
                                 <td><?php echo $row['id']; ?></td>
                                 <td><?php echo $row['memberID']; ?></td>
-                                <td class="th"><?php echo $row['name']; ?></td>
+                                <td><?php echo $row['name']; ?></td>
                                 <td><?php echo $row['loanType']; ?></td>
                                 <td><?php echo $row['principal']; ?></td>
                                 <td><?php echo $row['dateGranted']; ?></td>
@@ -159,8 +237,7 @@
                                 <td><?php echo $row['defaultAmount']; ?></td>
                                 
                                 <td>
-                                    <!-- // !Fixed edit delete, remove add -->
-                                    <a class="add" title="Add" data-toggle="tooltip" ><i class="fa-solid fa-user-plus fa-md" style="color: #2dab1c;"></i></a>
+                                    <!-- // !Fixed edit and delete -->
                                     <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa-solid fa-user-pen fa-md" style="color: #2564d0;"></i></a>
                                     <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa-solid fa-user-xmark fa-md" style="color: #e81717;"></i></a>
                                 </td>
@@ -179,3 +256,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>
 </html>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+
+</script>
