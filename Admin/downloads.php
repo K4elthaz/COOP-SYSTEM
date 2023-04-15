@@ -19,7 +19,7 @@ include 'filesLogic.php';
     <body>
         <div class="container-xl px-10 mt-10 ">
             <nav class="nav nav-borders">
-                <a class="nav-link active ms-0" href="AdminHome.php"> Admin</a>
+                <a class="nav-link active ms-0" href="controlPanel.php"> Admin</a>
                 <!-- <a class="nav-link active ms-0" href="../Client/EditProfile.php"> Edit Profile</a> -->
                 <!-- <a class="nav-link active ms-0" href="uploads.php"> Upload forms</a>      -->
                 <a class="nav-link active ms-0" href="downloads.php"> Downloaded Forms</a>
