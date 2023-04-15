@@ -56,7 +56,7 @@ if (isset($_POST["btnLogin"])) {
 
                     $_SESSION["email"] = $email;
 
-                    echo "<script>window.location.href='Admin/AdminHome.php';</script>";
+                    echo "<script>window.location.href='Admin/controlPanel.php';</script>";
                 } else {
                     $passwordErr = "Hi Admin, Your Password is Incorrect!!";
                 }
@@ -129,7 +129,7 @@ if (isset($_POST["btnLogin"])) {
                                     </div>
                                 <span class="error"></span>
                                     <div class="container-login100-form-btn">
-                                        <button class="login100-form-btn" type="submit" name="btnLogin" value="Login">
+                                        <button class="login100-form-btn" type="submit" name="btnLogin" value="Login">Login</button>
                                     </div>
 
                                     <div class="text-center p-t-136">

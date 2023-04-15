@@ -1,6 +1,9 @@
 
 
 <?php
+
+$memberId = $name = $paymentType = $transactionDate = $referenceNo = $transactionRemarks = $collector = "";
+$memberIdErr = $nameErr = $paymentTypeErr = $transactionDateErr = $referenceNoErr = $transactionRemarksErr = $collectorErr = "";
 // Get status message
 if(!empty($_GET['status'])){
     switch($_GET['status']){
@@ -49,7 +52,7 @@ if(!empty($_GET['status'])){
         <div class="container-xl px-4 mt-4">
             <!-- Account page navigation-->
             <nav class="nav nav-borders">
-                <a class="nav-link active ms-0" href="AdminHome.php" target="__blank">Admin</a>
+                <a class="nav-link active ms-0" href="controlPanel.php" target="__blank">Admin</a>
                 <a class="nav-link active ms-0" href="downloads.php" target="__blank">Forms</a>
                 <a class="nav-link active ms-0" href="../login.php">Logout</a>
             </nav>
@@ -87,14 +90,14 @@ if(!empty($_GET['status'])){
                                 <button type="button" class="btn btn-primary add-new float-end" ><i class="fa fa-plus"></i> Pwede lagyan din </button>
                                 <a href="exportData.php" class="btn btn-success  export float-end mx-1" ><i class="fa fa-download"></i> pwede lagyan</a>
                                 <!-- <button type="button" class="btn btn-success  export float-end mx-1" ><i class="fa fa-download"></i> Export</button> -->
+
+                                
                                 <button type="button" class="btn btn-warning import float-end" onclick=""><i class="fa fa-plus" ></i> New Transaction</button>
+                                
+                                
+
+
                             </div>
-                            <!-- <div class="col-md-5" id="importFrm" style="display: none;">
-                                    <form action="importData.php" method="post" enctype="multipart/form-data">
-                                        <input type="file" name="file" />
-                                        <input type="submit" class="btn btn-primary" name="importSubmit" value="CONFIRM">
-                                    </form>
-                                </div> -->
                         </div>
                         
                         <div class="row px-4">
@@ -131,7 +134,7 @@ if(!empty($_GET['status'])){
                                                 <td><?php echo $row['paymentType']; ?></td>
                                                 <td><?php echo $row['transactionDate']; ?></td>
                                                 <td><?php echo $row['referenceNo']; ?></td>
-                                                <td><?php echo $row['transactionRemarks']; ?> Months</td>
+                                                <td><?php echo $row['transactionRemarks']; ?> </td>
                                                 <td><?php echo $row['collector']; ?></td>
                                                 <td>
 
@@ -142,7 +145,7 @@ if(!empty($_GET['status'])){
                                                 </td>
                                             </tr>
                                         <?php } }else{ ?>
-                                            <div>No member(s) found...</div>
+                                            <div>No Transaction(s) found...</div>
                                         <?php } ?>
 
                                         </tbody>
