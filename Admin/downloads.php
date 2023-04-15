@@ -54,21 +54,21 @@ include 'filesLogic.php';
                                         <table class="table mt-0 ">
                                             <thead> 
                                                 <tr>
-                                                    <th class="text-center">ID</th>
+                                                    <!-- <th class="text-center">ID</th> -->
                                                     <th class="text-center">Filename</th>
                                                     <th class="text-center">size (in mb)</th>
-                                                    <th class="text-center">Downloads</th>
+                                                    <!-- <th class="text-center">Downloads</th> -->
                                                     <th class="text-center">Action</th>
                                                 <tr>
                                             </thead>
                                             <tbody>
                                                 <?php foreach ($files as $file): ?>
                                                     <tr>
-                                                        <td class="text-center"><?php echo $file['ID']; ?></td>
+                                                        <!-- <td class="text-center"><?php echo $file['ID']; ?></td> -->
                                                         <td class="text-center"><?php echo $file['name']; ?></td>
                                                         <td class="text-center"><?php echo floor($file['size'] / 1000) . ' KB'; ?></td>
-                                                        <td class="text-center"><?php echo $file['downloads']; ?></td>
-                                                        <td class="text-center"><a href="downloads.php?file_id=<?php echo $file['ID'] ?>">Download</a></td>
+                                                        <!-- <td class="text-center"><?php echo $file['downloads']; ?></td> -->
+                                                        <td class="text-center"><a class="btn btn-success" href="downloads.php?file_id=<?php echo $file['ID'] ?>">Download</a></td>
                                                     </tr>
                                                 <?php endforeach;?>
                                             </tbody>
