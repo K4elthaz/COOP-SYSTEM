@@ -15,15 +15,6 @@
     <body>
         <div class="container-xl px-4 mt-4">
             <!-- Account page navigation-->
-<<<<<<<<< Temporary merge branch 1
-            <nav class="nav nav-borders">
-                <a class="nav-link active ms-0" href="controlPanel.php" target="__blank">Home</a>
-=========
-            <!-- <nav class="nav nav-borders">
-                <a class="nav-link active ms-0" href="AdminHome.php" target="__blank">Home</a>
->>>>>>>>> Temporary merge branch 2
-                <a class="nav-link active ms-0" href="../login.php">Logout</a>
-            </nav> -->
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="controlPanel.php">Coop</a>
