@@ -15,10 +15,7 @@
     <body>
         <div class="container-xl px-4 mt-4">
             <!-- Account page navigation-->
-            <nav class="nav nav-borders">
-                <a class="nav-link active ms-0" href="AdminHome.php" target="__blank">Home</a>
-                <a class="nav-link active ms-0" href="../login.php">Logout</a>
-            </nav> -->
+            
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="controlPanel.php">Coop</a>
