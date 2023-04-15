@@ -20,3 +20,12 @@ table {
     .table-hover tbody tr:hover td {
     background-color: #D1D119;
 }
+
+.card-img-top {
+    height: 5px;
+}
+    
+.rounded-circle {
+    border-radius: 50% !important;
+}
+  

@@ -5,26 +5,31 @@ include 'filesLogic.php';
 <!DOCTYPE html>
 <html>
     <head>
-    <meta charset="utf-8" />
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-        <link rel="stylesheet" href="../assets//css//bootstrap.min.css"/>
-
-        <link rel="stylesheet" href="../assets//css//bootstrap.min.css"/>
-        <link rel="stylesheet" href="./ERDBClientSideEditProfile.css" />
-        <link rel="stylesheet"href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,700&display=swap"/>
-        <!-- <link rel="stylesheet" href="./client.css"> -->
-
-        <title>Download files</title>
-    </head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Downloads and Upload Files</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  </head>
     <body>
         <div class="container-xl px-10 mt-10 ">
-            <nav class="nav nav-borders">
-                <a class="nav-link active ms-0" href="AdminHome.php"> Admin</a>
-                <!-- <a class="nav-link active ms-0" href="../Client/EditProfile.php"> Edit Profile</a> -->
-                <!-- <a class="nav-link active ms-0" href="uploads.php"> Upload forms</a>      -->
-                <a class="nav-link active ms-0" href="downloads.php"> Downloaded Forms</a>
-                <a class="nav-link active ms-0"> Logout</a>
-            </nav> 
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="controlPanel.php">Coop</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="controlPanel.php">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="../login.php">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
                 
                 <hr class="mt-0 mb-4">
                 
@@ -75,6 +80,6 @@ include 'filesLogic.php';
                     </div>
                 </div>                   
             </div>
-        <script src="../assts/e/js//bootstrap.min.js"></script>   
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     </body>
 </html>
