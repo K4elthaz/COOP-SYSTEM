@@ -5,7 +5,7 @@ include_once "../connections.php";
 if(isset($_POST['importSubmit'])){
     
     // Allowed mime types
-    $csvMimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain');
+    $csvMimes = array('text/csv', 'application/csv:charset=UTF-8', 'text/plain');
     
     // Validate whether selected file is a CSV file
     if(!empty($_FILES['file']['name']) && in_array($_FILES['file']['type'], $csvMimes)){
@@ -61,4 +61,4 @@ if(isset($_POST['importSubmit'])){
 }
 
 // Redirect to the listing page
-header("Location: adminHome.php".$qstring);
+header("Location: members.php".$qstring);

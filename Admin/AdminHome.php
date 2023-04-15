@@ -30,12 +30,15 @@ if(!empty($_GET['status'])){
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        
 
         <link rel="stylesheet" href="../assets//css//bootstrap.min.css"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet"href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,700&display=swap"/>
-        <link rel="stylesheet" href="AdminHome.css">
+        <link rel="stylesheet" href="adminHome.css">
         <title> Admin </title>
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
@@ -44,11 +47,10 @@ if(!empty($_GET['status'])){
     </head>
 
     <body>
-        <div class="container-xl px-4 mt-4">
+        <div class="container-fluid px-4 mt-4">
             <!-- Account page navigation-->
-            <nav class="nav nav-borders">
-                <a class="nav-link active ms-0" href="AdminHome.php" target="__blank">Admin</a>
-                <a class="nav-link active ms-0" href="downloads.php" target="__blank">Forms</a>
+            <nav class="nav nav-borders justify-content-end">
+                <a class="nav-link active ms-0" href="controlPanel.php" target="__blank">Home</a>
                 <a class="nav-link active ms-0" href="../login.php">Logout</a>
             </nav>
                 <!-- Display status message -->
@@ -63,7 +65,7 @@ if(!empty($_GET['status'])){
 <?php } ?>
             <hr class="mt-0 mb-4">
             <div class="row">
-                <div class="col-sm-3 mr-5" >
+                <!-- <div class="col-sm-3 mr-5" >
                     <div class="card mb-2 mb-xl-0" >
                         <div class="card-header">Admin Information</div>
                         <div class="card-body text-center">
@@ -72,8 +74,8 @@ if(!empty($_GET['status'])){
                             <p> President </p>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-9 " >
+                </div> -->
+                <div class="col" >
                     <div class="card" id="form" position="aboslute">
                         <nav class="card-header" id="btn">
                             <div class="search float-end">
@@ -84,27 +86,72 @@ if(!empty($_GET['status'])){
                             </div>
                             <h4> Control Panel </h4>     
                         </nav>
-                        <div class="row px-4 ">
-                            <div class="new-inp mt-4" >
-                                <button type="button" class="btn btn-primary add-new float-end" ><i class="fa fa-plus"></i> Add New</button>
-                                <a href="exportData.php" class="btn btn-success  export float-end mx-1" ><i class="fa fa-download"></i> Export</a>
+                        <div class="row px-2">
+                            <div class="new-inp mt-4 d-flex justify-content-center" >
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger mx-2" data-toggle="modal" data-target="#exampleModal">
+                                    <i class="fa fa-trash"></i>
+                                    Delete all
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Delete All</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to delete all?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-danger">Yes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <button type="button" class="btn btn-danger float-end mx-1" onclick="document.getElementById('exampleModalCenter').style.display='block'"><i class="fa fa-trash"></i> Delete all</button> -->
+                                <!-- <div id="deleteModal" class="modal">
+                                    <span onclick="document.getElementById('deleteModal').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                    <form class="modal-content" action="/action_page.php">
+                                        <div class="container">
+                                            <h1>Delete Account</h1>
+                                            <p>Are you sure you want to delete all the data?</p>
+
+                                            <div class="clearfix">
+                                                <button type="button" class="cancelbtn btn-primary" onclick="document.getElementById('deleteModal').style.display='none'">No</button>
+                                                <button type="button" class="deletebtn delete-all btn-danger">Yes</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div> -->
+                                <!-- // TODO: Make popup for add new -->
+                                <button type="button" class="btn btn-primary add-new float-end mx-2" ><i class="fa fa-plus"></i> Add New</button>
+                                <form action="exportData.php" method="post" enctype="multipart/form-data">
+                                    <button type="button" class="btn btn-success  export float-end mx-2" ><i class="fa fa-download"></i> Export</button>
+                                </form>
+                                <!-- <a href="exportData.php" class="btn btn-success  export float-end mx-2" ><i class="fa fa-download"></i> Export</a> -->
                                 <!-- <button type="button" class="btn btn-success  export float-end mx-1" ><i class="fa fa-download"></i> Export</button> -->
-                                <button type="button" class="btn btn-warning import float-end" onclick="formToggle('importFrm');"><i class="fa fa-file-excel-o" ></i> Import</button>
+                                <button type="button" class="btn btn-warning import float-end mx-2" onclick="formToggle('importFrm');"><i class="fa fa-file-excel-o" ></i> Import</button>
                             </div>
                             <div class="col-md-5" id="importFrm" style="display: none;">
-                                    <form action="importData.php" method="post" enctype="multipart/form-data">
-                                        <input type="file" name="file" />
-                                        <input type="submit" class="btn btn-primary" name="importSubmit" value="CONFIRM">
-                                    </form>
-                                </div>
+                                <form action="importData.php" method="post" enctype="multipart/form-data">
+                                    <input type="file" name="file" />
+                                    <input type="submit" class="btn btn-primary" name="importSubmit" value="CONFIRM">
+                                </form>
+                            </div>
                         </div>
                         
-                        <div class="row px-4">
+                        <div class="row px-2">
                             <div class="card-body">
                                 <!-- table -->
-                                <div class="table-container">
+                                <div class="table-container d-flex justify-content-center">
                                     <table class="table table-striped">
-                                        <thead>
+                                        <thead class="thead-dark">
                                             <tr>
                                                 <th class="headcol">ID</th>
                                                 <th>MemberID</th>
@@ -122,7 +169,7 @@ if(!empty($_GET['status'])){
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="viewer">
                                         <?php
 
                                         include("../connections.php");
@@ -152,9 +199,9 @@ if(!empty($_GET['status'])){
                                                     <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons"></i></a>
                                                 </td>
                                             </tr>
-                                        <?php } }else{ ?>
-                                            <div>No member(s) found...</div>
-                                        <?php } ?>
+                                            <?php } }else{ ?>
+                                                <div>No member(s) found...</div>
+                                            <?php } ?>
 
 
                                             <!-- <tr>
@@ -212,7 +259,7 @@ $(document).ready(function(){
 	// Add row on add button click
 	$(document).on("click", ".add", function(){
 		var empty = false;
-		var input = $(this).parents("tr").find('input[type="text"]');
+		var input = $(this).parents("tr").remove();
         input.each(function(){
 			if(!$(this).val()){
 				$(this).addClass("error");
@@ -230,6 +277,11 @@ $(document).ready(function(){
 			$(".add-new").removeAttr("disabled");
 		}		
     });
+    // // * Delete all data
+    $(document).on("click", ".delete-all", function(){
+        $("#viewer").empty();
+		$(".add-new").removeAttr("disabled");
+    });
 	// Edit row on edit button click
 	$(document).on("click", ".edit", function(){		
         $(this).parents("tr").find("td:not(:last-child)").each(function(){
@@ -244,6 +296,17 @@ $(document).ready(function(){
 		$(".add-new").removeAttr("disabled");
     });
 });
+
+// Get the modal
+var modal = document.getElementById('deleteModal');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
 
 function formToggle(ID){
     var element = document.getElementById(ID);
