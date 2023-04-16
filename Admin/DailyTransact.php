@@ -257,7 +257,7 @@ if (isset($_POST["btnRegister"])) {
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th class="headcol">ID</th>
+                                            <!-- <th class="headcol">ID</th> -->
                                             <th>MemberID</th>
                                             <th class="third">Name</th>
                                             <th>Payment Type</th>
@@ -265,6 +265,7 @@ if (isset($_POST["btnRegister"])) {
                                             <th>Reference No</th>
                                             <th>Transaction Remarks</th>
                                             <th>Collector</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -273,12 +274,12 @@ if (isset($_POST["btnRegister"])) {
                                         include("../connections.php");
 
                                         // Get member rows
-                                        $dailytransact = $connections->query("SELECT * FROM dailytransact ORDER BY id");
+                                        $dailytransact = $connections->query("SELECT * FROM dailytransact ORDER BY id DESC");
                                         if ($dailytransact->num_rows > 0) {
                                             while ($row = $dailytransact->fetch_assoc()) {
                                         ?>
                                         <tr>
-                                            <td><?php echo $row['id']; ?></td>
+                                            <!-- <td><?php echo $row['id']; ?></td> -->
                                             <td><?php echo $row['memberID']; ?></td>
                                             <td class="th"><?php echo $row['name']; ?></td>
                                             <td><?php echo $row['paymentType']; ?></td>
