@@ -1,19 +1,17 @@
 <?php
+
 include("../connections.php");
-include("transactionUpdate.php");
 
 
-
-
-$id = $memberId = $name = $paymentType = $transactionDate = $referenceNo = $transactionRemarks = $collector = "";
+$id = $memberID = $name = $paymentType = $transactionDate = $referenceNo = $transactionRemarks = $collector = "";
 $memberIdErr = $nameErr = $paymentTypeErr = $transactionDateErr = $referenceNoErr = $transactionRemarksErr = $collectorErr = "";
 
 if (isset($_POST["btnRegister"])) {
 
-    if (empty($_POST["memberId"])) {
+    if (empty($_POST["memberID"])) {
         $memberIdErr = "Required!";
     } else {
-        $memberId = $_POST["memberId"];
+        $memberID = $_POST["memberID"];
     }
 
     if (empty($_POST["name"])) {
@@ -52,17 +50,15 @@ if (isset($_POST["btnRegister"])) {
         $collector = $_POST["collector"];
     }
 
-    if ($memberId && $name && $paymentType && $transactionDate && $referenceNo && $transactionRemarks && $collector) {
-        $query = mysqli_query($connections, "INSERT INTO dailytransact (memberId,name,paymentType,transactionDate,referenceNo,transactionRemarks,collector) 
-        VALUES('$memberId', '$name' ,'$paymentType', '$transactionDate', '$referenceNo', '$transactionRemarks', '$collector') ");
+    if ($memberID && $name && $paymentType && $transactionDate && $referenceNo && $transactionRemarks && $collector) {
+        $query = mysqli_query($connections, "INSERT INTO dailytransact (memberID,name,paymentType,transactionDate,referenceNo,transactionRemarks,collector) 
+        VALUES('$memberID', '$name' ,'$paymentType', '$transactionDate', '$referenceNo', '$transactionRemarks', '$collector') ");
         echo "<script language='javascript'>alert('New record has been inserted!')</script>";
         echo "<script> window.location.href='transactions.php';</script>";
     } else {
     }
 }
 ?>
-
-
 
 
 <!doctype html>
@@ -164,8 +160,8 @@ if (isset($_POST["btnRegister"])) {
                                         <form method="POST">
                                             <div class="row">
                                                 <div class="col">
-                                                    <input type="number" class="form-control" name="memberId"
-                                                        placeholder="Member ID" value="<?php echo $memberId; ?>">
+                                                    <input type="number" class="form-control" name="memberID"
+                                                        placeholder="Member ID" value="<?php echo $memberID; ?>">
                                                     <span class="error">
                                                         <?php echo $memberIdErr; ?>
                                                     </span>
@@ -281,136 +277,156 @@ if (isset($_POST["btnRegister"])) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
 
+                            <?php
                             include("../connections.php");
+
+                            // Check if update button is clicked
+                            if (isset($_POST['updateMember'])) {
+                                // Get the updated data from the form
+                                $memberID = $_POST['memberID'];
+                                $name = $_POST['name'];
+                                $paymentType = $_POST['paymentType'];
+                                $transactionDate = $_POST['transactionDate'];
+                                $referenceNo = $_POST['referenceNo'];
+                                $transactionRemarks = $_POST['transactionRemarks'];
+                                $collector = $_POST['collector'];
+
+
+                                // Update the record in the database
+                                $sql = "UPDATE dailytransact SET memberID='$memberID', name='$name', paymentType='$paymentType', transactionDate='$transactionDate', referenceNo='$referenceNo', transactionRemarks='$transactionRemarks', collector='$collector' WHERE id={$_POST['id']}";
+                                if ($connections->query($sql) === TRUE) {
+                                    echo "Record updated successfully";
+                                } else {
+                                    echo "Error updating record: " . $connections->error;
+                                }
+                            }
 
                             // Get member rows
                             $dailytransact = $connections->query("SELECT * FROM dailytransact ORDER BY id DESC");
                             if ($dailytransact->num_rows > 0) {
                                 while ($row = $dailytransact->fetch_assoc()) {
                                     ?>
-                                    <tr>
-                                        <!-- <td><?php echo $row['id']; ?></td> -->
-                                        <td>
-                                            <?php echo $row['memberID']; ?>
-                                        </td>
-                                        <td class="th">
-                                            <?php echo $row['name']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['paymentType']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['transactionDate']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['referenceNo']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['transactionRemarks']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['collector']; ?>
-                                        </td>
-                                        <td>
-                                            <!-- Button to trigger Edit Modal -->
-                                            <a class="edit" title="Edit" data-toggle=tooltip data-bs-toggle="modal"
-                                                data-bs-target="#editModal"><i class="fa-solid fa-user-pen fa-md"
-                                                    style="color: #2564d0;"></i></a>
+                            <tr>
+                                <td>
+                                    <?php echo $row['memberID']; ?>
+                                </td>
+                                <td class="th">
+                                    <?php echo $row['name']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['paymentType']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['transactionDate']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['referenceNo']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['transactionRemarks']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['collector']; ?>
+                                </td>
+                                <td>
+                                    <!-- Button to trigger Edit Modal -->
+                                    <a class="edit" title="Edit" data-toggle=tooltip data-bs-toggle="modal"
+                                        data-bs-target="#editModal_<?php echo $row['id']; ?>"><i
+                                            class="fa-solid fa-user-pen fa-md" style="color: #2564d0;"></i></a>
 
-                                            <!-- Edit Modal -->
-                                            <div class="modal fade" id="editModal" tabindex="-1"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-xl">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Member</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
+                                    <!-- Edit Modal -->
+                                    <div class="modal fade" id="editModal_<?php echo $row['id']; ?>" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-xl">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Member</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form method="POST">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <input type="text" class="form-control"
+                                                                    value="<?php echo $memberID['memberID'] ?>"
+                                                                    placeholder="Member ID" name="memberID" required>
+                                                            </div>
+                                                            <div class="col">
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Name" name="name" required>
+                                                            </div>
+                                                            <div class="col">
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Loan Type" name="loanType" required>
+                                                            </div>
                                                         </div>
-                                                        <div class="modal-body">
-                                                            <form method="POST">
-                                                                <div class="row">
-                                                                    <div class="col">
-                                                                        <input type="text" class="form-control"
-                                                                            placeholder="Member ID" name="memberID" required>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <input type="text" class="form-control"
-                                                                            placeholder="Name" name="name" required>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <input type="text" class="form-control"
-                                                                            placeholder="Loan Type" name="loanType" required>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row mt-2">
-                                                                    <div class="col">
-                                                                        <input type="number" class="form-control"
-                                                                            placeholder="Principal" name="principal" required>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <input type="date" class="form-control"
-                                                                            placeholder="Date Granted" name="dateGranted"
-                                                                            required>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <input type="month" class="form-control"
-                                                                            placeholder="Term" name="term" required>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row mt-2">
-                                                                    <div class="col">
-                                                                        <input type="number" class="form-control"
-                                                                            placeholder="Amort" name="amort" required>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <input type="number" class="form-control"
-                                                                            placeholder="Paid Amount" name="paidAmount"
-                                                                            required>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <input type="number" class="form-control"
-                                                                            placeholder="Balance" name="balance" required>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row mt-2">
-                                                                    <div class="col">
-                                                                        <input type="number" class="form-control"
-                                                                            placeholder="Expected Amount" name="expAmount"
-                                                                            required>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <input type="number" class="form-control"
-                                                                            placeholder="Months Default" name="monthsDefault"
-                                                                            required>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <input type="number" class="form-control"
-                                                                            placeholder="Default Amount" name="defaultAmount"
-                                                                            required>
-                                                                    </div>
-                                                                </div>
+                                                        <div class="row mt-2">
+                                                            <div class="col">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Principal" name="principal" required>
+                                                            </div>
+                                                            <div class="col">
+                                                                <input type="date" class="form-control"
+                                                                    placeholder="Date Granted" name="dateGranted"
+                                                                    required>
+                                                            </div>
+                                                            <div class="col">
+                                                                <input type="month" class="form-control"
+                                                                    placeholder="Term" name="term" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-2">
+                                                            <div class="col">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Amort" name="amort" required>
+                                                            </div>
+                                                            <div class="col">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Paid Amount" name="paidAmount"
+                                                                    required>
+                                                            </div>
+                                                            <div class="col">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Balance" name="balance" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-2">
+                                                            <div class="col">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Expected Amount" name="expAmount"
+                                                                    required>
+                                                            </div>
+                                                            <div class="col">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Months Default" name="monthsDefault"
+                                                                    required>
+                                                            </div>
+                                                            <div class="col">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Default Amount" name="defaultAmount"
+                                                                    required>
+                                                            </div>
+                                                        </div>
 
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <input type="submit" class="btn btn-primary" name="updateMember"
-                                                                value="Update">
-                                                            </form>
-                                                        </div>
-                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <input type="submit" class="btn btn-primary" name="updateMember"
+                                                        value="Update">
+                                                    </form>
                                                 </div>
                                             </div>
-                                            <a class="delete" title="Delete" data-toggle="tooltip"><i
-                                                    class="fa-solid fa-user-xmark fa-md" style="color: #e81717;"></i></a>
-                                        </td>
-                                    </tr>
-                                <?php }
-                            } else { ?>
-                                <div>No Transaction(s) found...</div>
+                                        </div>
+                                    </div>
+                                    <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                            class="fa-solid fa-user-xmark fa-md" style="color: #e81717;"></i></a>
+                                </td>
+                            </tr>
                             <?php }
-                            ; ?>
+                            } else { ?>
+                            <div>No Transaction(s) found...</div>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
@@ -421,13 +437,13 @@ if (isset($_POST["btnRegister"])) {
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
+    </script>
 </body>
 
 </html>
 
 <script>
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
+$(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+});
 </script>
