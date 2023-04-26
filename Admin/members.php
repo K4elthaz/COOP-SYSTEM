@@ -1,30 +1,5 @@
 <?php
-include ('../connections.php');
-
-$memberID = $name = $loanType = $principal = $dateGranted = $term = $amort = $paidAmount = $balance = $expAmount = $monthsDefault = $defaultAmount = "";
-
-if(isset($_POST['addSubmit'])){
-
-    $memberID = $_POST['memberID'];
-    $name = $_POST['name'];
-    $loanType = $_POST['memberID'];
-    $principal = $_POST['principal'];
-    $dateGranted = $_POST['dateGranted'];
-    $term = $_POST['term'];
-    $amort = $_POST['amort'];
-    $paidAmount = $_POST['paidAmount'];
-    $balance = $_POST['balance'];
-    $expAmount = $_POST['expAmount'];
-    $monthsDefault = $_POST['monthsDefault'];
-    $defaultAmount = $_POST['defaultAmount'];
-
-    $query = mysqli_query($connections, "INSERT INTO members (memberID,name,loanType,principal,dateGranted,term,amort,paidAmount,balance,expAmount,monthsDefault,defaultAmount) 
-    VALUES('$memberID', '$name' ,'$loanType', '$principal', '$dateGranted', '$term', '$amort', '$paidAmount', '$balance', '$expAmount', '$monthsDefault', '$defaultAmount') ");
-    echo "<script language='javascript'>alert('New record has been inserted!')</script>";
-    echo "<script> window.location.href='members.php';</script>";
-}
-
-
+include ('backend.php');
 ?>
 
 <!doctype html>
@@ -91,7 +66,7 @@ if(isset($_POST['addSubmit'])){
                                 <?php
                                     $dbc = mysqli_connect('localhost', 'root', '', 'coop-database') or die('Error connecting to MySQL server.'); 
                                     if(isset($_POST['delete'])){
-                                        mysqli_query($dbc, 'TRUNCATE TABLE `members`');
+                                        mysqli_query($dbc, 'TRUNCATE TABLE `clients`');
                                         header("Location: members.php" . $_SERVER['PHP_SELF']);
                                         exit();
                                     }
@@ -177,7 +152,6 @@ if(isset($_POST['addSubmit'])){
                                                 name="defaultAmount" required>
                                         </div>
                                     </div>
-
                             </div>
                             <div class="modal-footer">
                                 <input type="submit" class="btn btn-primary" name="addSubmit" value="Add Member">
@@ -186,12 +160,10 @@ if(isset($_POST['addSubmit'])){
                         </div>
                     </div>
                 </div>
-
                 <!-- Button trigger Export modal -->
                 <button type="button" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#exportModal">
                     <i class="fa fa-download"></i> Export
                 </button>
-
                 <!-- Export Modal -->
                 <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
@@ -211,12 +183,10 @@ if(isset($_POST['addSubmit'])){
                         </div>
                     </div>
                 </div>
-
                 <!-- Button trigger Import modal -->
                 <button type="button" class="btn btn-warning mx-1" data-bs-toggle="modal" data-bs-target="#importModal">
                     <i class="fa-solid fa-file-import"></i> Import
                 </button>
-
                 <!-- Import Modal -->
                 <div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
@@ -250,22 +220,23 @@ if(isset($_POST['addSubmit'])){
             <div class="card-body">
                 <!-- table -->
                 <div class="table-container">
-                    <table class="table table-hover">
-                        <thead class="thead-dark">
+                    <table class="table table-hover text-center">
+                        <thead class="thead-dark text-center">
                             <tr>
-                                <th class="headcol">ID</th>
-                                <th>MemberID</th>
-                                <th class="third">Name</th>
-                                <th>Loan Type</th>
-                                <th>Principal</th>
-                                <th>Date Granted</th>
-                                <th>Term</th>
-                                <th>Amort</th>
-                                <th>Paid Amount</th>
-                                <th>Balance</th>
-                                <th>Expected Amount</th>
-                                <th>Months Default</th>
-                                <th>Default Amount</th>
+                                <!-- <th>ID</th> -->
+                                <th>No</th>
+                                <th>ID Number</th>
+                                <th>Name</th>
+                                <th>Classification</th>
+                                <th>Date of Birth</th>
+                                <th>Age</th>
+                                <th>TIN No.</th>
+                                <th>Civil Status</th>
+                                <th>Gender</th>
+                                <th>Contact Number</th>
+                                <th>Adress</th>
+                                <th>Email</th>
+                                <th>Account Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -273,31 +244,30 @@ if(isset($_POST['addSubmit'])){
                             <?php
                                 include("../connections.php");
                                     // Get member rows
-                                    $result = $connections->query("SELECT * FROM members ORDER BY id");
+                                    $result = $connections->query("SELECT * FROM clients ORDER BY id");
                                         if($result->num_rows > 0){
                                             while($row = $result->fetch_assoc()){
                             ?>
-
                             <tr>
-                                <td><?php echo $row['id']; ?></td>
-                                <td><?php echo $row['memberID']; ?></td>
+                                <!-- <td><?php echo $row['id']; ?></td> -->
+                                <td><?php echo $row['no']; ?></td>
+                                <td><?php echo $row['idNumber']; ?></td>
                                 <td><?php echo $row['name']; ?></td>
-                                <td><?php echo $row['loanType']; ?></td>
-                                <td><?php echo $row['principal']; ?></td>
-                                <td><?php echo $row['dateGranted']; ?></td>
-                                <td><?php echo $row['term']; ?></td>
-                                <td><?php echo $row['amort']; ?></td>
-                                <td><?php echo $row['paidAmount']; ?></td>
-                                <td><?php echo $row['balance']; ?></td>
-                                <td><?php echo $row['expAmount']; ?></td>
-                                <td><?php echo $row['monthsDefault']; ?></td>
-                                <td><?php echo $row['defaultAmount']; ?></td>
-
+                                <td><?php echo $row['classification']; ?></td>
+                                <td><?php echo $row['birthday']; ?></td>
+                                <td><?php echo $row['age']; ?></td>
+                                <td><?php echo $row['tin']; ?></td>
+                                <td><?php echo $row['civilStatus']; ?></td>
+                                <td><?php echo $row['gender']; ?></td>
+                                <td><?php echo $row['contactNo']; ?></td>
+                                <td><?php echo $row['address']; ?></td>
+                                <td><?php echo $row['email']; ?></td>
+                                <td><?php echo $row['accStatus']; ?></td>
                                 <td>
                                     <!-- Button to trigger Edit Modal -->
-                                    <a class="edit" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal"><i
+                                    <a href="#editModal?id=<?php echo $row['id']?>" class="edit" title="Edit"
+                                        data-toggle="tooltip" data-bs-toggle="modal" data-bs-target="#editModal"><i
                                             class="fa-solid fa-user-pen fa-md" style="color: #2564d0;"></i></a>
-
                                     <!-- Edit Modal -->
                                     <div class="modal fade" id="editModal" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -313,11 +283,13 @@ if(isset($_POST['addSubmit'])){
                                                         <div class="row">
                                                             <div class="col">
                                                                 <input type="text" class="form-control"
-                                                                    placeholder="Member ID" name="memberID" required>
+                                                                    placeholder="Member ID" name="memberID"
+                                                                    value="<?php echo $db_memberID ?>" required>
                                                             </div>
                                                             <div class="col">
                                                                 <input type="text" class="form-control"
-                                                                    placeholder="Name" name="name" required>
+                                                                    placeholder="Name" name="name"
+                                                                    value="<?php echo $db_name ?>" required>
                                                             </div>
                                                             <div class="col">
                                                                 <input type="text" class="form-control"
@@ -371,31 +343,27 @@ if(isset($_POST['addSubmit'])){
                                                                     required>
                                                             </div>
                                                         </div>
-
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <input type="submit" class="btn btn-primary" name="update"
+                                                    <input type="submit" class="btn btn-primary" name="updateMember"
                                                         value="Update">
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                     <a class="delete" title="Delete" data-toggle="tooltip"><i
                                             class="fa-solid fa-user-xmark fa-md" style="color: #e81717;"></i></a>
                                 </td>
                             </tr>
                             <?php } }else{ ?>
                             <div>No member(s) found...</div>
-
                             <?php } ?>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
     </div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

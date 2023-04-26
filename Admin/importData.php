@@ -22,29 +22,30 @@ if(isset($_POST['importSubmit'])){
             // Parse data from CSV file line by line
             while(($line = fgetcsv($csvFile)) !== FALSE){
                 // Get row data
-                $memberID = $line[0];
-                $name   = $line[1];
-                $loanType  = $line[2];
-                $principal  = $line[3];
-                $dateGranted = $line[4];
-                $term = $line[5];
-                $amort = $line[6];
-                $paidAmount = $line[7];
-                $balance = $line[8];
-                $expAmount = $line[9];
-                $monthsDefault = $line[10];
-                $defaultAmount = $line[11];
+                $no = $line[0];
+                $idNumber   = $line[1];
+                $name  = $line[2];
+                $classification  = $line[3];
+                $birthday = $line[4];
+                $age = $line[5];
+                $tin = $line[6];
+                $civilStatus = $line[7];
+                $gender = $line[8];
+                $contactNo = $line[9];
+                $address = $line[10];
+                $email = $line[11];
+                $accStatus = $line[12];
                 
                 // Check whether member already exists in the database with the same email
-                $prevQuery = "SELECT id FROM members WHERE name = '".$line[3]."'";
+                $prevQuery = "SELECT id FROM clients WHERE name = '".$line[3]."' LIMIT 1";
                 $prevResult = $connections->query($prevQuery);
                 
                 if($prevResult->num_rows > 1){
                     // Update member data in the database
-                    $connections->query("UPDATE members SET memberID = '".$memberID."',  name = '".$name."',  loanType = '".$loanType."', principal = '".$principal."',  dateGranted = '".$dateGranted."',  term = '".$term."', amort = '".$amort."', paidAmount = '".$paidAmount."',  balance = '".$balance."', expAmount = '".$expAmount."', monthsDefault = '".$monthsDefault."', defaultAmount = '".$defaultAmount."'");
+                    $connections->query("UPDATE clients SET no = '".$no."',  idNumber = '".$idNumber."',  name = '".$name."', classification = '".$classification."',  birthday = '".$birthday."',  age = '".$age."', tin = '".$tin."', civilStatus = '".$civilStatus."',  gender = '".$gender."', contactNo = '".$contactNo."', address = '".$address."', email = '".$email."', accStatus = '".$accStatus."'");
                 }else{
                     // Insert member data in the database
-                    $connections->query("INSERT INTO members (memberID, name, loanType, principal, dateGranted, term, amort, paidAmount, balance, expAmount, monthsDefault, defaultAmount) VALUES ('".$memberID."', '".$name."', '".$loanType."', '".$principal."', '".$dateGranted."', '".$term."', '".$amort."', '".$paidAmount."', '".$balance."', '".$expAmount."', '".$monthsDefault."', '".$defaultAmount."')");
+                    $connections->query("INSERT INTO clients (no, idNumber, name, classification, birthday, age, tin, civilStatus, gender, contactNo, address, email, accStatus) VALUES ('".$no."', '".$idNumber."', '".$name."', '".$classification."', '".$birthday."', '".$age."', '".$tin."', '".$civilStatus."', '".$gender."', '".$contactNo."', '".$address."', '".$email."', '".$accStatus."')");
                 }
             }
             
