@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
 
-    <link rel="stylesheet" href="../assets//css//bootstrap.min.css"/>
-
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,700&display=swap"
-    />
     <link rel="stylesheet" href="./client.css">
-    <title> Forms </title>
-  </head>
-  <body>
-  <div class="container-xl px-4 mt-4">
-    <!-- Account page navigation-->
-    <nav class="nav nav-borders">
-        <a class="nav-link active ms-0" href="viewBalance.php" target="__blank">View Balance</a>
-        <a class="nav-link active ms-0" href="forms.php" target="__blank">Loan & Petty Cash forms</a>
-        <a class="nav-link active ms-0" href="EditProfile.php" target="__blank">Edit Profile</a>
-        <a class="nav-link active ms-0" href="../login.php">Logout</a>
-    </nav>
-    <hr class="mt-0 mb-4">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Forms</title>
+</head>
+
+<body>
     <div class="row">
-        <div class="col-xl-4">
- 
+        <!-- Account page navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="controlPanel.php">Coop</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link Active" href="home.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link Active" href="../login.php">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-xl-4">
+
                 <div class="row">
                     <div class="col-xs-8 col-xs-offset-2">
                         <table class="table table-striped table-hover">
@@ -39,92 +47,25 @@
                                 <tr>
                                     <th> 1 </th>
                                     <th> LOAN FORM </th>
+                                    <th class="btn btn-success text-dark">Download</th>
                                 </tr>
 
                                 <tr>
                                     <th> 2 </th>
-                                    <th> PETTY CASH FORM </th>            
+                                    <th> PETTY CASH FORM </th>
+                                    <th class="btn btn-success text-dark">Download</th>
                                 </tr>
                             </thead>
 
-                            <tbody>
-                                <?php
-                                $i = 1;
-                                while($row = mysqli_fetch_array($result)) { ?>
-                                    <tr>
-                                        <td><?php echo $i++; ?></td>
-                                        <td><?php echo $row['filename']; ?></td>
-                                        <td><a href="uploads/<?php echo $row['filename']; ?>" target="_blank">View</a></td>
-                                        <td><a href="uploads/<?php echo $row['filename']; ?>" download>Download</td>
-                                    </tr>
-                                <?php } ?>
-                            
-                            </tbody>
                         </table>
                     </div>
                 </div>
-            
+
+            </div>
         </div>
     </div>
-</div>
-<script src="../assts/e/js//bootstrap.min.js"></script>   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 </body>
+
 </html>
-
-
-<?php
-
-include("../connections.php");
-
-$FileNo=$_GET['FileNO'];
-
-//Use Mysql Query to find the 'full path' of file using $FileNo.
-// I Assume $FilePaths as 'Full File Path'.
-
-download_file($FilePaths);
-
-function download_file( $fullPath ){
-    if( headers_sent() )
-    die('Headers Sent');
-
-
-    if(ini_get('zlib.output_compression'))
-        ini_set('zlib.output_compression', 'Off');
-
-
-    if( file_exists($fullPath) ) {
-        $fsize = filesize($fullPath);
-        $path_parts = pathinfo($fullPath);
-        $ext = strtolower($path_parts["extension"]);
-
-    switch ($ext){
-        case "pdf": $ctype="application/pdf"; break;
-        case "exe": $ctype="application/octet-stream"; break;
-        case "zip": $ctype="application/zip"; break;
-        case "doc": $ctype="application/msword"; break;
-        case "xls": $ctype="application/vnd.ms-excel"; break;
-        case "ppt": $ctype="application/vnd.ms-powerpoint"; break;
-        case "gif": $ctype="image/gif"; break;
-        case "png": $ctype="image/png"; break;
-        case "jpeg":
-        case "jpg": $ctype="image/jpg"; break;
-        default: $ctype="application/force-download";
-    }
-
-    header("Pragma: public"); 
-    header("Expires: 0");
-    header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-    header("Cache-Control: private",false); 
-    header("Content-Type: $ctype");
-    header("Content-Disposition: attachment; filename=\"".basename($fullPath)."\";" );
-    header("Content-Transfer-Encoding: binary");
-    header("Content-Length: ".$fsize);
-    ob_clean();
-    flush();
-    readfile( $fullPath );
-
-    } else
-        die('File Not Found');
-}
-
-?>
