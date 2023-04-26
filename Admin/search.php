@@ -58,16 +58,16 @@
                             <?php 
                                 $connections = mysqli_connect("localhost", "root", "", "coop-database");
 
-                                if(isset($_GET['search']))
-                                {
+                                if(isset($_GET['search'])){
+
                                     $filtervalues = $_GET['search'];
                                     $query = "SELECT * FROM members WHERE CONCAT(memberID,name,loanType,principal,dateGranted,term,amort,paidAmount,balance,expAmount,monthsDefault,defaultAmount) LIKE '%$filtervalues%' ";
                                     $query_run = mysqli_query($connections, $query);
 
-                                    if(mysqli_num_rows($query_run) > 0)
-                                    {
-                                        foreach($query_run as $items)
-                                        {
+                                    if(mysqli_num_rows($query_run) > 0){
+
+                                        foreach($query_run as $items){
+
                                             ?>
                                             <tr>
                                                 <td><?= $items['id']; ?></td>
@@ -87,8 +87,7 @@
                                             <?php
                                         }
                                     }
-                                    else
-                                    {
+                                    else {
                                         ?>
                                             <tr>
                                                 <td colspan="4">No Record Found</td>

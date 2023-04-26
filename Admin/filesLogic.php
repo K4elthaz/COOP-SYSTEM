@@ -15,7 +15,7 @@
         // destination of the file on the server
         $destination = 'uploads/' . $filename;
     
-        // get the file extension
+        // get the file extension  
         $extension = pathinfo($filename, PATHINFO_EXTENSION);
     
         // the physical file on a temporary uploads directory on the server

@@ -210,11 +210,13 @@ include ('backend.php');
                     </div>
                 </div>
             </div>
-            <form class="d-flex mt-1 mx-1 justify-content-start" action="search.php">
-                <input class="form-control-sm me-2" type="search" placeholder="Search" aria-label="Search" name="search"
-                    value="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>">
+            <form class="d-flex mt-1 mx-1 justify-content-start">
+                <input class="form-control-sm me-2" type="text" placeholder="Search" name="search" required value="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>">
                 <button class="btn btn-outline-success" type="submit">Search</button>
+                <a class="btn btn-link" href="members.php" role="button">Go back to table</a>
             </form>
+            
+            
         </div>
         <div class="container">
             <div class="card-body">
@@ -239,6 +241,7 @@ include ('backend.php');
                                 <th>Account Status</th>
                                 <th>Actions</th>
                             </tr>
+<<<<<<< Updated upstream
                         </thead>
                         <tbody id="viewer">
                             <?php
@@ -268,6 +271,51 @@ include ('backend.php');
                                     <a href="#editModal?id=<?php echo $row['id']?>" class="edit" title="Edit"
                                         data-toggle="tooltip" data-bs-toggle="modal" data-bs-target="#editModal"><i
                                             class="fa-solid fa-user-pen fa-md" style="color: #2564d0;"></i></a>
+=======
+                        </thead>  
+
+                        <tbody>
+                        <?php 
+                            $connections = mysqli_connect("localhost", "root", "", "coop-database");
+
+                            if(isset($_GET['search'])){
+
+                                $filtervalues = $_GET['search'];
+                                if(empty($filtervalues)){
+                                    // display the original table
+                                    $query = "SELECT * FROM members";
+                                } else {
+                                    // display filtered results
+                                    $query = "SELECT * FROM members WHERE CONCAT(memberID,name,loanType,principal,dateGranted,term,amort,paidAmount,balance,expAmount,monthsDefault,defaultAmount) LIKE '%$filtervalues%' ";
+                                }
+                                $query_run = mysqli_query($connections, $query);
+                            
+                                if(mysqli_num_rows($query_run) > 0){
+                            
+                                    foreach($query_run as $items){
+                            
+                                        ?>
+                                        <tr>
+                                            <td><?= $items['id']; ?></td>
+                                            <td><?= $items['memberID']; ?></td>
+                                            <td><?= $items['name']; ?></td>
+                                            <td><?= $items['loanType']; ?></td>
+                                            <td><?= $items['principal']; ?></td>
+                                            <td><?= $items['dateGranted']; ?></td>
+                                            <td><?= $items['term']; ?></td>
+                                            <td><?= $items['amort']; ?></td>
+                                            <td><?= $items['paidAmount']; ?></td>
+                                            <td><?= $items['balance']; ?></td>
+                                            <td><?= $items['expAmount']; ?></td>
+                                            <td><?= $items['monthsDefault']; ?></td>
+                                            <td><?= $items['defaultAmount']; ?></td>
+                                            <td>
+                                    <!-- Button to trigger Edit Modal -->
+                                    <a class="edit" title="Edit" data-toggle="tooltip" data-bs-toggle="modal"
+                                        data-bs-target="#editModal"><i class="fa-solid fa-user-pen fa-md"
+                                            style="color: #2564d0;"></i></a>
+
+>>>>>>> Stashed changes
                                     <!-- Edit Modal -->
                                     <div class="modal fade" id="editModal" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -353,12 +401,161 @@ include ('backend.php');
                                         </div>
                                     </div>
                                     <a class="delete" title="Delete" data-toggle="tooltip"><i
-                                            class="fa-solid fa-user-xmark fa-md" style="color: #e81717;"></i></a>
+                                        class="fa-solid fa-user-xmark fa-md" style="color: #e81717;"></i>
+                                    </a>
                                 </td>
+<<<<<<< Updated upstream
                             </tr>
                             <?php } }else{ ?>
                             <div>No member(s) found...</div>
                             <?php } ?>
+=======
+                                        </tr>
+                                        <?php
+                                    }
+                                }
+                                else {
+                                    ?>
+                                        <tr>
+                                            <td colspan="4">No Record Found</td>
+                                        </tr>
+                                    <?php
+                                }
+                            } else {
+                                // display the original table
+                                $query = "SELECT * FROM members";
+                                $query_run = mysqli_query($connections, $query);
+                            
+                                if(mysqli_num_rows($query_run) > 0){
+                            
+                                    foreach($query_run as $items){
+                            
+                                        ?>
+                                        <tr>
+                                            <td><?= $items['id']; ?></td>
+                                            <td><?= $items['memberID']; ?></td>
+                                            <td><?= $items['name']; ?></td>
+                                            <td><?= $items['loanType']; ?></td>
+                                            <td><?= $items['principal']; ?></td>
+                                            <td><?= $items['dateGranted']; ?></td>
+                                            <td><?= $items['term']; ?></td>
+                                            <td><?= $items['amort']; ?></td>
+                                            <td><?= $items['paidAmount']; ?></td>
+                                            <td><?= $items['balance']; ?></td>
+                                            <td><?= $items['expAmount']; ?></td>
+                                            <td><?= $items['monthsDefault']; ?></td>
+                                            <td><?= $items['defaultAmount']; ?></td>
+
+                                            <td>
+                                    <!-- Button to trigger Edit Modal -->
+                                    <a class="edit" title="Edit" data-toggle="tooltip" data-bs-toggle="modal"
+                                        data-bs-target="#editModal"><i class="fa-solid fa-user-pen fa-md"
+                                            style="color: #2564d0;"></i></a>
+
+                                    <!-- Edit Modal -->
+                                    <div class="modal fade" id="editModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-xl">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Member</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form method="POST">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Member ID" name="memberID"
+                                                                    value="<?php echo $db_memberID ?>" required>
+                                                            </div>
+                                                            <div class="col">
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Name" name="name"
+                                                                    value="<?php echo $db_name ?>" required>
+                                                            </div>
+                                                            <div class="col">
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Loan Type" name="loanType" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-2">
+                                                            <div class="col">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Principal" name="principal" required>
+                                                            </div>
+                                                            <div class="col">
+                                                                <input type="date" class="form-control"
+                                                                    placeholder="Date Granted" name="dateGranted"
+                                                                    required>
+                                                            </div>
+                                                            <div class="col">
+                                                                <input type="month" class="form-control"
+                                                                    placeholder="Term" name="term" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-2">
+                                                            <div class="col">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Amort" name="amort" required>
+                                                            </div>
+                                                            <div class="col">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Paid Amount" name="paidAmount"
+                                                                    required>
+                                                            </div>
+                                                            <div class="col">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Balance" name="balance" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-2">
+                                                            <div class="col">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Expected Amount" name="expAmount"
+                                                                    required>
+                                                            </div>
+                                                            <div class="col">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Months Default" name="monthsDefault"
+                                                                    required>
+                                                            </div>
+                                                            <div class="col">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Default Amount" name="defaultAmount"
+                                                                    required>
+                                                            </div>
+                                                        </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <input type="submit" class="btn btn-primary" name="updateMember"
+                                                        value="Update">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                        class="fa-solid fa-user-xmark fa-md" style="color: #e81717;"></i>
+                                    </a>
+                                </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                }
+                                else {
+                                    ?>
+                                        <tr>
+                                            <td colspan="4">No Record Found</td>
+                                        </tr>
+                                    <?php
+                                }
+                            }
+                            ?>
+>>>>>>> Stashed changes
                         </tbody>
                     </table>
                 </div>
@@ -377,4 +574,3 @@ include ('backend.php');
 $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
 });
-</script>
