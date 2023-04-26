@@ -241,37 +241,6 @@ include ('backend.php');
                                 <th>Account Status</th>
                                 <th>Actions</th>
                             </tr>
-<<<<<<< Updated upstream
-                        </thead>
-                        <tbody id="viewer">
-                            <?php
-                                include("../connections.php");
-                                    // Get member rows
-                                    $result = $connections->query("SELECT * FROM clients ORDER BY id");
-                                        if($result->num_rows > 0){
-                                            while($row = $result->fetch_assoc()){
-                            ?>
-                            <tr>
-                                <!-- <td><?php echo $row['id']; ?></td> -->
-                                <td><?php echo $row['no']; ?></td>
-                                <td><?php echo $row['idNumber']; ?></td>
-                                <td><?php echo $row['name']; ?></td>
-                                <td><?php echo $row['classification']; ?></td>
-                                <td><?php echo $row['birthday']; ?></td>
-                                <td><?php echo $row['age']; ?></td>
-                                <td><?php echo $row['tin']; ?></td>
-                                <td><?php echo $row['civilStatus']; ?></td>
-                                <td><?php echo $row['gender']; ?></td>
-                                <td><?php echo $row['contactNo']; ?></td>
-                                <td><?php echo $row['address']; ?></td>
-                                <td><?php echo $row['email']; ?></td>
-                                <td><?php echo $row['accStatus']; ?></td>
-                                <td>
-                                    <!-- Button to trigger Edit Modal -->
-                                    <a href="#editModal?id=<?php echo $row['id']?>" class="edit" title="Edit"
-                                        data-toggle="tooltip" data-bs-toggle="modal" data-bs-target="#editModal"><i
-                                            class="fa-solid fa-user-pen fa-md" style="color: #2564d0;"></i></a>
-=======
                         </thead>  
 
                         <tbody>
@@ -315,7 +284,6 @@ include ('backend.php');
                                         data-bs-target="#editModal"><i class="fa-solid fa-user-pen fa-md"
                                             style="color: #2564d0;"></i></a>
 
->>>>>>> Stashed changes
                                     <!-- Edit Modal -->
                                     <div class="modal fade" id="editModal" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -404,12 +372,6 @@ include ('backend.php');
                                         class="fa-solid fa-user-xmark fa-md" style="color: #e81717;"></i>
                                     </a>
                                 </td>
-<<<<<<< Updated upstream
-                            </tr>
-                            <?php } }else{ ?>
-                            <div>No member(s) found...</div>
-                            <?php } ?>
-=======
                                         </tr>
                                         <?php
                                     }
@@ -555,7 +517,6 @@ include ('backend.php');
                                 }
                             }
                             ?>
->>>>>>> Stashed changes
                         </tbody>
                     </table>
                 </div>
