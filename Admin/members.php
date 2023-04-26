@@ -1,5 +1,5 @@
 <?php
-include ('backend.php');
+include('backend.php');
 ?>
 
 <!doctype html>
@@ -64,12 +64,12 @@ include ('backend.php');
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                 <?php
-                                    $dbc = mysqli_connect('localhost', 'root', '', 'coop-database') or die('Error connecting to MySQL server.'); 
-                                    if(isset($_POST['delete'])){
-                                        mysqli_query($dbc, 'TRUNCATE TABLE `clients`');
-                                        header("Location: members.php" . $_SERVER['PHP_SELF']);
-                                        exit();
-                                    }
+                                $dbc = mysqli_connect('localhost', 'root', '', 'coop-database') or die('Error connecting to MySQL server.');
+                                if (isset($_POST['delete'])) {
+                                    mysqli_query($dbc, 'TRUNCATE TABLE `clients`');
+                                    header("Location: members.php" . $_SERVER['PHP_SELF']);
+                                    exit();
+                                }
                                 ?>
                                 <form method="post" action="">
                                     <input class="btn btn-danger" name="delete" type="submit" value="Yes" />
@@ -211,12 +211,15 @@ include ('backend.php');
                 </div>
             </div>
             <form class="d-flex mt-1 mx-1 justify-content-start">
-                <input class="form-control-sm me-2" type="text" placeholder="Search" name="search" required value="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>">
+                <input class="form-control-sm me-2" type="text" placeholder="Search" name="search" required
+                    value="<?php if (isset($_GET['search'])) {
+                                                                                                                        echo $_GET['search'];
+                                                                                                                    } ?>">
                 <button class="btn btn-outline-success" type="submit">Search</button>
                 <a class="btn btn-link" href="members.php" role="button">Go back to table</a>
             </form>
-            
-            
+
+
         </div>
         <div class="container">
             <div class="card-body">
@@ -236,49 +239,49 @@ include ('backend.php');
                                 <th>Civil Status</th>
                                 <th>Gender</th>
                                 <th>Contact Number</th>
-                                <th>Adress</th>
+                                <th>Address</th>
                                 <th>Email</th>
                                 <th>Account Status</th>
                                 <th>Actions</th>
                             </tr>
-                        </thead>  
+                        </thead>
 
                         <tbody>
-                        <?php 
+                            <?php
                             $connections = mysqli_connect("localhost", "root", "", "coop-database");
 
-                            if(isset($_GET['search'])){
+                            if (isset($_GET['search'])) {
 
                                 $filtervalues = $_GET['search'];
-                                if(empty($filtervalues)){
+                                if (empty($filtervalues)) {
                                     // display the original table
-                                    $query = "SELECT * FROM members";
+                                    $query = "SELECT * FROM clients";
                                 } else {
                                     // display filtered results
-                                    $query = "SELECT * FROM members WHERE CONCAT(memberID,name,loanType,principal,dateGranted,term,amort,paidAmount,balance,expAmount,monthsDefault,defaultAmount) LIKE '%$filtervalues%' ";
+                                    $query = "SELECT * FROM clients WHERE CONCAT(no,idNumber,name,classification,birthday,age,tin,civilStatus,gender,contactNo,address,email,accStatus) LIKE '%$filtervalues%' ";
                                 }
                                 $query_run = mysqli_query($connections, $query);
-                            
-                                if(mysqli_num_rows($query_run) > 0){
-                            
-                                    foreach($query_run as $items){
-                            
-                                        ?>
-                                        <tr>
-                                            <td><?= $items['id']; ?></td>
-                                            <td><?= $items['memberID']; ?></td>
-                                            <td><?= $items['name']; ?></td>
-                                            <td><?= $items['loanType']; ?></td>
-                                            <td><?= $items['principal']; ?></td>
-                                            <td><?= $items['dateGranted']; ?></td>
-                                            <td><?= $items['term']; ?></td>
-                                            <td><?= $items['amort']; ?></td>
-                                            <td><?= $items['paidAmount']; ?></td>
-                                            <td><?= $items['balance']; ?></td>
-                                            <td><?= $items['expAmount']; ?></td>
-                                            <td><?= $items['monthsDefault']; ?></td>
-                                            <td><?= $items['defaultAmount']; ?></td>
-                                            <td>
+
+                                if (mysqli_num_rows($query_run) > 0) {
+
+                                    foreach ($query_run as $items) {
+
+                            ?>
+                            <tr>
+                                <td><?= $items['no']; ?></td>
+                                <td><?= $items['idNumber']; ?></td>
+                                <td><?= $items['name']; ?></td>
+                                <td><?= $items['classification']; ?></td>
+                                <td><?= $items['birthday']; ?></td>
+                                <td><?= $items['age']; ?></td>
+                                <td><?= $items['tin']; ?></td>
+                                <td><?= $items['civilStatus']; ?></td>
+                                <td><?= $items['gender']; ?></td>
+                                <td><?= $items['contactNo']; ?></td>
+                                <td><?= $items['address']; ?></td>
+                                <td><?= $items['email']; ?></td>
+                                <td><?= $items['accStatus']; ?></td>
+                                <td>
                                     <!-- Button to trigger Edit Modal -->
                                     <a class="edit" title="Edit" data-toggle="tooltip" data-bs-toggle="modal"
                                         data-bs-target="#editModal"><i class="fa-solid fa-user-pen fa-md"
@@ -369,46 +372,45 @@ include ('backend.php');
                                         </div>
                                     </div>
                                     <a class="delete" title="Delete" data-toggle="tooltip"><i
-                                        class="fa-solid fa-user-xmark fa-md" style="color: #e81717;"></i>
+                                            class="fa-solid fa-user-xmark fa-md" style="color: #e81717;"></i>
                                     </a>
                                 </td>
-                                        </tr>
-                                        <?php
+                            </tr>
+                            <?php
                                     }
-                                }
-                                else {
+                                } else {
                                     ?>
-                                        <tr>
-                                            <td colspan="4">No Record Found</td>
-                                        </tr>
-                                    <?php
+                            <tr>
+                                <td colspan="4">No Record Found</td>
+                            </tr>
+                            <?php
                                 }
                             } else {
                                 // display the original table
-                                $query = "SELECT * FROM members";
+                                $query = "SELECT * FROM clients";
                                 $query_run = mysqli_query($connections, $query);
-                            
-                                if(mysqli_num_rows($query_run) > 0){
-                            
-                                    foreach($query_run as $items){
-                            
-                                        ?>
-                                        <tr>
-                                            <td><?= $items['id']; ?></td>
-                                            <td><?= $items['memberID']; ?></td>
-                                            <td><?= $items['name']; ?></td>
-                                            <td><?= $items['loanType']; ?></td>
-                                            <td><?= $items['principal']; ?></td>
-                                            <td><?= $items['dateGranted']; ?></td>
-                                            <td><?= $items['term']; ?></td>
-                                            <td><?= $items['amort']; ?></td>
-                                            <td><?= $items['paidAmount']; ?></td>
-                                            <td><?= $items['balance']; ?></td>
-                                            <td><?= $items['expAmount']; ?></td>
-                                            <td><?= $items['monthsDefault']; ?></td>
-                                            <td><?= $items['defaultAmount']; ?></td>
 
-                                            <td>
+                                if (mysqli_num_rows($query_run) > 0) {
+
+                                    foreach ($query_run as $items) {
+
+                                    ?>
+                            <tr>
+                                <td><?= $items['no']; ?></td>
+                                <td><?= $items['idNumber']; ?></td>
+                                <td><?= $items['name']; ?></td>
+                                <td><?= $items['classification']; ?></td>
+                                <td><?= $items['birthday']; ?></td>
+                                <td><?= $items['age']; ?></td>
+                                <td><?= $items['tin']; ?></td>
+                                <td><?= $items['civilStatus']; ?></td>
+                                <td><?= $items['gender']; ?></td>
+                                <td><?= $items['contactNo']; ?></td>
+                                <td><?= $items['address']; ?></td>
+                                <td><?= $items['email']; ?></td>
+                                <td><?= $items['accStatus']; ?></td>
+
+                                <td>
                                     <!-- Button to trigger Edit Modal -->
                                     <a class="edit" title="Edit" data-toggle="tooltip" data-bs-toggle="modal"
                                         data-bs-target="#editModal"><i class="fa-solid fa-user-pen fa-md"
@@ -501,19 +503,18 @@ include ('backend.php');
                                     </div>
 
                                     <a class="delete" title="Delete" data-toggle="tooltip"><i
-                                        class="fa-solid fa-user-xmark fa-md" style="color: #e81717;"></i>
+                                            class="fa-solid fa-user-xmark fa-md" style="color: #e81717;"></i>
                                     </a>
                                 </td>
-                                        </tr>
-                                        <?php
+                            </tr>
+                            <?php
                                     }
-                                }
-                                else {
+                                } else {
                                     ?>
-                                        <tr>
-                                            <td colspan="4">No Record Found</td>
-                                        </tr>
-                                    <?php
+                            <tr>
+                                <td colspan="4">No Record Found</td>
+                            </tr>
+                            <?php
                                 }
                             }
                             ?>
