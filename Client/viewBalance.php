@@ -7,8 +7,7 @@
 
     <link rel="stylesheet" href="../assets//css//bootstrap.min.css" />
 
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,700&display=swap" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./client.css">
@@ -25,16 +24,6 @@
         </nav>
         <hr class="mt-0 mb-4">
         <div class="row">
-            <div class="col-sm-3 mr-5">
-                <div class="card mb-2 mb-xl-0">
-                    <div class="card-header">Client Information</div>
-                    <div class="card-body text-center">
-                        <img class="img-account-profile rounded-circle mb-2" src="../Client/IDPicture.jpg" alt="">
-                        <h2 class="fw-bold">Name</h2>
-                        <p> Client # </p>
-                    </div>
-                </div>
-            </div>
             <div class="col-sm-9 ">
                 <div class="card" id="form" position="aboslute">
                     <nav class="card-header" id="btn">
