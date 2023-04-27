@@ -22,7 +22,9 @@
     <title>Article Details</title>
 
     <!-- Styles -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap"
+        rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/fontawesome-all.min.css" rel="stylesheet">
     <link href="css/swiper.css" rel="stylesheet">
@@ -44,7 +46,8 @@
             <!-- Text Logo - Use this if you don't have a graphic logo -->
             <!-- <a class="navbar-brand logo-text" href="index.html">Evolo</a> -->
 
-            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -63,7 +66,8 @@
                         <a class="nav-link" href="index.php#pricing">Pricing</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Drop</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
+                            aria-expanded="false">Drop</a>
                         <ul class="dropdown-menu" aria-labelledby="dropdown01">
                             <li><a class="dropdown-item" href="article.php">Article Details</a></li>
                             <li>
@@ -306,8 +310,10 @@
                         <ul class="list-unstyled li-space-lg p-small">
                             <li>Important: <a href="terms.php">Terms & Conditions</a>, <a href="privacy.php">Privacy
                                     Policy</a></li>
-                            <li>Useful: <a href="#">Colorpicker</a>, <a href="#">Icon Library</a>, <a href="#">Illustrations</a></li>
-                            <li>Menu: <a href="index.php">Home</a>, <a href="#services">Services</a>, <a href="details.php">Details</a>, <a href="#contact">Contact</a></li>
+                            <li>Useful: <a href="#">Colorpicker</a>, <a href="#">Icon Library</a>, <a
+                                    href="#">Illustrations</a></li>
+                            <li>Menu: <a href="index.php">Home</a>, <a href="#services">Services</a>, <a
+                                    href="details.php">Details</a>, <a href="#contact">Contact</a></li>
                         </ul>
                     </div> <!-- end of footer-col -->
                     <div class="footer-col third">
@@ -335,7 +341,8 @@
                                 <i class="fab fa-instagram fa-stack-1x"></i>
                             </a>
                         </span>
-                        <p class="p-small">Quam posuerei pellent esque vam <a href="mailto:contact@site.com"><strong>contact@site.com</strong></a></p>
+                        <p class="p-small">Quam posuerei pellent esque vam <a
+                                href="mailto:contact@site.com"><strong>contact@site.com</strong></a></p>
                     </div> <!-- end of footer-col -->
                 </div> <!-- end of col -->
             </div> <!-- end of row -->

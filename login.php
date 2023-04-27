@@ -83,9 +83,9 @@ if (isset($_POST["btnLogin"])) {
 
 
 <style>
-.error {
-    color: red;
-}
+    .error {
+        color: red;
+    }
 </style>
 
 <!DOCTYPE html>
@@ -101,9 +101,7 @@ if (isset($_POST["btnLogin"])) {
 
 
     <!-- Styles -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap" rel="stylesheet">
     <link href="web/css/bootstrap.min.css" rel="stylesheet">
     <link href="web/css/fontawesome-all.min.css" rel="stylesheet">
     <link href="web/css/swiper.css" rel="stylesheet">
@@ -124,9 +122,7 @@ if (isset($_POST["btnLogin"])) {
     <link rel="stylesheet" type="text/css" href="main.css">
     <link rel="stylesheet" type="text/css" href="main.css">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap" rel="stylesheet">
     <link href="web/css/bootstrap.min.css" rel="stylesheet">
     <link href="web/css/fontawesome-all.min.css" rel="stylesheet">
     <link href="web/css/swiper.css" rel="stylesheet">
@@ -136,69 +132,69 @@ if (isset($_POST["btnLogin"])) {
 
     <meta name="robots" content="noindex, follow">
     <script nonce="a822a476-1b98-4997-af61-6d989d0e9924">
-    (function(w, d) {
-        ! function(bv, bw, bx, by) {
-            bv[bx] = bv[bx] || {};
-            bv[bx].executed = [];
-            bv.zaraz = {
-                deferred: [],
-                listeners: []
-            };
-            bv.zaraz.q = [];
-            bv.zaraz._f = function(bz) {
-                return function() {
-                    var bA = Array.prototype.slice.call(arguments);
-                    bv.zaraz.q.push({
-                        m: bz,
-                        a: bA
-                    })
-                }
-            };
-            for (const bB of ["track", "set", "debug"]) bv.zaraz[bB] = bv.zaraz._f(bB);
-            bv.zaraz.init = () => {
-                var bC = bw.getElementsByTagName(by)[0],
-                    bD = bw.createElement(by),
-                    bE = bw.getElementsByTagName("title")[0];
-                bE && (bv[bx].t = bw.getElementsByTagName("title")[0].text);
-                bv[bx].x = Math.random();
-                bv[bx].w = bv.screen.width;
-                bv[bx].h = bv.screen.height;
-                bv[bx].j = bv.innerHeight;
-                bv[bx].e = bv.innerWidth;
-                bv[bx].l = bv.location.href;
-                bv[bx].r = bw.referrer;
-                bv[bx].k = bv.screen.colorDepth;
-                bv[bx].n = bw.characterSet;
-                bv[bx].o = (new Date).getTimezoneOffset();
-                if (bv.dataLayer)
-                    for (const bI of Object.entries(Object.entries(dataLayer).reduce(((bJ, bK) => ({
-                            ...bJ[1],
-                            ...bK[1]
-                        }))))) zaraz.set(bI[0], bI[1], {
-                        scope: "page"
-                    });
-                bv[bx].q = [];
-                for (; bv.zaraz.q.length;) {
-                    const bL = bv.zaraz.q.shift();
-                    bv[bx].q.push(bL)
-                }
-                bD.defer = !0;
-                for (const bM of [localStorage, sessionStorage]) Object.keys(bM || {}).filter((bO => bO
-                    .startsWith("_zaraz_"))).forEach((bN => {
-                    try {
-                        bv[bx]["z_" + bN.slice(7)] = JSON.parse(bM.getItem(bN))
-                    } catch {
-                        bv[bx]["z_" + bN.slice(7)] = bM.getItem(bN)
+        (function(w, d) {
+            ! function(bv, bw, bx, by) {
+                bv[bx] = bv[bx] || {};
+                bv[bx].executed = [];
+                bv.zaraz = {
+                    deferred: [],
+                    listeners: []
+                };
+                bv.zaraz.q = [];
+                bv.zaraz._f = function(bz) {
+                    return function() {
+                        var bA = Array.prototype.slice.call(arguments);
+                        bv.zaraz.q.push({
+                            m: bz,
+                            a: bA
+                        })
                     }
-                }));
-                bD.referrerPolicy = "origin";
-                bD.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(bv[bx])));
-                bC.parentNode.insertBefore(bD, bC)
-            };
-            ["complete", "interactive"].includes(bw.readyState) ? zaraz.init() : bv.addEventListener(
-                "DOMContentLoaded", zaraz.init)
-        }(w, d, "zarazData", "script");
-    })(window, document);
+                };
+                for (const bB of ["track", "set", "debug"]) bv.zaraz[bB] = bv.zaraz._f(bB);
+                bv.zaraz.init = () => {
+                    var bC = bw.getElementsByTagName(by)[0],
+                        bD = bw.createElement(by),
+                        bE = bw.getElementsByTagName("title")[0];
+                    bE && (bv[bx].t = bw.getElementsByTagName("title")[0].text);
+                    bv[bx].x = Math.random();
+                    bv[bx].w = bv.screen.width;
+                    bv[bx].h = bv.screen.height;
+                    bv[bx].j = bv.innerHeight;
+                    bv[bx].e = bv.innerWidth;
+                    bv[bx].l = bv.location.href;
+                    bv[bx].r = bw.referrer;
+                    bv[bx].k = bv.screen.colorDepth;
+                    bv[bx].n = bw.characterSet;
+                    bv[bx].o = (new Date).getTimezoneOffset();
+                    if (bv.dataLayer)
+                        for (const bI of Object.entries(Object.entries(dataLayer).reduce(((bJ, bK) => ({
+                                ...bJ[1],
+                                ...bK[1]
+                            }))))) zaraz.set(bI[0], bI[1], {
+                            scope: "page"
+                        });
+                    bv[bx].q = [];
+                    for (; bv.zaraz.q.length;) {
+                        const bL = bv.zaraz.q.shift();
+                        bv[bx].q.push(bL)
+                    }
+                    bD.defer = !0;
+                    for (const bM of [localStorage, sessionStorage]) Object.keys(bM || {}).filter((bO => bO
+                        .startsWith("_zaraz_"))).forEach((bN => {
+                        try {
+                            bv[bx]["z_" + bN.slice(7)] = JSON.parse(bM.getItem(bN))
+                        } catch {
+                            bv[bx]["z_" + bN.slice(7)] = bM.getItem(bN)
+                        }
+                    }));
+                    bD.referrerPolicy = "origin";
+                    bD.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(bv[bx])));
+                    bC.parentNode.insertBefore(bD, bC)
+                };
+                ["complete", "interactive"].includes(bw.readyState) ? zaraz.init() : bv.addEventListener(
+                    "DOMContentLoaded", zaraz.init)
+            }(w, d, "zarazData", "script");
+        })(window, document);
     </script>
 </head>
 
@@ -209,14 +205,12 @@ if (isset($_POST["btnLogin"])) {
         <div class="container">
 
             <!-- Image Logo -->
-            <a class="navbar-brand logo-image" href="web/index.php"><img src="web/images/coopnobg.png"
-                    alt="alternative"></a>
+            <a class="navbar-brand logo-image" href="web/index.php"><img src="web/images/coopnobg.png" alt="alternative"></a>
 
             <!-- Text Logo - Use this if you don't have a graphic logo -->
             <!-- <a class="navbar-brand logo-text" href="index.html">Evolo</a> -->
 
-            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -233,8 +227,7 @@ if (isset($_POST["btnLogin"])) {
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
-                            aria-expanded="false">Drop</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Drop</a>
                         <ul class="dropdown-menu" aria-labelledby="dropdown01">
 
 
@@ -269,8 +262,7 @@ if (isset($_POST["btnLogin"])) {
                 <form class="login100-form validate-form" method="POST">
                     <span class="login100-form-title"> <b> Login to your account <b> </span>
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email" placeholder="Username"
-                            value="<?php echo "$email"; ?>">
+                        <input class="input100" type="text" name="email" placeholder="Username" value="<?php echo "$email"; ?>">
 
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
@@ -309,29 +301,25 @@ if (isset($_POST["btnLogin"])) {
 
     <script src="assets/vendor/tilt/tilt.jquery.min.js"></script>
     <script>
-    $('.js-tilt').tilt({
-        scale: 1.1
-    })
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
     </script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'UA-23581568-13');
+        gtag('config', 'UA-23581568-13');
     </script>
 
     <script src="assets/js/main.js"></script>
-    <script defer
-        src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993"
-        integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA=="
-        data-cf-beacon='{"rayId":"7a48fe16aada017a","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2023.2.0","si":100}'
-        crossorigin="anonymous"></script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993" integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA==" data-cf-beacon='{"rayId":"7a48fe16aada017a","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2023.2.0","si":100}' crossorigin="anonymous"></script>
 
     <script src="web/js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
     <script src="web/js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
