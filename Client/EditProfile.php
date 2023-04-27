@@ -5,13 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
 
-    <link rel="stylesheet" href="../assets//css//bootstrap.min.css" />
-    <link rel="stylesheet" href="./ERDBClientSideEditProfile.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,700&display=swap" />
     <link rel="stylesheet" href="./client.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Edit Account</title>
 </head>
 
 <body>
@@ -21,7 +18,9 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="controlPanel.php">Coop</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -67,12 +66,14 @@
                                     <!-- Form Group (surname)-->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputFirstName">Surname</label>
-                                        <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your surname" value="">
+                                        <input class="form-control" id="inputFirstName" type="text"
+                                            placeholder="Enter your surname" value="">
                                     </div>
                                     <!-- Form Group (given name)-->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputLastName">Given name</label>
-                                        <input class="form-control" id="inputLastName" type="text" placeholder="Enter your given name" value="">
+                                        <input class="form-control" id="inputLastName" type="text"
+                                            placeholder="Enter your given name" value="">
                                     </div>
                                 </div>
                                 <!-- Form Row-->
@@ -80,12 +81,14 @@
                                     <!-- Form Group (middle name)-->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputFirstName">Middle name</label>
-                                        <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your middle name" value="">
+                                        <input class="form-control" id="inputFirstName" type="text"
+                                            placeholder="Enter your middle name" value="">
                                     </div>
                                     <!-- Form Group (last name)-->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputLastName">Extension name</label>
-                                        <input class="form-control" id="inputLastName" type="text" placeholder="Enter your extension name" value="">
+                                        <input class="form-control" id="inputLastName" type="text"
+                                            placeholder="Enter your extension name" value="">
                                     </div>
                                 </div>
                                 <!-- Form Row        -->
@@ -93,18 +96,21 @@
                                     <!-- Form Group (organization name)-->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputOrgName">Email Address</label>
-                                        <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your email address" value="">
+                                        <input class="form-control" id="inputOrgName" type="text"
+                                            placeholder="Enter your email address" value="">
                                     </div>
                                     <!-- Form Group (location)-->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputLocation">Contact No.</label>
-                                        <input class="form-control" id="inputLocation" type="text" placeholder="Enter your contact number" value="">
+                                        <input class="form-control" id="inputLocation" type="text"
+                                            placeholder="Enter your contact number" value="">
                                     </div>
                                 </div>
                                 <!-- Form Group (address)-->
                                 <div class="mb-3">
                                     <label class="small mb-1" for="inputEmailAddress">Address</label>
-                                    <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your current address" value="">
+                                    <input class="form-control" id="inputEmailAddress" type="email"
+                                        placeholder="Enter your current address" value="">
                                 </div>
                                 <!-- Form Group (civil status)-->
 
@@ -113,7 +119,8 @@
                                     <!-- Form Group (phone number)-->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputPhone">TIN</label>
-                                        <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your TIN number" value="">
+                                        <input class="form-control" id="inputPhone" type="tel"
+                                            placeholder="Enter your TIN number" value="">
                                     </div>
 
                                     <div class="col-md-2 ">
@@ -131,7 +138,8 @@
                                     <!-- Form Group (gender)-->
                                     <div class="col-auto ">
                                         <label class="small mb-1" for="inputBirthday">Gender</label>
-                                        <select class="form-control " id="inputBirthday" name="birthday" placeholder="Gender">
+                                        <select class="form-control " id="inputBirthday" name="birthday"
+                                            placeholder="Gender">
                                             <option value="Option">Select Gender</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
@@ -140,7 +148,8 @@
                                     <!-- Form Group (birthday)-->
                                     <div class="col-auto">
                                         <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                        <input class="form-control" id="inputBirthday" type="date" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
+                                        <input class="form-control" id="inputBirthday" type="date" name="birthday"
+                                            placeholder="Enter your birthday" value="06/10/1988">
                                     </div>
                                 </div>
                                 <!-- Save changes button-->
@@ -157,18 +166,19 @@
                                     <!-- Form Group (Change password)-->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputPhone">Password</label>
-                                        <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your new password" value="">
+                                        <input class="form-control" id="inputPhone" type="tel"
+                                            placeholder="Enter your new password" value="">
                                     </div>
                                     <!-- Form Group (Confirm password)-->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputBirthday">Confirm Password</label>
-                                        <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Confirm your password" value="">
+                                        <input class="form-control" id="inputBirthday" type="text" name="birthday"
+                                            placeholder="Confirm your password" value="">
                                     </div>
                                 </div>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                     <button class="btn btn-primary me-md-2" type="submit">Save changes</button>
                                 </div>
-                                <script src="../assts/e/js//bootstrap.min.js"></script>
                             </form>
                         </div>
                     </div>
@@ -176,39 +186,42 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
 
 <script type="text/javascript">
-    // const btn = document.getElementById('formSelector');
+// const btn = document.getElementById('formSelector');
 
-    // btn.addEventListener('click', () => {
+// btn.addEventListener('click', () => {
 
-    //     const pass = document.getElementById('form-pass');
-    //     const edit = document.getElementById('form-edit');
+//     const pass = document.getElementById('form-pass');
+//     const edit = document.getElementById('form-edit');
 
-    //     if (pass.style.display === 'none' && edit.style.display != 'none') {
-    //         // 👇️ this SHOWS the form
-    //         pass.style.display = 'block';
-    //         edit.style.display = 'none';
-    //     } else if (pass.style.display === 'none'){
-    //         // 👇️ this HIDES the form
-    //         pass.style.display = 'block';
-    //     } else {
-    //         edit.style.display = 'none';
-    //     }
-    // });
+//     if (pass.style.display === 'none' && edit.style.display != 'none') {
+//         // 👇️ this SHOWS the form
+//         pass.style.display = 'block';
+//         edit.style.display = 'none';
+//     } else if (pass.style.display === 'none'){
+//         // 👇️ this HIDES the form
+//         pass.style.display = 'block';
+//     } else {
+//         edit.style.display = 'none';
+//     }
+// });
 
-    $("#edit-btn").click(function() {
-        var id = $(this).attr('id');
-        $('#pages form#pass-btn').css('display', 'none');
-        $('#pages div#' + id + '').css('display', 'block');
-    });
+$("#edit-btn").click(function() {
+    var id = $(this).attr('id');
+    $('#pages form#pass-btn').css('display', 'none');
+    $('#pages div#' + id + '').css('display', 'block');
+});
 
-    $("#pass-btn").click(function() {
-        var id = $(this).attr('id');
-        $('#pages div#edit-btn').css('display', 'none');
-        $('#pages form#' + id + '').css('display', 'block');
-    });
+$("#pass-btn").click(function() {
+    var id = $(this).attr('id');
+    $('#pages div#edit-btn').css('display', 'none');
+    $('#pages form#' + id + '').css('display', 'block');
+});
 </script>
