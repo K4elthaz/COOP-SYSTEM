@@ -40,7 +40,9 @@ if (isset($_POST["btnLogin"])) {
     }
 
     if ($email and $password) {
-        $check_email = mysqli_query($connections, "SELECT * FROM login WHERE email='$email'");
+        $check_email = mysqli_query($connections, "SELECT email, password, account_type FROM login WHERE email='$email'
+        UNION SELECT email, password, account_type FROM clients WHERE email='$email'");
+
         $check_row = mysqli_num_rows($check_email);
 
         if ($check_row > 0) {
@@ -66,7 +68,7 @@ if (isset($_POST["btnLogin"])) {
                     $_SESSION["email"] = $email;
                     // header("Location:home.php");
                     mysqli_query($connections, "UPDATE login WHERE email='$email'");
-                    echo "<script>window.location.href='User';</script>";
+                    echo "<script>window.location.href='Client/home.php';</script>";
                 } else {
                     mysqli_query($connections, "UPDATE login WHERE email='$email'");
                     $passwordErr = "Password is incorrect! ";
@@ -80,13 +82,34 @@ if (isset($_POST["btnLogin"])) {
 ?>
 
 
-
-
+<style>
+.error {
+    color: red;
+}
+</style>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+
+
+    <!-- Styles -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap"
+        rel="stylesheet">
+    <link href="web/css/bootstrap.min.css" rel="stylesheet">
+    <link href="web/css/fontawesome-all.min.css" rel="stylesheet">
+    <link href="web/css/swiper.css" rel="stylesheet">
+    <link href="web/css/styles.css" rel="stylesheet">
+
+
     <title>Login | ERDB-Multipurpose Cooperative</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -179,7 +202,64 @@ if (isset($_POST["btnLogin"])) {
     </script>
 </head>
 
-<body>
+<body data-bs-spy="scroll" data-bs-target="#navbarExample">
+
+    <!-- Navigation -->
+    <nav id="navbarExample" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
+        <div class="container">
+
+            <!-- Image Logo -->
+            <a class="navbar-brand logo-image" href="web/index.php"><img src="web/images/coopnobg.png"
+                    alt="alternative"></a>
+
+            <!-- Text Logo - Use this if you don't have a graphic logo -->
+            <!-- <a class="navbar-brand logo-text" href="index.html">Evolo</a> -->
+
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                    <li class="nav-item">
+                        <a class="nav-link" href="web/index.php#header">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="web/index.php#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="web/index.php">Details</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
+                            aria-expanded="false">Drop</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown01">
+
+
+                            <li><a class="dropdown-item" href="web/terms.php">Terms Conditions</a></li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li><a class="dropdown-item" href="web/privacy.php">Privacy Policy</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact"></a>
+                    </li>
+                </ul>
+                <span class="nav-item social-icons">
+                    <span class="fa-stack">
+
+                    </span>
+
+                </span>
+            </div> <!-- end of navbar-collapse -->
+        </div> <!-- end of container -->
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
@@ -187,10 +267,11 @@ if (isset($_POST["btnLogin"])) {
                     <img src="client/cooplogo.png" alt="IMG">
                 </div>
                 <form class="login100-form validate-form" method="POST">
-                    <span class="login100-form-title"> <b> LOGIN <b> </span>
+                    <span class="login100-form-title"> <b> Login to your account <b> </span>
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
                         <input class="input100" type="text" name="email" placeholder="Username"
-                            value="<?php echo $email; ?>">
+                            value="<?php echo "$email"; ?>">
+
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -199,6 +280,7 @@ if (isset($_POST["btnLogin"])) {
                     <span class="error"></span>
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
                         <input class="input100" type="password" name="password" placeholder="Password" value="">
+
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
@@ -207,6 +289,8 @@ if (isset($_POST["btnLogin"])) {
                     <span class="error"></span>
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn" type="submit" name="btnLogin" value="Login">Login</button>
+                        <span class="error"><?php echo $emailErr; ?></span>
+                        <span class="error"><?php echo $passwordErr; ?></span>
                     </div>
 
                     <div class="text-center p-t-136">
@@ -248,6 +332,10 @@ if (isset($_POST["btnLogin"])) {
         integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA=="
         data-cf-beacon='{"rayId":"7a48fe16aada017a","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2023.2.0","si":100}'
         crossorigin="anonymous"></script>
+
+    <script src="web/js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="web/js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="web/js/scripts.js"></script> <!-- Custom scripts -->
 
 </body>
 

@@ -1,6 +1,6 @@
 <?php
 include("../connections.php");
-include("transactionUpdate.php");
+
 
 
 
@@ -74,8 +74,7 @@ if (isset($_POST["btnRegister"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/9c35be8496.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link rel="stylesheet" href="members.css">
@@ -87,9 +86,7 @@ if (isset($_POST["btnRegister"])) {
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="controlPanel.php">Coop</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -112,14 +109,12 @@ if (isset($_POST["btnRegister"])) {
                 </button>
 
                 <!-- Delete Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 Are you sure you want to delete all?
@@ -143,20 +138,17 @@ if (isset($_POST["btnRegister"])) {
                 </div>
                 <!-- // TODO: Make popup for add new -->
                 <!-- Button to trigger Add new -->
-                <button type="button" class="btn btn-primary add-new float-end mx-1" data-bs-toggle="modal"
-                    data-bs-target="#addModal">
+                <button type="button" class="btn btn-primary add-new float-end mx-1" data-bs-toggle="modal" data-bs-target="#addModal">
                     <i class="fa fa-plus"></i> Add New
                 </button>
 
                 <!-- Add new Modal -->
-                <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
+                <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div id="myPopup" class="popup">
@@ -164,29 +156,25 @@ if (isset($_POST["btnRegister"])) {
                                         <form method="POST">
                                             <div class="row">
                                                 <div class="col">
-                                                    <input type="number" class="form-control" name="memberId"
-                                                        placeholder="Member ID" value="<?php echo $memberId; ?>">
+                                                    <input type="number" class="form-control" name="memberId" placeholder="Member ID" value="<?php echo $memberId; ?>">
                                                     <span class="error">
                                                         <?php echo $memberIdErr; ?>
                                                     </span>
                                                 </div>
                                                 <div class="col">
-                                                    <input type="text" class="form-control" name="name"
-                                                        placeholder="Name" value="">
+                                                    <input type="text" class="form-control" name="name" placeholder="Name" value="">
                                                     <span class="error">
                                                         <?php echo $nameErr; ?>
                                                     </span>
                                                 </div>
                                                 <div class="col">
-                                                    <input type="text" class="form-control" name="paymentType"
-                                                        placeholder="Payment Type" value="">
+                                                    <input type="text" class="form-control" name="paymentType" placeholder="Payment Type" value="">
                                                     <span class="error">
                                                         <?php echo $paymentTypeErr; ?>
                                                     </span>
                                                 </div>
                                                 <div class="col">
-                                                    <input type="date" class="form-control" name="transactionDate"
-                                                        placeholder="Transactrion Date" value="">
+                                                    <input type="date" class="form-control" name="transactionDate" placeholder="Transactrion Date" value="">
                                                     <span class="error">
                                                         <?php echo $transactionDateErr; ?>
                                                     </span>
@@ -194,22 +182,19 @@ if (isset($_POST["btnRegister"])) {
                                             </div>
                                             <div class="row mt-2">
                                                 <div class="col">
-                                                    <input type="number" class="form-control" name="referenceNo"
-                                                        placeholder="Reference No" value="">
+                                                    <input type="number" class="form-control" name="referenceNo" placeholder="Reference No" value="">
                                                     <span class="error">
                                                         <?php echo $referenceNoErr; ?>
                                                     </span>
                                                 </div>
                                                 <div class="col">
-                                                    <input type="text" class="form-control" name="transactionRemarks"
-                                                        placeholder="Transaction Remarks" value="">
+                                                    <input type="text" class="form-control" name="transactionRemarks" placeholder="Transaction Remarks" value="">
                                                     <span class="error">
                                                         <?php echo $transactionRemarksErr; ?>
                                                     </span>
                                                 </div>
                                                 <div class="col">
-                                                    <input type="text" class="form-control" name="collector"
-                                                        placeholder="Collector" value="">
+                                                    <input type="text" class="form-control" name="collector" placeholder="Collector" value="">
                                                     <span class="error">
                                                         <?php echo $collectorErr; ?>
                                                     </span>
@@ -220,8 +205,7 @@ if (isset($_POST["btnRegister"])) {
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button value="btnRegister" name="btnRegister" type="submit"
-                                    class="btn btn-primary">Add</button>
+                                <button value="btnRegister" name="btnRegister" type="submit" class="btn btn-primary">Add</button>
                                 </form>
 
 
@@ -236,14 +220,12 @@ if (isset($_POST["btnRegister"])) {
                 </button>
 
                 <!-- Export Modal -->
-                <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
+                <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 Are you sure you want to download this file?
@@ -256,10 +238,9 @@ if (isset($_POST["btnRegister"])) {
                 </div>
             </div>
             <form class="d-flex mt-1 mx-1 justify-content-start" action="search.php">
-                <input class="form-control-sm me-2" type="search" placeholder="Search" aria-label="Search" name="search"
-                    value="<?php if (isset($_GET['search'])) {
-                        echo $_GET['search'];
-                    } ?>">
+                <input class="form-control-sm me-2" type="search" placeholder="Search" aria-label="Search" name="search" value="<?php if (isset($_GET['search'])) {
+                                                                                                                                    echo $_GET['search'];
+                                                                                                                                } ?>">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
@@ -284,150 +265,51 @@ if (isset($_POST["btnRegister"])) {
                             <?php
 
                             include("../connections.php");
+                            include("transactionUpdate.php");
+                            $editLink = '<a class="edit" title="Edit" data-toggle=tooltip data-bs-toggle="modal"data-bs-target="#editModal"><i class="fa-solid fa-user-pen fa-md" style="color: #2564d0;"></i></a>';
+                            $delete =  '<a class="delete" title="Delete" data-toggle="tooltip"><i class="fa-solid fa-user-xmark fa-md" style="color: #e81717;"></i></a>';
 
                             // Get member rows
-                            $dailytransact = $connections->query("SELECT * FROM dailytransact ORDER BY id DESC");
-                            if ($dailytransact->num_rows > 0) {
-                                while ($row = $dailytransact->fetch_assoc()) {
-                                    ?>
-                                    <tr>
-                                        <!-- <td><?php echo $row['id']; ?></td> -->
-                                        <td>
-                                            <?php echo $row['memberID']; ?>
-                                        </td>
-                                        <td class="th">
-                                            <?php echo $row['name']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['paymentType']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['transactionDate']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['referenceNo']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['transactionRemarks']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['collector']; ?>
-                                        </td>
-                                        <td>
-                                            <!-- Button to trigger Edit Modal -->
-                                            <a class="edit" title="Edit" data-toggle=tooltip data-bs-toggle="modal"
-                                                data-bs-target="#editModal"><i class="fa-solid fa-user-pen fa-md"
-                                                    style="color: #2564d0;"></i></a>
+                            $dailytransact = mysqli_query($connections, "SELECT * FROM dailytransact");
+                            while ($row = mysqli_fetch_assoc($dailytransact)) {
+                                $db_id = $row["id"];
+                                $db_memberID = $row["memberID"];
+                                $db_name = $row["name"];
+                                $db_paymentType = $row["paymentType"];
+                                $db_transactionDate = $row["transactionDate"];
+                                $db_referenceNo = $row["referenceNo"];
+                                $db_transactionRemarks = $row["transactionRemarks"];
+                                $db_collector = $row["collector"];
 
-                                            <!-- Edit Modal -->
-                                            <div class="modal fade" id="editModal" tabindex="-1"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-xl">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Member</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form method="POST">
-                                                                <div class="row">
-                                                                    <div class="col">
-                                                                        <input type="text" class="form-control"
-                                                                            placeholder="Member ID" name="memberID" required>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <input type="text" class="form-control"
-                                                                            placeholder="Name" name="name" required>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <input type="text" class="form-control"
-                                                                            placeholder="Loan Type" name="loanType" required>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row mt-2">
-                                                                    <div class="col">
-                                                                        <input type="number" class="form-control"
-                                                                            placeholder="Principal" name="principal" required>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <input type="date" class="form-control"
-                                                                            placeholder="Date Granted" name="dateGranted"
-                                                                            required>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <input type="month" class="form-control"
-                                                                            placeholder="Term" name="term" required>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row mt-2">
-                                                                    <div class="col">
-                                                                        <input type="number" class="form-control"
-                                                                            placeholder="Amort" name="amort" required>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <input type="number" class="form-control"
-                                                                            placeholder="Paid Amount" name="paidAmount"
-                                                                            required>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <input type="number" class="form-control"
-                                                                            placeholder="Balance" name="balance" required>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row mt-2">
-                                                                    <div class="col">
-                                                                        <input type="number" class="form-control"
-                                                                            placeholder="Expected Amount" name="expAmount"
-                                                                            required>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <input type="number" class="form-control"
-                                                                            placeholder="Months Default" name="monthsDefault"
-                                                                            required>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <input type="number" class="form-control"
-                                                                            placeholder="Default Amount" name="defaultAmount"
-                                                                            required>
-                                                                    </div>
-                                                                </div>
 
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <input type="submit" class="btn btn-primary" name="updateMember"
-                                                                value="Update">
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <a class="delete" title="Delete" data-toggle="tooltip"><i
-                                                    class="fa-solid fa-user-xmark fa-md" style="color: #e81717;"></i></a>
-                                        </td>
+
+                                echo "
+                                <tr>
+                                    <td>$db_memberID</td>
+                                    <td>$db_name</td>
+                                    <td>$db_paymentType</td>
+                                    <td>$db_transactionDate</td>
+                                    <td>$db_referenceNo</td>
+                                    <td>$db_transactionRemarks</td>
+                                    <td> <a href=$db_collector 'id=$db_id'</td>
+                                    <td>$editLink $delete</td>
+                                    
+                                    
                                     </tr>
-                                <?php }
-                            } else { ?>
-                                <div>No Transaction(s) found...</div>
-                            <?php }
-                            ; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+                                ";
+                            }
 
-    </div>
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
+                            ?>
+
+                            <!-- Option 1: Bootstrap Bundle with Popper -->
+                            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+                            </script>
 </body>
 
 </html>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>
