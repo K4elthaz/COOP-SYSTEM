@@ -1,10 +1,6 @@
 <?php
 include("../connections.php");
 
-
-
-
-
 $id = $memberId = $name = $paymentType = $transactionDate = $referenceNo = $transactionRemarks = $collector = "";
 $memberIdErr = $nameErr = $paymentTypeErr = $transactionDateErr = $referenceNoErr = $transactionRemarksErr = $collectorErr = "";
 
@@ -61,9 +57,6 @@ if (isset($_POST["btnRegister"])) {
     }
 }
 ?>
-
-
-
 
 <!doctype html>
 <html lang="en">
@@ -223,8 +216,6 @@ if (isset($_POST["btnRegister"])) {
                                 <button value="btnRegister" name="btnRegister" type="submit"
                                     class="btn btn-primary">Add</button>
                                 </form>
-
-
                             </div>
                         </div>
                     </div>
@@ -258,8 +249,8 @@ if (isset($_POST["btnRegister"])) {
             <form class="d-flex mt-1 mx-1 justify-content-start" action="search.php">
                 <input class="form-control-sm me-2" type="search" placeholder="Search" aria-label="Search" name="search"
                     value="<?php if (isset($_GET['search'])) {
-                                                                                                                                    echo $_GET['search'];
-                                                                                                                                } ?>">
+                        echo $_GET['search'];
+                    } ?>">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
@@ -281,14 +272,35 @@ if (isset($_POST["btnRegister"])) {
                             </tr>
                         </thead>
                         <tbody>
+
                             <?php
 
                             include("../connections.php");
-                            include("transactionUpdate.php");
-                            $editLink = '<a class="edit" title="Edit" data-toggle=tooltip data-bs-toggle="modal"data-bs-target="#editModal"><i class="fa-solid fa-user-pen fa-md" style="color: #2564d0;"></i></a>';
-                            $delete =  '<a class="delete" title="Delete" data-toggle="tooltip"><i class="fa-solid fa-user-xmark fa-md" style="color: #e81717;"></i></a>';
 
-                            // Get member rows
+                            // Check if the edit form was submitted EDIT FORM
+                            if (isset($_POST['edit'])) {
+                                // Get the updated values from the form
+                            
+                                $id = $_POST['id'];
+                                $memberID = $_POST['memberID'];
+                                $name = $_POST['name'];
+                                $paymentType = $_POST['paymentType'];
+                                $transactionDate = $_POST['transactionDate'];
+                                $referenceNo = $_POST['referenceNo'];
+                                $transactionRemarks = $_POST['transactionRemarks'];
+                                $collector = $_POST['collector'];
+
+                                // Update the dailytransact table with the new values
+                                $query = "UPDATE dailytransact SET memberID='$memberID', name='$name', paymentType='$paymentType', transactionDate='$transactionDate', referenceNo='$referenceNo', transactionRemarks='$transactionRemarks', collector='$collector' WHERE id=$id";
+                                mysqli_query($connections, $query);
+                            }
+
+                            if (isset($_POST["btnDelete"])) {
+                                $id = $_POST['id'];
+                                mysqli_query($connections, "DELETE FROM dailytransact WHERE id='$id'");
+                            }
+
+                            // Get member rows  
                             $dailytransact = mysqli_query($connections, "SELECT * FROM dailytransact");
                             while ($row = mysqli_fetch_assoc($dailytransact)) {
                                 $db_id = $row["id"];
@@ -300,30 +312,102 @@ if (isset($_POST["btnRegister"])) {
                                 $db_transactionRemarks = $row["transactionRemarks"];
                                 $db_collector = $row["collector"];
 
-
+                                // Edit and delete links
+                                $editLink = '<a class="edit" title="Edit" data-toggle="tooltip" data-bs-toggle="modal" data-bs-target="#editModal-' . $db_id . '" data-id="' . $db_id . '"><i class="fa-solid fa-user-pen fa-md" style="color: #2564d0;"></i></a>';
+                                $deleteLink = '<a class="edit" title="Delete" data-toggle="tooltip" data-bs-toggle="modal" data-bs-target="#deleteModal-' . $db_id . '" data-id="' . $db_id . '"><i class="fa-solid fa-user-pen fa-md" style="color: #e81717;"></i></a>';
 
                                 echo "
-                                <tr>
-                                    <td>$db_memberID</td>
-                                    <td>$db_name</td>
-                                    <td>$db_paymentType</td>
-                                    <td>$db_transactionDate</td>
-                                    <td>$db_referenceNo</td>
-                                    <td>$db_transactionRemarks</td>
-                                    <td> <a href=$db_collector 'id=$db_id'</td>
-                                    <td>$editLink $delete</td>
-                                    
-                                    
+                                    <tr>
+                                        <td>$db_memberID</td>
+                                        <td>$db_name</td>
+                                        <td>$db_paymentType</td>
+                                        <td>$db_transactionDate</td>
+                                        <td>$db_referenceNo</td>
+                                        <td>$db_transactionRemarks</td>
+                                        <td>$db_collector</td>
+                                        <td> $editLink $deleteLink </td>
                                     </tr>
                                 ";
-                            }
 
+                                echo "
+                                <!-- Edit Modal -->
+                                <div class='modal fade' id='editModal-$db_id' tabindex='-1' role='dialog' aria-labelledby='editModalLabel' aria-hidden='true'>
+                                    <div class='modal-dialog' role='document'>
+                                        <div class='modal-content'>
+                                            <div class='modal-header'>
+                                                <h5 class='modal-title' id='editModalLabel'>Edit Transaction</h5>
+                                                <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                                </button>
+                                            </div>
+                                            <form method='POST'>
+                                            <div class='modal-body'>
+                                                <input type='hidden' name='id' id='edit-id' value=$db_id>
+                                                <div class='form-group'>
+                                                    <label for='edit-memberID'>Member ID:</label>
+                                                    <input type='text' class='form-control' id='edit-memberID' value='$db_memberID' name='memberID' required>
+                                                </div>
+                                                <div class='form-group'>    
+                                                    <label for='edit-name'>Name:</label>
+                                                    <input type='text' class='form-control' id='edit-name' value='$db_name' name='name' required>
+                                                </div>
+                                                <div class='form-group'>
+                                                    <label for='edit-paymentType'>Payment Type:</label>
+                                                    <input type='text' class='form-control' id='edit-paymentType' value='$db_paymentType' name='paymentType' required>
+                                                </div>
+                                                <div class='form-group'>
+                                                    <label for='edit-transactionDate'>Transaction Date:</label>
+                                                    <input type='date' class='form-control' id='edit-transactionDate' value='$db_transactionDate' name='transactionDate' required>
+                                                </div>
+                                                <div class='form-group'>
+                                                    <label for='edit-referenceNo'>Reference No:</label>
+                                                    <input type='text' class='form-control' id='edit-referenceNo' value='$db_referenceNo' name='referenceNo' required>
+                                                </div>
+                                                <div class='form-group'>
+                                                    <label for='edit-transactionRemarks'>Transaction Remarks:</label>
+                                                    <input type='text' class='form-control' id='edit-transactionRemarks' value='$db_transactionRemarks' name='transactionRemarks' required>
+                                                </div>
+                                                <div class='form-group'>
+                                                    <label for='edit-collector'>Collector:</label>
+                                                    <input type='text' class='form-control' id='edit-collector' value='$db_collector' name='collector' required>
+                                                </div>
+                                                <div class='modal-footer'>
+                                                        <button type='submit' class='btn btn-primary' name='edit'>Save changes</button>
+                                                    </form>    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Delete Modal -->
+                                <div class='modal fade' id='deleteModal-$db_id' tabindex='-1' role='dialog' aria-labelledby='deleteModalLabel' aria-hidden='true'>
+                                    <div class='modal-dialog' role='document'>
+                                        <div class='modal-content'>
+
+                                            <div class='modal-header'>
+                                                <h5 class='modal-title' id='deleteModalLabel'>Edit Transaction</h5>
+                                                <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                            </div>
+
+                                            <form method='POST'>
+                                                <input type='hidden' name='id' id='edit-id' value=$db_id>
+                                                <div class='modal-body'>
+                                                    Are you sure you want to delete this user?
+                                                </div>
+                                                <div class='modal-footer'>
+                                                    <button type='submit' class='btn btn-danger' name='btnDelete'>Confirm</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>";
+                            }
                             ?>
 
                             <!-- Option 1: Bootstrap Bundle with Popper -->
-                            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-                                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-                                crossorigin="anonymous">
+                            <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'
+                                integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM'
+                                crossorigin='anonymous'>
                             </script>
 </body>
 

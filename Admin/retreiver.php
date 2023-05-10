@@ -350,7 +350,7 @@ if (isset($_POST["btnRegister"])) {
                                                         <div class="row">
                                                             <div class="col">
                                                                 <input type="text" class="form-control"
-                                                                    value="<?php echo $memberID['memberID'] ?>"
+                                                                    value="<?php echo $memberID ?>"
                                                                     placeholder="Member ID" name="memberID" required>
                                                             </div>
                                                             <div class="col">

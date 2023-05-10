@@ -1,19 +1,20 @@
 <?php
+include("../connections.php");
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
 
+    $get_record = mysqli_query($connections, "SELECT * FROM dailytransact WHERE id = '$id'");
 
-$get_record = mysqli_query($connections, "SELECT * FROM dailytransact");
-
-while ($get = mysqli_fetch_assoc($get_record)) {
-    $db_id = $get["id"];
-    $db_memberID = $get["memberID"];
-    $db_name = $get["name"];
-    $db_paymentType = $get["paymentType"];
-    $db_transactionDate = $get["transactionDate"];
-    $db_referenceNo = $get["referenceNo"];
-    $db_transactionRemarks = $get["transactionRemarks"];
-    $db_collector = $get["collector"];
+    while ($get = mysqli_fetch_assoc($get_record)) {
+        $db_memberID = $get["memberID"];
+        $db_name = $get["name"];
+        $db_paymentType = $get["paymentType"];
+        $db_transactionDate = $get["transactionDate"];
+        $db_referenceNo = $get["referenceNo"];
+        $db_transactionRemarks = $get["transactionRemarks"];
+        $db_collector = $get["collector"];
+    }
 }
-
 $NewName = $NewPaymentType = $NewTransactionDate = $NewReferenceNo = $NewTransactionRemarks = $NewCollector = "";
 $NewNameErr = $NewPaymentTypeErr = $NewTransactionDateErr = $NewReferenceNoErr = $NewTransactionRemarksErr = $NewCollectorErr = "";
 
@@ -90,29 +91,36 @@ if (isset($_POST["btnUpdate"])) {
                 <form method="POST">
                     <div class="row">
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Member ID" value=" <?php echo $db_memberID; ?>" required>
+                            <input type="text" class="form-control" placeholder="Member ID"
+                                value=" <?php echo $db_memberID; ?>" required>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Name" name="name" value=" <?php echo $db_name; ?>" required>
+                            <input type="text" class="form-control" placeholder="Name" name="name"
+                                value=" <?php echo $db_name; ?>" required>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Payment Type" name="Payment Type" value=" <?php echo $db_paymentType; ?>" required>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col">
-                            <input type="date" class="form-control" placeholder="Transaction Date" name="Transaction Date" value=" <?php echo $db_transactionDate; ?>" required>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="Reference No" name="Reference No" value=" <?php echo $db_referenceNo; ?>" required>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="Transaction Remarks" name="Transaction Remarks" value=" <?php echo $db_transactionRemarks; ?>" required>
+                            <input type="text" class="form-control" placeholder="Payment Type" name="Payment Type"
+                                value=" <?php echo $db_paymentType; ?>" required>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Collector" name="Collector" value="<?php echo $db_collector; ?>" required>
+                            <input type="date" class="form-control" placeholder="Transaction Date"
+                                name="Transaction Date" value=" <?php echo $db_transactionDate; ?>" required>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Reference No" name="Reference No"
+                                value=" <?php echo $db_referenceNo; ?>" required>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Transaction Remarks"
+                                name="Transaction Remarks" value=" <?php echo $db_transactionRemarks; ?>" required>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Collector" name="Collector"
+                                value="<?php echo $db_collector; ?>" required>
                         </div>
 
                     </div>

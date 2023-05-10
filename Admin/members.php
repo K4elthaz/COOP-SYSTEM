@@ -211,10 +211,9 @@ include('backend.php');
                 </div>
             </div>
             <form class="d-flex mt-1 mx-1 justify-content-start">
-                <input class="form-control-sm me-2" type="text" placeholder="Search" name="search" required
-                    value="<?php if (isset($_GET['search'])) {
-                                                                                                                        echo $_GET['search'];
-                                                                                                                    } ?>">
+                <input class="form-control-sm me-2" type="text" placeholder="Search" name="search" required value="<?php if (isset($_GET['search'])) {
+                    echo $_GET['search'];
+                } ?>">
                 <button class="btn btn-outline-success" type="submit">Search</button>
                 <a class="btn btn-link" href="members.php" role="button">Go back to table</a>
             </form>
@@ -266,124 +265,150 @@ include('backend.php');
 
                                     foreach ($query_run as $items) {
 
-                            ?>
-                            <tr>
-                                <td><?= $items['no']; ?></td>
-                                <td><?= $items['idNumber']; ?></td>
-                                <td><?= $items['name']; ?></td>
-                                <td><?= $items['classification']; ?></td>
-                                <td><?= $items['birthday']; ?></td>
-                                <td><?= $items['age']; ?></td>
-                                <td><?= $items['tin']; ?></td>
-                                <td><?= $items['civilStatus']; ?></td>
-                                <td><?= $items['gender']; ?></td>
-                                <td><?= $items['contactNo']; ?></td>
-                                <td><?= $items['address']; ?></td>
-                                <td><?= $items['email']; ?></td>
-                                <td><?= $items['accStatus']; ?></td>
-                                <td>
-                                    <!-- Button to trigger Edit Modal -->
-                                    <a class="edit" title="Edit" data-toggle="tooltip" data-bs-toggle="modal"
-                                        data-bs-target="#editModal"><i class="fa-solid fa-user-pen fa-md"
-                                            style="color: #2564d0;"></i></a>
+                                        ?>
+                                        <tr>
+                                            <td>
+                                                <?= $items['no']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['idNumber']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['name']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['classification']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['birthday']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['age']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['tin']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['civilStatus']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['gender']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['contactNo']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['address']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['email']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['accStatus']; ?>
+                                            </td>
+                                            <td>
+                                                <!-- Button to trigger Edit Modal -->
+                                                <a class="edit" title="Edit" data-toggle="tooltip" data-bs-toggle="modal"
+                                                    data-bs-target="#editModal"><i class="fa-solid fa-user-pen fa-md"
+                                                        style="color: #2564d0;"></i></a>
 
-                                    <!-- Edit Modal -->
-                                    <div class="modal fade" id="editModal" tabindex="-1"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-xl">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Member</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
+                                                <!-- Edit Modal -->
+                                                <div class="modal fade" id="editModal" tabindex="-1"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-xl">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Edit Member</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form method="POST">
+                                                                    <div class="row">
+                                                                        <div class="col">
+                                                                            <input type="text" class="form-control"
+                                                                                placeholder="Member ID" name="memberID"
+                                                                                value="<?php echo $db_memberID ?>" required>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <input type="text" class="form-control"
+                                                                                placeholder="Name" name="name"
+                                                                                value="<?php echo $db_name ?>" required>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <input type="text" class="form-control"
+                                                                                placeholder="Loan Type" name="loanType" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mt-2">
+                                                                        <div class="col">
+                                                                            <input type="number" class="form-control"
+                                                                                placeholder="Principal" name="principal" required>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <input type="date" class="form-control"
+                                                                                placeholder="Date Granted" name="dateGranted"
+                                                                                required>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <input type="month" class="form-control"
+                                                                                placeholder="Term" name="term" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mt-2">
+                                                                        <div class="col">
+                                                                            <input type="number" class="form-control"
+                                                                                placeholder="Amort" name="amort" required>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <input type="number" class="form-control"
+                                                                                placeholder="Paid Amount" name="paidAmount"
+                                                                                required>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <input type="number" class="form-control"
+                                                                                placeholder="Balance" name="balance" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mt-2">
+                                                                        <div class="col">
+                                                                            <input type="number" class="form-control"
+                                                                                placeholder="Expected Amount" name="expAmount"
+                                                                                required>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <input type="number" class="form-control"
+                                                                                placeholder="Months Default" name="monthsDefault"
+                                                                                required>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <input type="number" class="form-control"
+                                                                                placeholder="Default Amount" name="defaultAmount"
+                                                                                required>
+                                                                        </div>
+                                                                    </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <input type="submit" class="btn btn-primary" name="updateMember"
+                                                                    value="Update">
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <form method="POST">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Member ID" name="memberID"
-                                                                    value="<?php echo $db_memberID ?>" required>
-                                                            </div>
-                                                            <div class="col">
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Name" name="name"
-                                                                    value="<?php echo $db_name ?>" required>
-                                                            </div>
-                                                            <div class="col">
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Loan Type" name="loanType" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mt-2">
-                                                            <div class="col">
-                                                                <input type="number" class="form-control"
-                                                                    placeholder="Principal" name="principal" required>
-                                                            </div>
-                                                            <div class="col">
-                                                                <input type="date" class="form-control"
-                                                                    placeholder="Date Granted" name="dateGranted"
-                                                                    required>
-                                                            </div>
-                                                            <div class="col">
-                                                                <input type="month" class="form-control"
-                                                                    placeholder="Term" name="term" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mt-2">
-                                                            <div class="col">
-                                                                <input type="number" class="form-control"
-                                                                    placeholder="Amort" name="amort" required>
-                                                            </div>
-                                                            <div class="col">
-                                                                <input type="number" class="form-control"
-                                                                    placeholder="Paid Amount" name="paidAmount"
-                                                                    required>
-                                                            </div>
-                                                            <div class="col">
-                                                                <input type="number" class="form-control"
-                                                                    placeholder="Balance" name="balance" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mt-2">
-                                                            <div class="col">
-                                                                <input type="number" class="form-control"
-                                                                    placeholder="Expected Amount" name="expAmount"
-                                                                    required>
-                                                            </div>
-                                                            <div class="col">
-                                                                <input type="number" class="form-control"
-                                                                    placeholder="Months Default" name="monthsDefault"
-                                                                    required>
-                                                            </div>
-                                                            <div class="col">
-                                                                <input type="number" class="form-control"
-                                                                    placeholder="Default Amount" name="defaultAmount"
-                                                                    required>
-                                                            </div>
-                                                        </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <input type="submit" class="btn btn-primary" name="updateMember"
-                                                        value="Update">
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="delete" title="Delete" data-toggle="tooltip"><i
-                                            class="fa-solid fa-user-xmark fa-md" style="color: #e81717;"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <?php
+                                                <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                                        class="fa-solid fa-user-xmark fa-md" style="color: #e81717;"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <?php
                                     }
                                 } else {
                                     ?>
-                            <tr>
-                                <td colspan="4">No Record Found</td>
-                            </tr>
-                            <?php
+                                    <tr>
+                                        <td colspan="4">No Record Found</td>
+                                    </tr>
+                                    <?php
                                 }
                             } else {
                                 // display the original table
@@ -394,127 +419,153 @@ include('backend.php');
 
                                     foreach ($query_run as $items) {
 
-                                    ?>
-                            <tr>
-                                <td><?= $items['no']; ?></td>
-                                <td><?= $items['idNumber']; ?></td>
-                                <td><?= $items['name']; ?></td>
-                                <td><?= $items['classification']; ?></td>
-                                <td><?= $items['birthday']; ?></td>
-                                <td><?= $items['age']; ?></td>
-                                <td><?= $items['tin']; ?></td>
-                                <td><?= $items['civilStatus']; ?></td>
-                                <td><?= $items['gender']; ?></td>
-                                <td><?= $items['contactNo']; ?></td>
-                                <td><?= $items['address']; ?></td>
-                                <td><?= $items['email']; ?></td>
-                                <td><?= $items['accStatus']; ?></td>
+                                        ?>
+                                        <tr>
+                                            <td>
+                                                <?= $items['no']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['idNumber']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['name']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['classification']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['birthday']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['age']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['tin']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['civilStatus']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['gender']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['contactNo']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['address']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['email']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $items['accStatus']; ?>
+                                            </td>
 
-                                <td>
-                                    <!-- Button to trigger Edit Modal -->
-                                    <a class="edit" title="Edit" data-toggle="tooltip" data-bs-toggle="modal"
-                                        data-bs-target="#editModal"><i class="fa-solid fa-user-pen fa-md"
-                                            style="color: #2564d0;"></i></a>
+                                            <td>
+                                                <!-- Button to trigger Edit Modal -->
+                                                <a class="edit" title="Edit" data-toggle="tooltip" data-bs-toggle="modal"
+                                                    data-bs-target="#editModal"><i class="fa-solid fa-user-pen fa-md"
+                                                        style="color: #2564d0;"></i></a>
 
-                                    <!-- Edit Modal -->
-                                    <div class="modal fade" id="editModal" tabindex="-1"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-xl">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Member</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
+                                                <!-- Edit Modal -->
+                                                <div class="modal fade" id="editModal" tabindex="-1"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-xl">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Edit Member</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form method="POST">
+                                                                    <div class="row">
+                                                                        <div class="col">
+                                                                            <input type="text" class="form-control"
+                                                                                placeholder="Member ID" name="memberID"
+                                                                                value="<?php echo $db_memberID ?>" required>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <input type="text" class="form-control"
+                                                                                placeholder="Name" name="name"
+                                                                                value="<?php echo $db_name ?>" required>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <input type="text" class="form-control"
+                                                                                placeholder="Loan Type" name="loanType" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mt-2">
+                                                                        <div class="col">
+                                                                            <input type="number" class="form-control"
+                                                                                placeholder="Principal" name="principal" required>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <input type="date" class="form-control"
+                                                                                placeholder="Date Granted" name="dateGranted"
+                                                                                required>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <input type="month" class="form-control"
+                                                                                placeholder="Term" name="term" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mt-2">
+                                                                        <div class="col">
+                                                                            <input type="number" class="form-control"
+                                                                                placeholder="Amort" name="amort" required>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <input type="number" class="form-control"
+                                                                                placeholder="Paid Amount" name="paidAmount"
+                                                                                required>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <input type="number" class="form-control"
+                                                                                placeholder="Balance" name="balance" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mt-2">
+                                                                        <div class="col">
+                                                                            <input type="number" class="form-control"
+                                                                                placeholder="Expected Amount" name="expAmount"
+                                                                                required>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <input type="number" class="form-control"
+                                                                                placeholder="Months Default" name="monthsDefault"
+                                                                                required>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <input type="number" class="form-control"
+                                                                                placeholder="Default Amount" name="defaultAmount"
+                                                                                required>
+                                                                        </div>
+                                                                    </div>
+
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <input type="submit" class="btn btn-primary" name="updateMember"
+                                                                    value="Update">
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <form method="POST">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Member ID" name="memberID"
-                                                                    value="<?php echo $db_memberID ?>" required>
-                                                            </div>
-                                                            <div class="col">
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Name" name="name"
-                                                                    value="<?php echo $db_name ?>" required>
-                                                            </div>
-                                                            <div class="col">
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Loan Type" name="loanType" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mt-2">
-                                                            <div class="col">
-                                                                <input type="number" class="form-control"
-                                                                    placeholder="Principal" name="principal" required>
-                                                            </div>
-                                                            <div class="col">
-                                                                <input type="date" class="form-control"
-                                                                    placeholder="Date Granted" name="dateGranted"
-                                                                    required>
-                                                            </div>
-                                                            <div class="col">
-                                                                <input type="month" class="form-control"
-                                                                    placeholder="Term" name="term" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mt-2">
-                                                            <div class="col">
-                                                                <input type="number" class="form-control"
-                                                                    placeholder="Amort" name="amort" required>
-                                                            </div>
-                                                            <div class="col">
-                                                                <input type="number" class="form-control"
-                                                                    placeholder="Paid Amount" name="paidAmount"
-                                                                    required>
-                                                            </div>
-                                                            <div class="col">
-                                                                <input type="number" class="form-control"
-                                                                    placeholder="Balance" name="balance" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mt-2">
-                                                            <div class="col">
-                                                                <input type="number" class="form-control"
-                                                                    placeholder="Expected Amount" name="expAmount"
-                                                                    required>
-                                                            </div>
-                                                            <div class="col">
-                                                                <input type="number" class="form-control"
-                                                                    placeholder="Months Default" name="monthsDefault"
-                                                                    required>
-                                                            </div>
-                                                            <div class="col">
-                                                                <input type="number" class="form-control"
-                                                                    placeholder="Default Amount" name="defaultAmount"
-                                                                    required>
-                                                            </div>
-                                                        </div>
 
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <input type="submit" class="btn btn-primary" name="updateMember"
-                                                        value="Update">
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <a class="delete" title="Delete" data-toggle="tooltip"><i
-                                            class="fa-solid fa-user-xmark fa-md" style="color: #e81717;"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <?php
+                                                <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                                        class="fa-solid fa-user-xmark fa-md" style="color: #e81717;"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <?php
                                     }
                                 } else {
                                     ?>
-                            <tr>
-                                <td colspan="4">No Record Found</td>
-                            </tr>
-                            <?php
+                                    <tr>
+                                        <td colspan="4">No Record Found</td>
+                                    </tr>
+                                    <?php
                                 }
                             }
                             ?>
@@ -527,12 +578,12 @@ include('backend.php');
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+        </script>
 </body>
 
 </html>
 
 <script>
-$(document).ready(function() {
-    $('[data-toggle="tooltip"]').tooltip();
-});
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
