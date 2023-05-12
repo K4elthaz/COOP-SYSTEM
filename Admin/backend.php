@@ -24,25 +24,4 @@ if(isset($_POST['addSubmit'])){
     echo "<script> window.location.href='members.php';</script>";
 }
 
-
-$fetch_query = mysqli_query($connections, "SELECT * FROM members WHERE id");
-while ($rows = mysqli_fetch_assoc($fetch_query)){
-    
-    $id = $rows['id'];
-    $db_memberID = $rows['memberID'];
-    $db_name = $rows['name'];
-    $db_loanType = $rows['loanType'];
-    $db_principal = $rows['principal'];
-    $db_dateGranted = $rows['dateGranted'];
-    $db_term = $rows['term'];
-    $db_amort = $rows['amort'];
-    $db_paidAMount = $rows['paidAmount'];
-    $db_balance = $rows ['balance'];
-    $db_expAmount = $rows ['expAmount'];
-    $db_monthsDefault = $rows['monthsDefault'];
-    $db_defaultAmount = $rows['defaultAmount'];
-
-    
-}
-
 ?>

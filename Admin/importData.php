@@ -22,7 +22,7 @@ if (isset($_POST['importSubmit'])) {
             // Parse data from CSV file line by line
             while (($line = fgetcsv($csvFile)) !== FALSE) {
                 // Get row data
-                $no = $line[0];
+                $db_id = $line[0];
                 $idNumber = $line[1];
                 $name = $line[2];
                 $classification = $line[3];
@@ -36,16 +36,16 @@ if (isset($_POST['importSubmit'])) {
                 $email = $line[11];
 
                 // Check whether member already exists in the database with the same email
-                $prevQuery = "SELECT idNumber FROM clients WHERE no = '" . $line[0] . "' LIMIT 1";
+                $prevQuery = "SELECT idNumber FROM clients WHERE db_id = '" . $line[0] . "' LIMIT 1";
                 $prevResult = $connections->query($prevQuery);
 
                 if ($prevResult->num_rows > 5) {
                     // Update member data in the database
-                    $connections->query("UPDATE clients SET no = '" . $no . "',  idNumber = '" . $idNumber . "',  name = '" . $name . "', classification = '" . $classification . "',  birthday = '" . $birthday . "',  age = '" . $age . "', tin = '" . $tin . "', civilStatus = '" . $civilStatus . "',  gender = '" . $gender . "', contactNo = '" . $contactNo . "', address = '" . $address . "', email = '" . $email . "'");
+                    $connections->query("UPDATE clients SET db_id = '" . $db_id . "',  idNumber = '" . $idNumber . "',  name = '" . $name . "', classification = '" . $classification . "',  birthday = '" . $birthday . "',  age = '" . $age . "', tin = '" . $tin . "', civilStatus = '" . $civilStatus . "',  gender = '" . $gender . "', contactNo = '" . $contactNo . "', address = '" . $address . "', email = '" . $email . "'");
                 } else {
                     // Insert member data in the database
-                    $query = mysqli_query($connections, "INSERT INTO clients (no, idNumber, name, classification, birthday, age, tin, civilStatus, gender, contactNo, address, email)
-                    VALUES ('" . $no . "', '" . $idNumber . "', '" . $name . "', '" . $classification . "', '" . $birthday . "', '" . $age . "', '" . $tin . "', '" . $civilStatus . "', '" . $gender . "', '" . $contactNo . "', '" . $address . "', '" . $email . "')");
+                    $query = mysqli_query($connections, "INSERT INTO clients (db_id, idNumber, name, classification, birthday, age, tin, civilStatus, gender, contactNo, address, email)
+                    VALUES ('" . $db_id . "', '" . $idNumber . "', '" . $name . "', '" . $classification . "', '" . $birthday . "', '" . $age . "', '" . $tin . "', '" . $civilStatus . "', '" . $gender . "', '" . $contactNo . "', '" . $address . "', '" . $email . "')");
                     echo "<script language='javascript'>alert('New record has been inserted!')</script>";
                     echo "<script> window.location.href='members.php';</script>";
                 }
