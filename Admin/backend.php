@@ -1,25 +1,27 @@
 <?php
-
 include ('../connections.php');
 
-if(isset($_POST['addSubmit'])){
 
-    $id = $_POST['id'];
-    $memberID = $_POST['memberID'];
+
+// * Add New Member in clients table
+if(isset($_POST['add'])){
+
+    $id = $_POST['db_id'];
+    $memberID = $_POST['idNumber'];
     $name = $_POST['name'];
-    $loanType = $_POST['memberID'];
-    $principal = $_POST['principal'];
-    $dateGranted = $_POST['dateGranted'];
-    $term = $_POST['term'];
-    $amort = $_POST['amort'];
-    $paidAmount = $_POST['paidAmount'];
-    $balance = $_POST['balance'];
-    $expAmount = $_POST['expAmount'];
-    $monthsDefault = $_POST['monthsDefault'];
-    $defaultAmount = $_POST['defaultAmount'];
+    $loanType = $_POST['classifictaion'];
+    $principal = $_POST['birthday'];
+    $dateGranted = $_POST['age'];
+    $term = $_POST['tin'];
+    $amort = $_POST['civilStatus'];
+    $paidAmount = $_POST['gender'];
+    $balance = $_POST['contactNo'];
+    $expAmount = $_POST['address'];
+    $monthsDefault = $_POST['email'];
+    $defaultAmount = $_POST['accStatus'];
 
-    $query = mysqli_query($connections, "INSERT INTO members (memberID,name,loanType,principal,dateGranted,term,amort,paidAmount,balance,expAmount,monthsDefault,defaultAmount) 
-    VALUES('$memberID', '$name' ,'$loanType', '$principal', '$dateGranted', '$term', '$amort', '$paidAmount', '$balance', '$expAmount', '$monthsDefault', '$defaultAmount') ");
+    $query = mysqli_query($connections, "INSERT INTO clients (idNumber,name,classification,birthday,age,tin,civilStatus,gender,contactNo,address,email,accStatus) 
+    VALUES('$idNumber', '$name' ,'$classification', '$birthday', '$age', '$tin', '$civilStatus', '$gender', '$contactNo', '$address', '$email', '$accStatus') ");
     echo "<script language='javascript'>alert('New record has been inserted!')</script>";
     echo "<script> window.location.href='members.php';</script>";
 }

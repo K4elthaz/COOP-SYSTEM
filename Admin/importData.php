@@ -35,11 +35,13 @@ if (isset($_POST['importSubmit'])) {
                 $address = $line[10];
                 $email = $line[11];
 
+                // $str = str_replace(["'", '"', ','], ' ', $str);
+
                 // Check whether member already exists in the database with the same email
-                $prevQuery = "SELECT idNumber FROM clients WHERE db_id = '" . $line[0] . "' LIMIT 1";
+                $prevQuery = "SELECT idNumber FROM clients WHERE no = '" . $line[0] . "' LIMIT 1";
                 $prevResult = $connections->query($prevQuery);
 
-                if ($prevResult->num_rows > 5) {
+                if ($prevResult->num_rows > 1) {
                     // Update member data in the database
                     $connections->query("UPDATE clients SET db_id = '" . $db_id . "',  idNumber = '" . $idNumber . "',  name = '" . $name . "', classification = '" . $classification . "',  birthday = '" . $birthday . "',  age = '" . $age . "', tin = '" . $tin . "', civilStatus = '" . $civilStatus . "',  gender = '" . $gender . "', contactNo = '" . $contactNo . "', address = '" . $address . "', email = '" . $email . "'");
                 } else {
