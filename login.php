@@ -38,7 +38,7 @@ if (isset($_POST["btnLogin"])) {
     //Reminder check new SQL file this is a sample 2nd table "members"
     if ($email and $password) {
         $check_email = mysqli_query($connections, "SELECT email, password, account_type FROM login WHERE email='$email'
-        UNION SELECT email, password, account_type FROM members WHERE email='$email'");
+        UNION SELECT email, password, account_type FROM clients WHERE email='$email'");
 
         $check_row = mysqli_num_rows($check_email);
 
@@ -65,7 +65,7 @@ if (isset($_POST["btnLogin"])) {
                     $_SESSION["email"] = $email;
                     // header("Location:home.php");
                     mysqli_query($connections, "UPDATE login WHERE email='$email'");
-                    echo "<script>window.location.href='Client/home.php';</script>";
+                    echo "<script>window.location.href='Client';</script>";
                 } else {
                     mysqli_query($connections, "UPDATE login WHERE email='$email'");
                     $passwordErr = "Password is incorrect! ";
@@ -98,9 +98,7 @@ if (isset($_POST["btnLogin"])) {
 
 
     <!-- Styles -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap" rel="stylesheet">
     <link href="web/css/bootstrap.min.css" rel="stylesheet">
     <link href="web/css/fontawesome-all.min.css" rel="stylesheet">
     <link href="web/css/swiper.css" rel="stylesheet">
@@ -121,9 +119,7 @@ if (isset($_POST["btnLogin"])) {
     <link rel="stylesheet" type="text/css" href="main.css">
     <link rel="stylesheet" type="text/css" href="main.css">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap" rel="stylesheet">
     <link href="web/css/bootstrap.min.css" rel="stylesheet">
     <link href="web/css/fontawesome-all.min.css" rel="stylesheet">
     <link href="web/css/swiper.css" rel="stylesheet">
@@ -133,8 +129,8 @@ if (isset($_POST["btnLogin"])) {
 
     <meta name="robots" content="noindex, follow">
     <script nonce="a822a476-1b98-4997-af61-6d989d0e9924">
-        (function (w, d) {
-            ! function (bv, bw, bx, by) {
+        (function(w, d) {
+            ! function(bv, bw, bx, by) {
                 bv[bx] = bv[bx] || {};
                 bv[bx].executed = [];
                 bv.zaraz = {
@@ -142,8 +138,8 @@ if (isset($_POST["btnLogin"])) {
                     listeners: []
                 };
                 bv.zaraz.q = [];
-                bv.zaraz._f = function (bz) {
-                    return function () {
+                bv.zaraz._f = function(bz) {
+                    return function() {
                         var bA = Array.prototype.slice.call(arguments);
                         bv.zaraz.q.push({
                             m: bz,
@@ -169,9 +165,9 @@ if (isset($_POST["btnLogin"])) {
                     bv[bx].o = (new Date).getTimezoneOffset();
                     if (bv.dataLayer)
                         for (const bI of Object.entries(Object.entries(dataLayer).reduce(((bJ, bK) => ({
-                            ...bJ[1],
-                            ...bK[1]
-                        }))))) zaraz.set(bI[0], bI[1], {
+                                ...bJ[1],
+                                ...bK[1]
+                            }))))) zaraz.set(bI[0], bI[1], {
                             scope: "page"
                         });
                     bv[bx].q = [];
@@ -182,12 +178,12 @@ if (isset($_POST["btnLogin"])) {
                     bD.defer = !0;
                     for (const bM of [localStorage, sessionStorage]) Object.keys(bM || {}).filter((bO => bO
                         .startsWith("_zaraz_"))).forEach((bN => {
-                            try {
-                                bv[bx]["z_" + bN.slice(7)] = JSON.parse(bM.getItem(bN))
-                            } catch {
-                                bv[bx]["z_" + bN.slice(7)] = bM.getItem(bN)
-                            }
-                        }));
+                        try {
+                            bv[bx]["z_" + bN.slice(7)] = JSON.parse(bM.getItem(bN))
+                        } catch {
+                            bv[bx]["z_" + bN.slice(7)] = bM.getItem(bN)
+                        }
+                    }));
                     bD.referrerPolicy = "origin";
                     bD.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(bv[bx])));
                     bC.parentNode.insertBefore(bD, bC)
@@ -206,14 +202,12 @@ if (isset($_POST["btnLogin"])) {
         <div class="container">
 
             <!-- Image Logo -->
-            <a class="navbar-brand logo-image" href="web/index.php"><img src="web/images/coopnobg.png"
-                    alt="alternative"></a>
+            <a class="navbar-brand logo-image" href="web/index.php"><img src="web/images/coopnobg.png" alt="alternative"></a>
 
             <!-- Text Logo - Use this if you don't have a graphic logo -->
             <!-- <a class="navbar-brand logo-text" href="index.html">Evolo</a> -->
 
-            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -230,8 +224,7 @@ if (isset($_POST["btnLogin"])) {
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
-                            aria-expanded="false">Drop</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Drop</a>
                         <ul class="dropdown-menu" aria-labelledby="dropdown01">
 
 
@@ -266,8 +259,7 @@ if (isset($_POST["btnLogin"])) {
                 <form class="login100-form validate-form" method="POST">
                     <span class="login100-form-title"> <b> Login to your account <b> </span>
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email" placeholder="Username"
-                            value="<?php echo "$email"; ?>">
+                        <input class="input100" type="text" name="email" placeholder="Username" value="<?php echo "$email"; ?>">
 
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
@@ -328,11 +320,7 @@ if (isset($_POST["btnLogin"])) {
     </script>
 
     <script src="assets/js/main.js"></script>
-    <script defer
-        src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993"
-        integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA=="
-        data-cf-beacon='{"rayId":"7a48fe16aada017a","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2023.2.0","si":100}'
-        crossorigin="anonymous"></script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993" integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA==" data-cf-beacon='{"rayId":"7a48fe16aada017a","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2023.2.0","si":100}' crossorigin="anonymous"></script>
 
     <script src="web/js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
     <script src="web/js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->

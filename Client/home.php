@@ -1,3 +1,41 @@
+<?php
+session_start();
+
+if (isset($_SESSION["email"])) {
+    $email = $_SESSION["email"];
+} else {
+    echo "<script>window.location.href='';</script>";
+}
+include("../connections.php");
+
+
+$query_info = mysqli_query($connections, "SELECT * FROM clients WHERE account_type='2' ");
+while ($row_users = mysqli_fetch_assoc($query_info)) {
+    $id_user = $row_users['id'];
+    $idNumber = $row_users['idNumber'];
+    $name = $row_users['name'];
+    $classification = $row_users['classification'];
+    $birthday = $row_users['birthday'];
+    $age = $row_users['age'];
+    $tin = $row_users['tin'];
+    $civilStatus = $row_users['civilStatus'];
+    $gender = $row_users['gender'];
+    $contactNumber = $row_users['contactNo'];
+    $address = $row_users['address'];
+    $email = $row_users['email'];
+    $accStatus = $row_users['accStatus'];
+}
+
+
+$my_info = mysqli_fetch_assoc($query_info);
+?>
+
+
+
+
+
+
+
 <!-- // ! FIXED ADMIN CONTROL PANEL -->
 <!DOCTYPE html>
 <html>
@@ -50,7 +88,7 @@
                     <div class="card-header"><b>Client Information</b></div>
                     <div class="card-body text-center">
                         <img class="img-account-profile rounded-circle mb-2" src="../Client/IDPicture.jpg" alt="">
-                        <h2 class="fw-bold">Name</h2>
+                        <h2 class="fw-bold"><?php echo $name ?></h2>
                         <p> Department </p>
                     </div>
                 </div>
@@ -99,18 +137,42 @@
                                     </div>
                                 </div>
                             </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-4 d-flex align-items-stretch">
+                                    <div class="card">
+                                        <div class="card-body d-flex flex-column" style="background-color: #C0F8D1;">
+                                            <b class="card-title">Apply Loan</b>
+                                            <p class="card-text mb-4">Clients can perform request for loans.</p>
+                                            <a href="CreateLoan.php" class="btn btn-primary mt-auto align-self-end">Go
+                                                To</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 d-flex align-items-stretch">
+                                    <div class="card">
+                                        <div class="card-body d-flex flex-column" style="background-color: #A4C5E9;">
+                                            <b class="card-title">Notification</b>
+                                            <p class="card-text mb-4">Notify Member given by admin or as comaker.</p>
+                                            <a href="notification.php" class="btn btn-primary mt-auto align-self-end">Go
+                                                To</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- </div> -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
-        <script src="web/js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
-        <script src="web/js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
-        <script src="web/js/scripts.js"></script> <!-- Custom scripts -->
+            <!-- </div> -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                crossorigin="anonymous">
+            </script>
+            <script src="web/js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+            <script src="web/js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+            <script src="web/js/scripts.js"></script> <!-- Custom scripts -->
 </body>
 
 </html>
