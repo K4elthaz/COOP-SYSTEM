@@ -25,6 +25,7 @@ if (isset($_POST['submit']) && !empty($_FILES['pdf_file']['name'])) {
                         echo 'Could not save information to the database';
                     } else {
                         echo 'Information saved';
+                        
                     }
                     $stmt->close();
                     $conn->close();
@@ -38,5 +39,5 @@ if (isset($_POST['submit']) && !empty($_FILES['pdf_file']['name'])) {
     }
 } else {
     //submit button was not clicked. No direct script navigation.
-    header('Location: testingUpload.php');
+    header('Location: pdfUpload.php');
 }
