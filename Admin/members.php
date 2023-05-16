@@ -67,8 +67,8 @@ include('backend.php');
                                 $dbc = mysqli_connect('localhost', 'root', '', 'coop-database') or die('Error connecting to MySQL server.');
                                 if (isset($_POST['delete'])) {
                                     mysqli_query($dbc, 'TRUNCATE TABLE `clients`');
-                                    header("Location: members.php" . $_SERVER['PHP_SELF']);
-                                    exit();
+                                    echo "<script language='javascript'>alert('Table has been deleted!')</script>";
+                                    echo "<script> window.location.href='members.php';</script>";
                                 }
                                 ?>
                                 <form method="post" action="">
@@ -105,9 +105,36 @@ include('backend.php');
                                             <label for="add-name">Name: </label>
                                             <input type="text" class="form-control" name="name" required>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="add-classification">Classification: </label>
-                                            <input type="text" class="form-control" name="classification" required>
+                                        <div class="form-group row">
+                                            <label for="add-classification"
+                                                class="col-auto col-form-label">Classification:</label>
+                                            <div class="col-auto">
+                                                <select class="form-select mb-1" aria-label="Default select example"
+                                                    id="classification" name="classification"
+                                                    onchange="giveSelection(this.value)" required>
+                                                    <option selected>Select Classification</option>
+                                                    <option value="erdb">ERDB</option>
+                                                    <option value="others">Other Institution</option>
+                                                    <option value="private">Private</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-auto">
+                                                <select class="form-select" aria-label="Default select example"
+                                                    id="subClassification" name="classification" required>
+                                                    <option data-option="erdb">Regular</option>
+                                                    <option data-option="erdb">Casual</option>
+                                                    <option data-option="erdb">Job Order</option>
+                                                    <option data-option="erdb">Retiree</option>
+                                                    <option data-option="erdb">Separated</option>
+
+                                                    <option data-option="others">DENR Central Office</option>
+                                                    <option data-option="others">FMB</option>
+                                                    <option data-option="others">CFNR / Other Office / College of UPLB
+                                                    </option>
+                                                    <option data-option="others">FPRDI</option>
+                                                    <option data-option="others">Other Government District</option>
+                                                </select>
+                                            </div>
                                         </div>
 
                                         <div class="form-group">
@@ -157,15 +184,13 @@ include('backend.php');
                                             <label for="add-email">Email: </label>
                                             <input type="text" class="form-control" name="email" required>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="add-accStatus">Account Status: </label>
-                                            <select class="form-select" aria-label="Default select example"
-                                                id="accStatus" name="accStatus" required>
-                                                <option selected disabled>Account Status:</option>
-                                                <option class="btn btn-success" value="active">Active</option>
-                                                <option class="btn btn-danger" value="inactive">Inactive</option>
-                                            </select>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="toggle-switch">
+                                            <label class="form-check-label" for="toggle-switch"
+                                                data-bs-on-label="Active" data-bs-off-label="Inactive">Account Status:
+                                            </label>
                                         </div>
+
                                     </div>
                             </div>
                             <div class="modal-footer">
@@ -502,4 +527,19 @@ include('backend.php');
 $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
 });
+
+var sel1 = document.querySelector('#classification');
+var sel2 = document.querySelector('#subClassification');
+var options2 = sel2.querySelectorAll('option');
+
+function giveSelection(selValue) {
+    sel2.innerHTML = '';
+    for (var i = 0; i < options2.length; i++) {
+        if (options2[i].dataset.option === selValue) {
+            sel2.appendChild(options2[i]);
+        }
+    }
+}
+
+giveSelection(sel1.value);
 </script>
