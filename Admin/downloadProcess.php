@@ -1,6 +1,5 @@
 <?php
 // Open a database connection
-
 $connections = new mysqli("localhost", "root", "", "coop-database");
 
 $pdf_id = $_GET['id'];
@@ -12,7 +11,7 @@ $file_contents = $row['file_contents'];
 
 // Set the HTTP headers to indicate that the response is a PDF file
 header('Content-Type: application/pdf');
-header('Content-Disposition: attachment; filename="down.pdf"');
+header('Content-Disposition: attachment; filename="forms.pdf"');
 
 // Output the file contents to the response stream
 echo $file_contents;

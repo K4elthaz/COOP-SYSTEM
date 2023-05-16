@@ -39,4 +39,4 @@ if (isset($_POST['submit']) && !empty($_FILES['pdf_file']['name'])) {
 } else {
     //submit button was not clicked. No direct script navigation.
     header('Location: testingUpload.php');
-} 
+}

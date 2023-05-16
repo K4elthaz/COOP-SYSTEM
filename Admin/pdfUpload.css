@@ -1,0 +1,28 @@
+body {
+    color: #404e67;
+    background: #f5f7fa;
+    font-family: "Open Sans", sans-serif;
+  }
+  
+  th,
+  td {
+    /* padding: 8px; */
+    color: black;
+    margin: 0;
+    white-space: nowrap;
+    border-top-width: 0px;
+  }
+  
+  table {
+    text-align: center;
+  }
+  
+  .card-img-top {
+    height: 5px;
+  }
+  
+  .rounded-circle {
+    border-radius: 50% !important;
+    background-color: gray;
+  }
+  
