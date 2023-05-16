@@ -24,8 +24,9 @@ if (isset($_POST['submit']) && !empty($_FILES['pdf_file']['name'])) {
                     if ($stmt->execute() === FALSE) {
                         echo 'Could not save information to the database';
                     } else {
-                        echo 'Information saved';
-                        
+                        // echo 'Information saved';
+                        echo "<script language='javascript'>alert('PDF Successfully Uploaded')</script>";
+                        echo "<script> window.location.href='pdfUpload.php';</script>";
                     }
                     $stmt->close();
                     $conn->close();
