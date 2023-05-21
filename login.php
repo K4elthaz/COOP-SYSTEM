@@ -65,7 +65,7 @@ if (isset($_POST["btnLogin"])) {
                     $_SESSION["email"] = $email;
                     // header("Location:home.php");
                     mysqli_query($connections, "UPDATE login WHERE email='$email'");
-                    echo "<script>window.location.href='Client';</script>";
+                    echo "<script>window.location.href='Client/home.php';</script>";
                 } else {
                     mysqli_query($connections, "UPDATE login WHERE email='$email'");
                     $passwordErr = "Password is incorrect! ";

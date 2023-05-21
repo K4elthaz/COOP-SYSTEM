@@ -15,6 +15,8 @@
 </head>
 
 <body>
+    <!-- change it add new sidebar admin side!!!!!! -->
+    <?php include('../Client/sidebar.php'); ?>
     <div class="container-xl px-4 mt-4">
         <!-- Account page navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">

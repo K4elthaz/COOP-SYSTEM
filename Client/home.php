@@ -1,10 +1,11 @@
 <?php
-session_start();
+// session_start();
+
 
 if (isset($_SESSION["email"])) {
     $email = $_SESSION["email"];
 } else {
-    echo "<script>window.location.href='';</script>";
+    // echo "<script>window.location.href='';</script>";
 }
 include("../connections.php");
 
@@ -49,6 +50,8 @@ $my_info = mysqli_fetch_assoc($query_info);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
+
+
     <title>Home</title>
 
 
@@ -60,6 +63,7 @@ $my_info = mysqli_fetch_assoc($query_info);
 
 <body>
     <div class="container-xl px-4 mt-4">
+        <?php include('sidebar.php'); ?>
         <!-- Account page navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid ">
@@ -104,64 +108,45 @@ $my_info = mysqli_fetch_assoc($query_info);
                     <div class="row px-4">
                         <div class="card-body">
                             <!-- table -->
-                            <h1>Welcome User!</h1>
-                            <div class="row">
-                                <div class="col-sm-4 d-flex align-items-stretch">
-                                    <div class="card">
-                                        <div class="card-body d-flex flex-column" style="background-color: #C0F8D1;">
-                                            <b class="card-title">View Balance</b>
-                                            <p class="card-text mb-4">Clients can access their assets or funds.</p>
-                                            <a href="balance.php" class="btn btn-primary mt-auto align-self-end">Go
-                                                To</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 d-flex align-items-stretch">
-                                    <div class="card">
-                                        <div class="card-body d-flex flex-column" style="background-color: #A4C5E9;">
-                                            <b class="card-title">Download Forms</b>
-                                            <p class="card-text mb-4">Downloadable loan and petty cash forms.</p>
-                                            <a href="forms.php" class="btn btn-primary mt-auto align-self-end">Go
-                                                To</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4  d-flex align-items-stretch">
-                                    <div class="card">
-                                        <div class="card-body d-flex flex-column" style="background-color: #F2C2D4;">
-                                            <b class="card-title">Edit Profile</b>
-                                            <p class="card-text mb-4">Clients can edit and change their profile.</p>
-                                            <a href="EditProfile.php" class="btn btn-primary mt-auto align-self-end">Go
-                                                To</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-sm-4 d-flex align-items-stretch">
-                                    <div class="card">
-                                        <div class="card-body d-flex flex-column" style="background-color: #C0F8D1;">
-                                            <b class="card-title">Apply Loan</b>
-                                            <p class="card-text mb-4">Clients can perform request for loans.</p>
-                                            <a href="CreateLoan.php" class="btn btn-primary mt-auto align-self-end">Go
-                                                To</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 d-flex align-items-stretch">
-                                    <div class="card">
-                                        <div class="card-body d-flex flex-column" style="background-color: #A4C5E9;">
-                                            <b class="card-title">Notification</b>
-                                            <p class="card-text mb-4">Notify Member given by admin or as comaker.</p>
-                                            <a href="notification.php" class="btn btn-primary mt-auto align-self-end">Go
-                                                To</a>
+                            <h1>Welcome <b><?php
+                                            echo $name;
+                                            ?></b> !!!
+
+                            </h1>
+
+                            <div class="row my-4">
+                                <div id="account-area">
+                                    <div class="">
+                                        <div class="row">
+                                            <div class="col-auto mb-3">
+                                                <div class="savings status">
+                                                    <h5>Savings</h5>
+                                                    <h2>$ <span id="current-savings">5,000,000</span>
+                                                    </h2>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-auto mb-3">
+                                                <div class="shareC status">
+                                                    <h5>Share Capital</h5>
+                                                    <h2>$ <span id="current-shareC">5,000,000</span>
+                                                    </h2>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-auto mb-3">
+                                                <div class="balance status">
+                                                    <h5>Balance</h5>
+                                                    <h2 style="color:red">$ <span id="current-balance"
+                                                            style="color:red">5,000,000</span>
+                                                    </h2>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -176,3 +161,29 @@ $my_info = mysqli_fetch_assoc($query_info);
 </body>
 
 </html>
+
+
+<style>
+.savings {
+    background-color: lightseagreen;
+}
+
+.shareC {
+    background-color: green;
+}
+
+.balance {
+    background-color: black;
+}
+
+.status {
+    margin: 0 10px;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* #account-area {
+        margin-top: 5%;
+    } */
+</style>
