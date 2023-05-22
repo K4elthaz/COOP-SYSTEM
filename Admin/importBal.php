@@ -1,96 +1,68 @@
 <?php
-// Database configuration
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "coop_database";
+// Load the database configuration file
+include_once "../connections.php";
 
-// Create a database connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+if (isset($_POST['importBalSubmit'])) {
 
-// Check the connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    // Allowed mime types
+    $csvMimes = array('text/csv', 'application/csv:charset=UTF-8', 'text/plain');
 
-// Function to insert a single record into the database
-function insertRecord(
-    $id_no,
-    $name,
-    $regular_loan,
-    $emergency_loan,
-    $petty_cash,
-    $stl,
-    $stlb,
-    $stl_calamity,
-    $special_project,
-    $savings_deposits,
-    $share_capital,
-    $special_promo,
-    $stl_healthCard
-) {
-    global $conn;
+    // Validate whether selected file is a CSV file
+    if (!empty($_FILES['file']['name']) && in_array($_FILES['file']['type'], $csvMimes)) {
 
-    // Insert the data into the database
-    $sql = "INSERT INTO clients_balance (id_no, name, regular_loan, emergency_loan, petty_cash, stl, stlb, stl_calamity, special_project
-    ,savings_deposits, share_capital, special_promo, stl_healthCard) VALUES ('$id_no','$name', '$regular_loan','$emergency_loan','$petty_cash',
-    '$stl','$stlb','$stl_calamity','$special_project','$savings_deposits','$share_capital','$special_promo','$stl_healthCard',)";
-    $conn->query($sql);
-}
+        // If the file is uploaded
+        if (is_uploaded_file($_FILES['file']['tmp_name'])) {
 
-// Function to process the uploaded CSV file
-function processCSV($file)
-{
-    while (($data = fgetcsv($file, 1000, ",")) !== false) {
-        $id_no = $data[0]; // Assuming name is in the first column (index 0)
-        $name = $data[1]; // Assuming account number is in the second column (index 1)
-        $regular_loan = $data[2];
-        $emergency_loan = $data[3];
-        $petty_cash = $data[4];
-        $stl = $data[5];
-        $stlb = $data[6];
-        $stl_calamity = $data[7];
-        $special_project = $data[8];
-        $savings_deposits = $data[9];
-        $share_capital = $data[10];
-        $special_promo = $data[11];
-        $stl_healthCard = $data[12];
-        // Insert the data into the database
-        insertRecord(
-            $id_no,
-            $name,
-            $regular_loan,
-            $emergency_loan,
-            $petty_cash,
-            $stl,
-            $stlb,
-            $stl_calamity,
-            $special_project,
-            $savings_deposits,
-            $share_capital,
-            $special_promo,
-            $stl_healthCard
-        );
-    }
-}
+            // Open uploaded CSV file with read-only mode
+            $csvFile = fopen($_FILES['file']['tmp_name'], 'r');
 
-// Check if a file was uploaded
-if (isset($_FILES['file'])) {
-    $file = $_FILES['file']['tmp_name'];
+            // Skip the first line
+            fgetcsv($csvFile);
 
-    // Check if the uploaded file is a CSV
-    if ($_FILES['file']['type'] == 'text/csv') {
-        // Process the CSV file
-        $handle = fopen($file, "r");
-        processCSV($handle);
-        fclose($handle);
+            // Parse data from CSV file line by line
+            while (($line = fgetcsv($csvFile)) !== FALSE) {
+                // Get row data
+                $id_no = $data[0]; // Assuming name is in the first column (index 0)
+                $name = $data[1]; // Assuming account number is in the second column (index 1)
+                $regular_loan = $data[2];
+                $emergency_loan = $data[3];
+                $petty_cash = $data[4];
+                $stl = $data[5];
+                $stlB = $data[6];
+                $stl_calamity = $data[7];
+                $special_project = $data[8];
+                $savings_deposits = $data[9];
+                $share_capital = $data[10];
+                $special_promo = $data[11];
+                $stl_healthCard = $data[12];
 
-        echo "CSV file imported successfully.";
+                // Check whether member already exists in the database with the same email
+                $prevQuery = "SELECT id_no FROM clients_balance WHERE id_no= '" . $line[0] . "' LIMIT 1";
+                $prevResult = $connections->query($prevQuery);
+
+                if ($prevResult->num_rows > 1) {
+                    // Update member data in the database
+                    $connections->query("UPDATE clients_balance SET id = '" . $id . "',  id_no = '" . $id_no . "',  name = '" . $name . "', regular_loan = '" . $regular_loan . "',  emergency_loan = '" . $emergency_loan . "',  petty_cash = '" . $petty_cash . "', stl = '" . $stl . "', stlB = '" . $stlB . "',  stl_calamity = '" . $stl_calamity . "', special_project = '" . $special_project . "', savings_deposits = '" . $savings_deposits . "', share_capital = '" . $share_capital . "',  special_promo = '" . $special_promo . "',  stl_healthCard = '" . $stl_healthCard. "'");
+                } else {
+                    // Insert member data in the database
+                    $query = mysqli_query($connections, "INSERT INTO clients_balance (id, id_no, name, regular_loan, emergency_loan, petty_cash, stl, stlB, stl_calamity, savings_deposits, share_capital, special_promo, stl_healthCard)
+                    VALUES ('" . $id . "', '" . $id_no . "', '" . $name . "', '" . $regular_loan . "', '" . $emergency_loan . "', '" . $petty_cash . "', '" . $stl . "', '" . $stlB . "', '" . $stl_calamity . "', '" . $savings_deposits . "', '" . $share_capital . "', '" . $special_promo . "', '" . $stl_healthCard . "')");
+                    echo "<script language='javascript'>alert('New record has been inserted!')</script>";
+                    echo "<script> window.location.href='members.php';</script>";
+                }
+            }
+
+            // Close opened CSV file
+            fclose($csvFile);
+
+            $qstring = '?status=succ';
+        } else {
+            $qstring = '?status=err';
+        }
     } else {
-        echo "Please upload a CSV file.";
+        $qstring = '?status=invalid_file';
     }
 }
 
-// Close the database connection
-$conn->close();
-?>
+// Redirect to the listing page
+header("Location: members.php" . $qstring);

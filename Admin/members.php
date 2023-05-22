@@ -267,7 +267,7 @@ include('backend.php');
                                 <form action="importBal.php" method="post" enctype="multipart/form-data">
                                     <input type="file" name="file" id="file" accept=".csv">
                                     <div class="modal-footer">
-                                        <input type="submit" class="btn btn-warning" name="submit" value="Import">
+                                        <input type="submit" class="btn btn-warning" name="importBalSubmit" value="Import">
                                     </div>
                                 </form>
                             </div>
