@@ -1,3 +1,30 @@
+<?php
+// session_start();
+
+
+if (isset($_SESSION["email"])) {
+    $email = $_SESSION["email"];
+} else {
+    // echo "<script>window.location.href='';</script>";
+}
+include("../connections.php");
+
+
+$query_info = mysqli_query($connections, "SELECT * FROM login WHERE account_type='1' ");
+while ($row_users = mysqli_fetch_assoc($query_info)) {
+    $id_user = $row_users['id'];
+    $account_type = $row_users['account_type'];
+    $email = $row_users['email'];
+}
+
+
+$my_info = mysqli_fetch_assoc($query_info);
+?>
+
+
+
+
+
 <!-- // ! FIXED ADMIN CONTROL PANEL -->
 <!DOCTYPE html>
 <html>
@@ -16,7 +43,7 @@
 
 <body>
     <!-- change it add new sidebar admin side!!!!!! -->
-    <?php include('../Client/sidebar.php'); ?>
+    <?php include('sidebar.php'); ?>
     <div class="container-xl px-4 mt-4">
         <!-- Account page navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -46,7 +73,9 @@
                     <div class="card-header"><b>Admin Information</b></div>
                     <div class="card-body text-center">
                         <img class="img-account-profile rounded-circle mb-2" src="../Client/IDPicture.jpg" alt="">
-                        <h2 class="fw-bold">Name</h2>
+                        <h2 class="fw-bold">
+                            <?php echo $email ?>
+                        </h2>
                         <p> President </p>
                     </div>
                 </div>
@@ -62,7 +91,10 @@
                     <div class="row px-4">
                         <div class="card-body">
                             <!-- table -->
-                            <h1>Welcome User!</h1>
+                            <h1>Welcome<b>
+                                    <?php echo $email ?>!
+                                </b>
+                            </h1>
                             <div class="row">
                                 <div class="col-sm-4 d-flex align-items-stretch">
                                     <div class="card">

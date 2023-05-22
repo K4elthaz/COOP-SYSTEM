@@ -225,7 +225,33 @@ include('backend.php');
                 </div>
                 <!-- Button trigger Import modal -->
                 <button type="button" class="btn btn-warning mx-1" data-bs-toggle="modal" data-bs-target="#importModal">
-                    <i class="fa-solid fa-file-import"></i> Import
+                    <i class="fa-solid fa-file-import"></i> Import Member Details
+                </button>
+                <!-- Import Modal -->
+                <div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="importData.php" method="post" enctype="multipart/form-data">
+                                    <input type="file" name="file" />
+                                    <div class="modal-footer">
+                                        <input type="submit" class="btn btn-warning" name="importSubmit"
+                                            value="CONFIRM">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Button trigger Import modal -->
+                <button type="button" class="btn btn-warning mx-1" data-bs-toggle="modal" data-bs-target="#importModal">
+                    <i class="fa-solid fa-file-import"></i> Import Member Balance
                 </button>
                 <!-- Import Modal -->
                 <div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -250,6 +276,11 @@ include('backend.php');
                     </div>
                 </div>
             </div>
+
+
+
+
+
             <form class="d-flex mt-1 mx-1 justify-content-start">
                 <input class="form-control-sm me-2" type="text" placeholder="Search" name="search" required>
                 <button class="btn btn-outline-info" type="submit">Search</button>
@@ -308,13 +339,13 @@ include('backend.php');
 
                             while ($row = mysqli_fetch_array($result)) {
 
-                            ?>
+                                ?>
                             <tr>
                                 <?php
                                     // Check if the edit form was submitted EDIT FORM
                                     if (isset($_POST['edit'])) {
                                         // Get the updated values from the form
-
+                                
                                         $db_id = $_POST['id'];
                                         $idNumber = $_POST['idNumber'];
                                         $name = $_POST['name'];
@@ -346,19 +377,45 @@ include('backend.php');
                                     ?>
 
                                 <!-- Display Members Table -->
-                                <td><?php echo $row['db_id'] ?></td>
-                                <td><?php echo $row['idNumber'] ?></td>
-                                <td><?php echo $row['name'] ?></td>
-                                <td><?php echo $row['classification'] ?></td>
-                                <td><?php echo $row['birthday'] ?></td>
-                                <td><?php echo $row['age'] ?></td>
-                                <td><?php echo $row['tin'] ?></td>
-                                <td><?php echo $row['civilStatus'] ?></td>
-                                <td><?php echo $row['gender'] ?></td>
-                                <td><?php echo $row['contactNo'] ?></td>
-                                <td><?php echo $row['address'] ?></td>
-                                <td><?php echo $row['email'] ?></td>
-                                <td><?php echo $row['accStatus'] ?></td>
+                                <td>
+                                    <?php echo $row['db_id'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['idNumber'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['name'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['classification'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['birthday'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['age'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['tin'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['civilStatus'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['gender'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['contactNo'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['address'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['email'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['accStatus'] ?>
+                                </td>
 
                                 <td>
                                     <!-- Button to trigger Edit Modal -->

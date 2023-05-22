@@ -192,41 +192,41 @@
         =======
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
+            </script>
         >>>>>>> 29a5725832ce59efa290ffa34a77665d4c383a59
 </body>
 
 </html>
 
 <script type="text/javascript">
-// const btn = document.getElementById('formSelector');
+    // const btn = document.getElementById('formSelector');
 
-// btn.addEventListener('click', () => {
+    // btn.addEventListener('click', () => {
 
-//     const pass = document.getElementById('form-pass');
-//     const edit = document.getElementById('form-edit');
+    //     const pass = document.getElementById('form-pass');
+    //     const edit = document.getElementById('form-edit');
 
-//     if (pass.style.display === 'none' && edit.style.display != 'none') {
-//         // 👇️ this SHOWS the form
-//         pass.style.display = 'block';
-//         edit.style.display = 'none';
-//     } else if (pass.style.display === 'none'){
-//         // 👇️ this HIDES the form
-//         pass.style.display = 'block';
-//     } else {
-//         edit.style.display = 'none';
-//     }
-// });
+    //     if (pass.style.display === 'none' && edit.style.display != 'none') {
+    //         // 👇️ this SHOWS the form
+    //         pass.style.display = 'block';
+    //         edit.style.display = 'none';
+    //     } else if (pass.style.display === 'none'){
+    //         // 👇️ this HIDES the form
+    //         pass.style.display = 'block';
+    //     } else {
+    //         edit.style.display = 'none';
+    //     }
+    // });
 
-$("#edit-btn").click(function() {
-    var id = $(this).attr('id');
-    $('#pages form#pass-btn').css('display', 'none');
-    $('#pages div#' + id + '').css('display', 'block');
-});
+    $("#edit-btn").click(function () {
+        var id = $(this).attr('id');
+        $('#pages form#pass-btn').css('display', 'none');
+        $('#pages div#' + id + '').css('display', 'block');
+    });
 
-$("#pass-btn").click(function() {
-    var id = $(this).attr('id');
-    $('#pages div#edit-btn').css('display', 'none');
-    $('#pages form#' + id + '').css('display', 'block');
-});
+    $("#pass-btn").click(function () {
+        var id = $(this).attr('id');
+        $('#pages div#edit-btn').css('display', 'none');
+        $('#pages form#' + id + '').css('display', 'block');
+    });
 </script>
