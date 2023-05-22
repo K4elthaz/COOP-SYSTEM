@@ -42,10 +42,10 @@ if (isset($_POST['importBalSubmit'])) {
 
                 if ($prevResult->num_rows > 1) {
                     // Update member data in the database
-                    $connections->query("UPDATE clients_balance SET id = '" . $id . "',  id_no = '" . $id_no . "',  name = '" . $name . "', regular_loan = '" . $regular_loan . "',  emergency_loan = '" . $emergency_loan . "',  petty_cash = '" . $petty_cash . "', stl = '" . $stl . "', stlB = '" . $stlB . "',  stl_calamity = '" . $stl_calamity . "', special_project = '" . $special_project . "', savings_deposits = '" . $savings_deposits . "', share_capital = '" . $share_capital . "',  special_promo = '" . $special_promo . "',  stl_healthCard = '" . $stl_healthCard. "'");
+                    $connections->query("UPDATE clients_balance SET id = '" . $id . "',  id_no = '" . $id_no . "',  name = '" . $name . "', regular_loan = '" . $regular_loan . "',  emergency_loan = '" . $emergency_loan . "',  petty_cash = '" . $petty_cash . "', stl = '" . $stl . "', stlb = '" . $stlB . "',  stl_calamity = '" . $stl_calamity . "', special_project = '" . $special_project . "', savings_deposits = '" . $savings_deposits . "', share_capital = '" . $share_capital . "',  special_promo = '" . $special_promo . "',  stl_healthCard = '" . $stl_healthCard . "'");
                 } else {
                     // Insert member data in the database
-                    $query = mysqli_query($connections, "INSERT INTO clients_balance (id_no, name, regular_loan, emergency_loan, petty_cash, stl, stlB, stl_calamity, savings_deposits, share_capital, special_promo, stl_healthCard)
+                    $query = mysqli_query($connections, "INSERT INTO clients_balance (id_no, name, regular_loan, emergency_loan, petty_cash, stl, stlb, stl_calamity, savings_deposits, share_capital, special_promo, stl_healthCard)
                     VALUES ('" . $id_no . "', '" . $name . "', '" . $regular_loan . "', '" . $emergency_loan . "', '" . $petty_cash . "', '" . $stl . "', '" . $stlB . "', '" . $stl_calamity . "', '" . $savings_deposits . "', '" . $share_capital . "', '" . $special_promo . "', '" . $stl_healthCard . "')");
                     echo "<script language='javascript'>alert('New record has been inserted!')</script>";
                     echo "<script> window.location.href='members.php';</script>";

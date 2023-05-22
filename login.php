@@ -1,5 +1,7 @@
 <?php
+session_start();
 include("connections.php");
+
 
 
 if (isset($_SESSION["email"])) {
@@ -7,20 +9,19 @@ if (isset($_SESSION["email"])) {
 
     $query_account_type = mysqli_query($connections, "SELECT * FROM login WHERE email='$email'");
 
-    $get_acount_tpye = mysqli_fetch_assoc($query_account_type);
+    $get_account_type = mysqli_fetch_assoc($query_account_type);
 
-    $account_type = $get_acount_tpye["account_type"];
+    $account_type = $get_account_type["account_type"];
 
     if ($account_type == 1) {
-        echo "<script>window.location.href='Admin';</script>";
+        echo "<script>window.location.href='Admin/controlPanel.php';</script>";
     } else {
-        echo "<script>window.location.href='User';</script>";
+        echo "<script>window.location.href='Client/home.php';</script>";
     }
 }
 
 $email = $password = "";
 $emailErr = $passwordErr = "";
-
 
 if (isset($_POST["btnLogin"])) {
 
@@ -35,7 +36,7 @@ if (isset($_POST["btnLogin"])) {
     } else {
         $password = $_POST["password"];
     }
-    //Reminder check new SQL file this is a sample 2nd table "members"
+
     if ($email and $password) {
         $check_email = mysqli_query($connections, "SELECT email, password, account_type FROM login WHERE email='$email'
         UNION SELECT email, password, account_type FROM clients WHERE email='$email'");
@@ -52,9 +53,7 @@ if (isset($_POST["btnLogin"])) {
             if ($account_type == "1") {
 
                 if ($db_password == $password) {
-
                     $_SESSION["email"] = $email;
-
                     echo "<script>window.location.href='Admin/controlPanel.php';</script>";
                 } else {
                     $passwordErr = "Hi Admin, Your Password is Incorrect!!";
@@ -63,20 +62,21 @@ if (isset($_POST["btnLogin"])) {
                 if ($db_password == $password) {
 
                     $_SESSION["email"] = $email;
-                    // header("Location:home.php");
-                    mysqli_query($connections, "UPDATE login WHERE email='$email'");
+                    mysqli_query($connections, "UPDATE login SET last_login=NOW() WHERE email='$email'");
                     echo "<script>window.location.href='Client/home.php';</script>";
                 } else {
-                    mysqli_query($connections, "UPDATE login WHERE email='$email'");
-                    $passwordErr = "Password is incorrect! ";
+                    mysqli_query($connections, "UPDATE login SET last_login=NOW() WHERE email='$email'");
+                    $passwordErr = "Password is incorrect!";
                 }
             }
         } else {
             $emailErr = "Email is not Registered!";
         }
     }
+} else {
 }
 ?>
+
 
 
 <style>

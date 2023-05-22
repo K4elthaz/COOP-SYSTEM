@@ -1,42 +1,107 @@
 <?php
-// session_start();
 
-
+session_start();
+include("../connections.php");
 if (isset($_SESSION["email"])) {
     $email = $_SESSION["email"];
+
+    $querylog = mysqli_query($connections, "SELECT c.classification,c.account_type, c.idNumber, c.name, c.classification, c.birthday, cb.id_no, cb.savings_deposits, 
+    cb.regular_loan, cb.share_capital, cb.emergency_loan, cb.petty_cash, cb.stl, cb.stlb, cb.stl_calamity, cb.special_project, cb.special_promo, cb.stl_healthCard
+        FROM clients c
+        JOIN clients_balance cb ON c.idNumber = cb.id_no
+        WHERE c.email = '$email'");
+
+    $my_info = mysqli_fetch_assoc($querylog);
+    $classification = $my_info["classification"];
+    $account_type = $my_info["account_type"];
+    $idNumber = $my_info["idNumber"];
+    $balId = $my_info["id_no"];
+    $name = $my_info["name"];
+    $classification = $my_info["classification"];
+    $birthday = $my_info["birthday"];
+    $savings = $my_info["savings_deposits"];
+    $share_capital = $my_info["share_capital"];
+    $regualr_loan = $my_info["regular_loan"];
+    $emergency_loan = $my_info["emergency_loan"];
+    $petty_cash = $my_info["petty_cash"];
+    $stl = $my_info["stl"];
+    $stlb = $my_info["stlb"];
+    $stl_calamity = $my_info["stl_calamity"];
+    $special_project = $my_info["special_project"];
+    $special_promo = $my_info["special_promo"];
+    $stl_healthCard = $my_info["stl_healthCard"];
 } else {
     // echo "<script>window.location.href='';</script>";
 }
-include("../connections.php");
 
 
-$query_info = mysqli_query($connections, "SELECT * FROM clients WHERE account_type='2' ");
-while ($row_users = mysqli_fetch_assoc($query_info)) {
-    $id_user = $row_users['db_id'];
-    $idNumber = $row_users['idNumber'];
-    $name = $row_users['name'];
-    $classification = $row_users['classification'];
-    $birthday = $row_users['birthday'];
-    $age = $row_users['age'];
-    $tin = $row_users['tin'];
-    $civilStatus = $row_users['civilStatus'];
-    $gender = $row_users['gender'];
-    $contactNumber = $row_users['contactNo'];
-    $address = $row_users['address'];
-    $email = $row_users['email'];
-    $accStatus = $row_users['accStatus'];
-}
+
+// session_start();
+// include("../connections.php");
+// if (isset($_SESSION["email"])) {
+//     $email = $_SESSION["email"];
+
+//     $querylog = mysqli_query($connections, "SELECT * FROM clients WHERE email='$email' ");
+//     $my_info = mysqli_fetch_assoc($querylog);
+//     $account_type = $my_info["account_type"];
+// } else {
+//     // echo "<script>window.location.href='';</script>";
+// }
 
 
-$my_info = mysqli_fetch_assoc($query_info);
+
+
+// $query_info = mysqli_query($connections, "SELECT c.*, cb.*
+//     FROM clients c
+//     JOIN clients_balance cb ON c.idNumber = cb.id_no
+//     WHERE c.account_type='2'");
+
+// while ($row_users = mysqli_fetch_assoc($query_info)) {
+//     $id_user = $row_users['db_id'];
+//     $idNumber = $row_users['idNumber'];
+//     $name = $row_users['name'];
+//     $classification = $row_users['classification'];
+//     $birthday = $row_users['birthday'];
+//     $age = $row_users['age'];
+//     $tin = $row_users['tin'];
+//     $civilStatus = $row_users['civilStatus'];
+//     $gender = $row_users['gender'];
+//     $contactNumber = $row_users['contactNo'];
+//     $address = $row_users['address'];
+//     $email = $row_users['email'];
+//     $accStatus = $row_users['accStatus'];
+
+//     $id_bal = $row_users['id'];
+//     $id_no = $row_users['id_no'];
+
+//     $regualr_loan = $row_users['regular_loan'];
+//     $emergency_loan = $row_users['emergency_loan'];
+//     $petty_cash = $row_users['petty_cash'];
+//     $stl = $row_users['stl'];
+//     $stlb = $row_users['stlb'];
+//     $stl_calamity = $row_users['stl_calamity'];
+//     $special_project = $row_users['special_project'];
+//     $savings_deposits = $row_users['savings_deposits'];
+//     $share_capital = $row_users['share_capital'];
+//     $special_promo = $row_users['special_promo'];
+//     $stl_healthCard = $row_users['stl_healthCard'];
+
+// Process the record or perform any desired operations
+
+// Example: Access data from clients_balance table
+// $balance = $row_users['balance']; // Assuming there is a 'balance' column in the clients_balance table
+
+// // Output the user information and balance
+// echo "User ID: $id_user<br>";
+// echo "ID Number: $idNumber<br>";
+// echo "Name: $name<br>";
+// // Output the rest of the fields as needed
+// echo "Balance: $balance<br>";
+// }
+
+// $my_info = mysqli_fetch_assoc($query_info);
+
 ?>
-
-
-
-
-
-
-
 <!-- // ! FIXED ADMIN CONTROL PANEL -->
 <!DOCTYPE html>
 <html>
@@ -47,8 +112,7 @@ $my_info = mysqli_fetch_assoc($query_info);
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
 
 
@@ -68,9 +132,7 @@ $my_info = mysqli_fetch_assoc($query_info);
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid ">
                 <a class="navbar-brand" href="home.php">Coop</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -79,7 +141,7 @@ $my_info = mysqli_fetch_assoc($query_info);
                             <a class="nav-link active" aria-current="page" href="home.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../login.php">Logout</a>
+                            <a class="nav-link active" aria-current="page" href="../logout.php">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -92,10 +154,8 @@ $my_info = mysqli_fetch_assoc($query_info);
                     <div class="card-header"><b>Client Information</b></div>
                     <div class="card-body text-center">
                         <img class="img-account-profile rounded-circle mb-2" src="../Client/IDPicture.jpg" alt="">
-                        <h2 class="fw-bold">
-                            <?php echo $name ?>
-                        </h2>
-                        <p> Department </p>
+                        <h2 class="fw-bold"><?php echo $name ?></h2>
+                        <p> <?php echo $classification ?> </p>
                     </div>
                 </div>
             </div>
@@ -110,11 +170,9 @@ $my_info = mysqli_fetch_assoc($query_info);
                     <div class="row px-4">
                         <div class="card-body">
                             <!-- table -->
-                            <h1>Welcome <b>
-                                    <?php
-                                    echo $name;
-                                    ?>
-                                </b> !!!
+                            <h1>Welcome <b><?php
+                                            echo $name;
+                                            ?></b>
 
                             </h1>
 
@@ -125,7 +183,8 @@ $my_info = mysqli_fetch_assoc($query_info);
                                             <div class="col-auto mb-3">
                                                 <div class="savings status">
                                                     <h5>Savings</h5>
-                                                    <h2>$ <span id="current-savings">5,000,000</span>
+                                                    <h2>₱ <span id="current-savings">
+                                                            <?php echo $savings; ?> </span>
                                                     </h2>
                                                 </div>
                                             </div>
@@ -133,7 +192,8 @@ $my_info = mysqli_fetch_assoc($query_info);
                                             <div class="col-auto mb-3">
                                                 <div class="shareC status">
                                                     <h5>Share Capital</h5>
-                                                    <h2>$ <span id="current-shareC">5,000,000</span>
+                                                    <h2>₱ <span id="current-shareC"></span>
+                                                        <?php echo $share_capital ?>
                                                     </h2>
                                                 </div>
                                             </div>
@@ -141,8 +201,7 @@ $my_info = mysqli_fetch_assoc($query_info);
                                             <div class="col-auto mb-3">
                                                 <div class="balance status">
                                                     <h5>Balance</h5>
-                                                    <h2 style="color:red">$ <span id="current-balance"
-                                                            style="color:red">5,000,000</span>
+                                                    <h2 style="color:red">₱ <span id="current-balance" style="color:red">5,000,000</span>
                                                     </h2>
                                                 </div>
                                             </div>
@@ -155,10 +214,8 @@ $my_info = mysqli_fetch_assoc($query_info);
                 </div>
             </div>
             <!-- </div> -->
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-                crossorigin="anonymous">
-                </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+            </script>
             <script src="web/js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
             <script src="web/js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
             <script src="web/js/scripts.js"></script> <!-- Custom scripts -->

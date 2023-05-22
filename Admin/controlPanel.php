@@ -1,24 +1,27 @@
 <?php
-// session_start();
+session_start();
 
-
+include("../connections.php");
 if (isset($_SESSION["email"])) {
     $email = $_SESSION["email"];
+    $query_info = mysqli_query($connections, "SELECT * FROM login WHERE email='$email' ");
+    $fetch = mysqli_fetch_assoc($query_info);
+    $account_type = $fetch["account_type"];
 } else {
     // echo "<script>window.location.href='';</script>";
 }
-include("../connections.php");
 
 
-$query_info = mysqli_query($connections, "SELECT * FROM login WHERE account_type='1' ");
-while ($row_users = mysqli_fetch_assoc($query_info)) {
-    $id_user = $row_users['id'];
-    $account_type = $row_users['account_type'];
-    $email = $row_users['email'];
-}
+
+// $query_info = mysqli_query($connections, "SELECT * FROM login WHERE account_type='1' ");
+// while ($row_users = mysqli_fetch_assoc($query_info)) {
+//     $id_user = $row_users['id'];
+//     $account_type = $row_users['account_type'];
+//     $email = $row_users['email'];
+// }
 
 
-$my_info = mysqli_fetch_assoc($query_info);
+// $my_info = mysqli_fetch_assoc($query_info);
 ?>
 
 
@@ -60,7 +63,7 @@ $my_info = mysqli_fetch_assoc($query_info);
                             <a class="nav-link active" aria-current="page" href="controlPanel.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../login.php">Logout</a>
+                            <a class="nav-link active" aria-current="page" href="../logout.php">Logout</a>
                         </li>
                     </ul>
                 </div>
