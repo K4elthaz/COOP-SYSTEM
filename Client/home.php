@@ -12,7 +12,7 @@ include("../connections.php");
 
 $query_info = mysqli_query($connections, "SELECT * FROM clients WHERE account_type='2' ");
 while ($row_users = mysqli_fetch_assoc($query_info)) {
-    $id_user = $row_users['id'];
+    $id_user = $row_users['db_id'];
     $idNumber = $row_users['idNumber'];
     $name = $row_users['name'];
     $classification = $row_users['classification'];
@@ -92,7 +92,9 @@ $my_info = mysqli_fetch_assoc($query_info);
                     <div class="card-header"><b>Client Information</b></div>
                     <div class="card-body text-center">
                         <img class="img-account-profile rounded-circle mb-2" src="../Client/IDPicture.jpg" alt="">
-                        <h2 class="fw-bold"><?php echo $name ?></h2>
+                        <h2 class="fw-bold">
+                            <?php echo $name ?>
+                        </h2>
                         <p> Department </p>
                     </div>
                 </div>
@@ -108,9 +110,11 @@ $my_info = mysqli_fetch_assoc($query_info);
                     <div class="row px-4">
                         <div class="card-body">
                             <!-- table -->
-                            <h1>Welcome <b><?php
-                                            echo $name;
-                                            ?></b> !!!
+                            <h1>Welcome <b>
+                                    <?php
+                                    echo $name;
+                                    ?>
+                                </b> !!!
 
                             </h1>
 
@@ -154,7 +158,7 @@ $my_info = mysqli_fetch_assoc($query_info);
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
                 crossorigin="anonymous">
-            </script>
+                </script>
             <script src="web/js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
             <script src="web/js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
             <script src="web/js/scripts.js"></script> <!-- Custom scripts -->
@@ -164,26 +168,26 @@ $my_info = mysqli_fetch_assoc($query_info);
 
 
 <style>
-.savings {
-    background-color: lightseagreen;
-}
+    .savings {
+        background-color: lightseagreen;
+    }
 
-.shareC {
-    background-color: green;
-}
+    .shareC {
+        background-color: green;
+    }
 
-.balance {
-    background-color: black;
-}
+    .balance {
+        background-color: black;
+    }
 
-.status {
-    margin: 0 10px;
-    color: white;
-    padding: 15px;
-    border-radius: 10px;
-}
+    .status {
+        margin: 0 10px;
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+    }
 
-/* #account-area {
+    /* #account-area {
         margin-top: 5%;
     } */
 </style>
