@@ -37,7 +37,7 @@ if (isset($_POST['importBalSubmit'])) {
                 $stl_healthCard = $data[12];
 
                 // Check whether member already exists in the database with the same email
-                $prevQuery = "SELECT id_no FROM clients_balance WHERE id_no= '" . $line[0] . "' LIMIT 1";
+                $prevQuery = "SELECT id_no FROM clients_balance WHERE id_no= '" . $data[0] . "' LIMIT 1";
                 $prevResult = $connections->query($prevQuery);
 
                 if ($prevResult->num_rows > 1) {
@@ -45,8 +45,8 @@ if (isset($_POST['importBalSubmit'])) {
                     $connections->query("UPDATE clients_balance SET id = '" . $id . "',  id_no = '" . $id_no . "',  name = '" . $name . "', regular_loan = '" . $regular_loan . "',  emergency_loan = '" . $emergency_loan . "',  petty_cash = '" . $petty_cash . "', stl = '" . $stl . "', stlB = '" . $stlB . "',  stl_calamity = '" . $stl_calamity . "', special_project = '" . $special_project . "', savings_deposits = '" . $savings_deposits . "', share_capital = '" . $share_capital . "',  special_promo = '" . $special_promo . "',  stl_healthCard = '" . $stl_healthCard. "'");
                 } else {
                     // Insert member data in the database
-                    $query = mysqli_query($connections, "INSERT INTO clients_balance (id, id_no, name, regular_loan, emergency_loan, petty_cash, stl, stlB, stl_calamity, savings_deposits, share_capital, special_promo, stl_healthCard)
-                    VALUES ('" . $id . "', '" . $id_no . "', '" . $name . "', '" . $regular_loan . "', '" . $emergency_loan . "', '" . $petty_cash . "', '" . $stl . "', '" . $stlB . "', '" . $stl_calamity . "', '" . $savings_deposits . "', '" . $share_capital . "', '" . $special_promo . "', '" . $stl_healthCard . "')");
+                    $query = mysqli_query($connections, "INSERT INTO clients_balance (id_no, name, regular_loan, emergency_loan, petty_cash, stl, stlB, stl_calamity, savings_deposits, share_capital, special_promo, stl_healthCard)
+                    VALUES ('" . $id_no . "', '" . $name . "', '" . $regular_loan . "', '" . $emergency_loan . "', '" . $petty_cash . "', '" . $stl . "', '" . $stlB . "', '" . $stl_calamity . "', '" . $savings_deposits . "', '" . $share_capital . "', '" . $special_promo . "', '" . $stl_healthCard . "')");
                     echo "<script language='javascript'>alert('New record has been inserted!')</script>";
                     echo "<script> window.location.href='members.php';</script>";
                 }
