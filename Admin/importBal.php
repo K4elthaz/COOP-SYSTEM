@@ -20,7 +20,7 @@ if (isset($_POST['importBalSubmit'])) {
             fgetcsv($csvFile);
 
             // Parse data from CSV file line by line
-            while (($line = fgetcsv($csvFile)) !== FALSE) {
+            while (($data = fgetcsv($csvFile)) !== FALSE) {
                 // Get row data
                 $id_no = $data[0]; // Assuming name is in the first column (index 0)
                 $name = $data[1]; // Assuming account number is in the second column (index 1)

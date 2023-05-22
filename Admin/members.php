@@ -250,11 +250,12 @@ include('backend.php');
                     </div>
                 </div>
                 <!-- Button trigger Import modal -->
-                <button type="button" class="btn btn-warning mx-1" data-bs-toggle="modal" data-bs-target="#importModal">
+                <button type="button" class="btn btn-warning mx-1" data-bs-toggle="modal"
+                    data-bs-target="#importModalBalance">
                     <i class="fa-solid fa-file-import"></i> Import Member Balance
                 </button>
                 <!-- Import Modal -->
-                <div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="importModalBalance" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -267,7 +268,8 @@ include('backend.php');
                                 <form action="importBal.php" method="post" enctype="multipart/form-data">
                                     <input type="file" name="file" id="file" accept=".csv">
                                     <div class="modal-footer">
-                                        <input type="submit" class="btn btn-warning" name="importBalSubmit" value="Import">
+                                        <input type="submit" class="btn btn-warning" name="importBalSubmit"
+                                            value="Import">
                                     </div>
                                 </form>
                             </div>
@@ -334,8 +336,8 @@ include('backend.php');
                             while ($row = mysqli_fetch_array($result)) {
 
                                 ?>
-                                <tr>
-                                    <?php
+                            <tr>
+                                <?php
                                     // Check if the edit form was submitted EDIT FORM
                                     if (isset($_POST['edit'])) {
                                         // Get the updated values from the form
@@ -370,189 +372,189 @@ include('backend.php');
 
                                     ?>
 
-                                    <!-- Display Members Table -->
-                                    <td>
-                                        <?php echo $row['db_id'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $row['idNumber'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $row['name'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $row['classification'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $row['birthday'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $row['age'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $row['tin'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $row['civilStatus'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $row['gender'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $row['contactNo'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $row['address'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $row['email'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $row['accStatus'] ?>
-                                    </td>
+                                <!-- Display Members Table -->
+                                <td>
+                                    <?php echo $row['db_id'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['idNumber'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['name'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['classification'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['birthday'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['age'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['tin'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['civilStatus'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['gender'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['contactNo'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['address'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['email'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['accStatus'] ?>
+                                </td>
 
-                                    <td>
-                                        <!-- Button to trigger Edit Modal -->
-                                        <a class="edit" title="Edit" data-toggle="tooltip" data-bs-toggle="modal"
-                                            data-bs-target="#editModal-<?php echo $row['db_id'] ?>"><i class=" fa-solid
+                                <td>
+                                    <!-- Button to trigger Edit Modal -->
+                                    <a class="edit" title="Edit" data-toggle="tooltip" data-bs-toggle="modal"
+                                        data-bs-target="#editModal-<?php echo $row['db_id'] ?>"><i class=" fa-solid
                                         fa-user-pen fa-md" style="color: #2564d0;"></i></a>
 
-                                        <!-- Edit Modal -->
-                                        <div class="modal fade" id="editModal-<?php echo $row['db_id'] ?>" tabindex="-1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <!-- Edit Modal -->
+                                    <div class="modal fade" id="editModal-<?php echo $row['db_id'] ?>" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-                                            <div class="modal-dialog modal-xl">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Edit Member</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
+                                        <div class="modal-dialog modal-xl">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Member</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
 
-                                                    <form method="POST">
-                                                        <div class="modal-body">
-                                                            <input type='hidden' name='id'
-                                                                value="<?php echo $row['db_id'] ?>" id='edit-id'>
+                                                <form method="POST">
+                                                    <div class="modal-body">
+                                                        <input type='hidden' name='id'
+                                                            value="<?php echo $row['db_id'] ?>" id='edit-id'>
 
-                                                            <div class="form-group d-grid gap-3">
-                                                                <div class="form-group">
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="ID Number" name="idNumber"
-                                                                        value="<?php echo $row['idNumber'] ?>" required>
-                                                                </div>
+                                                        <div class="form-group d-grid gap-3">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="ID Number" name="idNumber"
+                                                                    value="<?php echo $row['idNumber'] ?>" required>
+                                                            </div>
 
-                                                                <div class="form-group">
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Name" name="name"
-                                                                        value="<?php echo $row['name'] ?>" required>
-                                                                </div>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Name" name="name"
+                                                                    value="<?php echo $row['name'] ?>" required>
+                                                            </div>
 
-                                                                <div class="form-group">
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Classification" name="classification"
-                                                                        value="<?php echo $row['classification'] ?>"
-                                                                        required>
-                                                                </div>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Classification" name="classification"
+                                                                    value="<?php echo $row['classification'] ?>"
+                                                                    required>
+                                                            </div>
 
-                                                                <div class="form-group">
-                                                                    <input type="date" class="form-control"
-                                                                        placeholder="Birthday" name="birthday"
-                                                                        value="<?php echo $row['birthday'] ?>" required>
-                                                                </div>
+                                                            <div class="form-group">
+                                                                <input type="date" class="form-control"
+                                                                    placeholder="Birthday" name="birthday"
+                                                                    value="<?php echo $row['birthday'] ?>" required>
+                                                            </div>
 
-                                                                <div class="form-group">
-                                                                    <input type="number" class="form-control"
-                                                                        placeholder="Age" name="age"
-                                                                        value="<?php echo $row['age'] ?>" required>
-                                                                </div>
+                                                            <div class="form-group">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Age" name="age"
+                                                                    value="<?php echo $row['age'] ?>" required>
+                                                            </div>
 
-                                                                <div class="form-group">
-                                                                    <input type="number" class="form-control"
-                                                                        placeholder="Tax Identification Number" name="tin"
-                                                                        value="<?php echo $row['tin'] ?>" required>
-                                                                </div>
+                                                            <div class="form-group">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Tax Identification Number" name="tin"
+                                                                    value="<?php echo $row['tin'] ?>" required>
+                                                            </div>
 
-                                                                <div class="form-group">
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Civil Status" name="civilStatus"
-                                                                        value="<?php echo $row['civilStatus'] ?>" required>
-                                                                </div>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Civil Status" name="civilStatus"
+                                                                    value="<?php echo $row['civilStatus'] ?>" required>
+                                                            </div>
 
-                                                                <div class="form-group">
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Gender" name="gender"
-                                                                        value="<?php echo $row['gender'] ?>" required>
-                                                                </div>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Gender" name="gender"
+                                                                    value="<?php echo $row['gender'] ?>" required>
+                                                            </div>
 
-                                                                <div class="form-group">
-                                                                    <input type="number" class="form-control"
-                                                                        placeholder="Contact Number" name="contactNo"
-                                                                        value="<?php echo $row['contactNo'] ?>" required>
-                                                                </div>
+                                                            <div class="form-group">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Contact Number" name="contactNo"
+                                                                    value="<?php echo $row['contactNo'] ?>" required>
+                                                            </div>
 
-                                                                <div class="form-group">
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Address" name="address"
-                                                                        value="<?php echo $row['address'] ?>" required>
-                                                                </div>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Address" name="address"
+                                                                    value="<?php echo $row['address'] ?>" required>
+                                                            </div>
 
-                                                                <div class="form-group">
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Email" name="email"
-                                                                        value="<?php echo $row['email'] ?>" required>
-                                                                </div>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Email" name="email"
+                                                                    value="<?php echo $row['email'] ?>" required>
+                                                            </div>
 
-                                                                <div class="form-group">
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Account Status" name="accStatus"
-                                                                        value="<?php echo $row['accStatus'] ?>" required>
-                                                                </div>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Account Status" name="accStatus"
+                                                                    value="<?php echo $row['accStatus'] ?>" required>
                                                             </div>
                                                         </div>
-                                                        <div class="modal-footer">
-                                                            <input type="submit" class="btn btn-primary" name="edit"
-                                                                value="Update">
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <a class="delete" title="Delete" data-toggle="tooltip" data-bs-toggle="modal"
-                                            data-bs-target="#deleteModal-<?php echo $row['db_id'] ?>"><i class=" fa-solid
-                                        fa-user-xmark fa-md" style="color: #e81717;"></i></a>
-                                        </a>
-                                        <!-- Delete Modal -->
-                                        <div class='modal fade' id="deleteModal-<?php echo $row['db_id'] ?>" tabindex='-1'
-                                            role='dialog' aria-labelledby='deleteModalLabel' aria-hidden='true'>
-                                            <div class='modal-dialog' role='document'>
-                                                <div class='modal-content'>
-
-                                                    <div class='modal-header'>
-                                                        <h5 class='modal-title' id='deleteModalLabel'>
-                                                            Delete Member</h5>
-                                                        <button type='button' class='btn-close' data-bs-dismiss='modal'
-                                                            aria-label='Close'></button>
                                                     </div>
-
-                                                    <form method='POST'>
-                                                        <input type='hidden' name='id' id='delete-id'
-                                                            value="<?php echo $row['db_id'] ?>">
-                                                        <div class='modal-body'>
-                                                            Are you sure you want to delete this user?
-                                                        </div>
-                                                        <div class='modal-footer'>
-                                                            <button type='submit' class='btn btn-danger'
-                                                                name='delete_user'>Confirm</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
+                                                    <div class="modal-footer">
+                                                        <input type="submit" class="btn btn-primary" name="edit"
+                                                            value="Update">
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
-                                    </td>
-                                </tr>
-                                <?php
+                                    </div>
+
+
+                                    <a class="delete" title="Delete" data-toggle="tooltip" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal-<?php echo $row['db_id'] ?>"><i class=" fa-solid
+                                        fa-user-xmark fa-md" style="color: #e81717;"></i></a>
+                                    </a>
+                                    <!-- Delete Modal -->
+                                    <div class='modal fade' id="deleteModal-<?php echo $row['db_id'] ?>" tabindex='-1'
+                                        role='dialog' aria-labelledby='deleteModalLabel' aria-hidden='true'>
+                                        <div class='modal-dialog' role='document'>
+                                            <div class='modal-content'>
+
+                                                <div class='modal-header'>
+                                                    <h5 class='modal-title' id='deleteModalLabel'>
+                                                        Delete Member</h5>
+                                                    <button type='button' class='btn-close' data-bs-dismiss='modal'
+                                                        aria-label='Close'></button>
+                                                </div>
+
+                                                <form method='POST'>
+                                                    <input type='hidden' name='id' id='delete-id'
+                                                        value="<?php echo $row['db_id'] ?>">
+                                                    <div class='modal-body'>
+                                                        Are you sure you want to delete this user?
+                                                    </div>
+                                                    <div class='modal-footer'>
+                                                        <button type='submit' class='btn btn-danger'
+                                                            name='delete_user'>Confirm</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php
                             }
                             //display the link of the pages in URL  
                             for ($page = 1; $page <= $number_per_page; $page++) {
@@ -568,28 +570,28 @@ include('backend.php');
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
+    </script>
 </body>
 
 </html>
 
 <script>
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
+$(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+});
 
-    var sel1 = document.querySelector('#classification');
-    var sel2 = document.querySelector('#subClassification');
-    var options2 = sel2.querySelectorAll('option');
+var sel1 = document.querySelector('#classification');
+var sel2 = document.querySelector('#subClassification');
+var options2 = sel2.querySelectorAll('option');
 
-    function giveSelection(selValue) {
-        sel2.innerHTML = '';
-        for (var i = 0; i < options2.length; i++) {
-            if (options2[i].dataset.option === selValue) {
-                sel2.appendChild(options2[i]);
-            }
+function giveSelection(selValue) {
+    sel2.innerHTML = '';
+    for (var i = 0; i < options2.length; i++) {
+        if (options2[i].dataset.option === selValue) {
+            sel2.appendChild(options2[i]);
         }
     }
+}
 
-    giveSelection(sel1.value);
+giveSelection(sel1.value);
 </script>
