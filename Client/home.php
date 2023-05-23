@@ -30,6 +30,8 @@ if (isset($_SESSION["idNumber"])) {
     $special_project = $my_info["special_project"];
     $special_promo = $my_info["special_promo"];
     $stl_healthCard = $my_info["stl_healthCard"];
+
+    $totalLoan = $regualr_loan + $emergency_loan + $petty_cash + $stl + $stlb + $stl_calamity + $special_project + $special_promo + $stl_healthCard;
 } else {
     // echo "<script>window.location.href='';</script>";
 }
@@ -112,7 +114,8 @@ if (isset($_SESSION["idNumber"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
 
 
@@ -132,7 +135,9 @@ if (isset($_SESSION["idNumber"])) {
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid ">
                 <a class="navbar-brand" href="home.php">Coop</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -154,8 +159,18 @@ if (isset($_SESSION["idNumber"])) {
                     <div class="card-header"><b>Client Information</b></div>
                     <div class="card-body text-center">
                         <img class="img-account-profile rounded-circle mb-2" src="../Client/IDPicture.jpg" alt="">
-                        <h2 class="fw-bold"><?php echo $name ?></h2>
-                        <p> <?php echo $classification ?> </p>
+                        <h2 class="fw-bold">
+                            <?php echo $name ?>
+                        </h2>
+                        <p>
+                            <?php echo "<h5>$classification <br> $idNumber </h5>" ?>
+                            <br>
+
+
+
+
+
+                        </p>
                     </div>
                 </div>
             </div>
@@ -170,43 +185,43 @@ if (isset($_SESSION["idNumber"])) {
                     <div class="row px-4">
                         <div class="card-body">
                             <!-- table -->
-                            <h1>Welcome <b><?php
-                                            echo $name;
-                                            ?></b>
+                            <h1>Welcome <b>
+                                    <?php
+                                    echo $name;
+                                    ?>
+                                </b>
 
                             </h1>
-
-                            <div class="row my-4">
-                                <div id="account-area">
-                                    <div class="">
-                                        <div class="row">
-                                            <div class="col-auto mb-3">
-                                                <div class="savings status">
-                                                    <h5>Savings</h5>
-                                                    <h2>₱ <span id="current-savings">
-                                                            <?php echo $savings; ?> </span>
-                                                    </h2>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-auto mb-3">
-                                                <div class="shareC status">
-                                                    <h5>Share Capital</h5>
-                                                    <h2>₱ <span id="current-shareC"></span>
-                                                        <?php echo $share_capital ?>
-                                                    </h2>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-auto mb-3">
-                                                <div class="balance status">
-                                                    <h5>Balance</h5>
-                                                    <h2 style="color:red">₱ <span id="current-balance" style="color:red">5,000,000</span>
-                                                    </h2>
-                                                </div>
-                                            </div>
+                            <br>
+                            <div id="account-area">
+                                <div class="col-auto mb-3">
+                                    <div class="row">
+                                    </div>
+                                    <div class="col-auto mb-3">
+                                        <div class="savings status">
+                                            <h4>Savings</h4>
+                                            <h1>₱ <span id="current-savings">
+                                                    <?php echo $savings; ?>
+                                                </span>
+                                            </h1>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-auto mb-3">
+                                <div class="shareC status">
+                                    <h4>Share Capital</h4>
+                                    <h1>₱ <span id="current-shareC"></span>
+                                        <?php echo $share_capital ?>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="col-auto mb-3">
+                                <div class="balance status">
+                                    <h4>Total Loan Balance</h4>
+                                    <h1>₱ <span id="current-balance"></span>
+                                        <?php echo $totalLoan ?>
+                                    </h1>
                                 </div>
                             </div>
                         </div>
@@ -214,8 +229,10 @@ if (isset($_SESSION["idNumber"])) {
                 </div>
             </div>
             <!-- </div> -->
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-            </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                crossorigin="anonymous">
+                </script>
             <script src="web/js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
             <script src="web/js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
             <script src="web/js/scripts.js"></script> <!-- Custom scripts -->
@@ -226,15 +243,15 @@ if (isset($_SESSION["idNumber"])) {
 
 <style>
     .savings {
-        background-color: lightseagreen;
+        background-color: darkslategray;
     }
 
     .shareC {
-        background-color: green;
+        background-color: darkolivegreen;
     }
 
     .balance {
-        background-color: black;
+        background-color: darkgoldenrod;
     }
 
     .status {
