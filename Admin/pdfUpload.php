@@ -28,7 +28,7 @@
                             <a class="nav-link active" aria-current="page" href="controlPanel.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../login.php">Logout</a>
+                            <a class="nav-link active" aria-current="page" href="../logout.php">Logout</a>
                         </li>
                     </ul>
                 </div>
