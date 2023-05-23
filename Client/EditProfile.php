@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./client.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <title>Edit Account</title>
 </head>
 
@@ -125,7 +126,7 @@
 
                                     <div class="col-md-2 ">
                                         <label class="small mb-1" for="inputBirthday">Civil Status</label>
-                                        <select class="form-control " id="inputBirthday" name="birthday">
+                                        <select class="form-select " id="inputBirthday" name="birthday">
                                             <option value="Option">Civil Status</option>
                                             <option value="Male">Single</option>
                                             <option value="Female">Married</option>
@@ -138,7 +139,7 @@
                                     <!-- Form Group (gender)-->
                                     <div class="col-auto ">
                                         <label class="small mb-1" for="inputBirthday">Gender</label>
-                                        <select class="form-control " id="inputBirthday" name="birthday"
+                                        <select class="form-select " id="inputBirthday" name="birthday"
                                             placeholder="Gender">
                                             <option value="Option">Select Gender</option>
                                             <option value="Male">Male</option>
@@ -186,47 +187,46 @@
             </div>
         </div>
     </div>
-    <<<<<<< HEAD <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
-        =======
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-            </script>
-        >>>>>>> 29a5725832ce59efa290ffa34a77665d4c383a59
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
 
 <script type="text/javascript">
-    // const btn = document.getElementById('formSelector');
+// const btn = document.getElementById('formSelector');
 
-    // btn.addEventListener('click', () => {
+// btn.addEventListener('click', () => {
 
-    //     const pass = document.getElementById('form-pass');
-    //     const edit = document.getElementById('form-edit');
+//     const pass = document.getElementById('form-pass');
+//     const edit = document.getElementById('form-edit');
 
-    //     if (pass.style.display === 'none' && edit.style.display != 'none') {
-    //         // 👇️ this SHOWS the form
-    //         pass.style.display = 'block';
-    //         edit.style.display = 'none';
-    //     } else if (pass.style.display === 'none'){
-    //         // 👇️ this HIDES the form
-    //         pass.style.display = 'block';
-    //     } else {
-    //         edit.style.display = 'none';
-    //     }
-    // });
+//     if (pass.style.display === 'none' && edit.style.display != 'none') {
+//         // 👇️ this SHOWS the form
+//         pass.style.display = 'block';
+//         edit.style.display = 'none';
+//     } else if (pass.style.display === 'none'){
+//         // 👇️ this HIDES the form
+//         pass.style.display = 'block';
+//     } else {
+//         edit.style.display = 'none';
+//     }
+// });
 
-    $("#edit-btn").click(function () {
-        var id = $(this).attr('id');
-        $('#pages form#pass-btn').css('display', 'none');
-        $('#pages div#' + id + '').css('display', 'block');
-    });
+$("#edit-btn").click(function() {
+    var id = $(this).attr('id');
+    $('#pages form#pass-btn').css('display', 'none');
+    $('#pages div#' + id + '').css('display', 'block');
+});
 
-    $("#pass-btn").click(function () {
-        var id = $(this).attr('id');
-        $('#pages div#edit-btn').css('display', 'none');
-        $('#pages form#' + id + '').css('display', 'block');
-    });
+$("#pass-btn").click(function() {
+    var id = $(this).attr('id');
+    $('#pages div#edit-btn').css('display', 'none');
+    $('#pages form#' + id + '').css('display', 'block');
+});
 </script>
