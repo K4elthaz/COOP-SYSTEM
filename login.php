@@ -4,10 +4,10 @@ include("connections.php");
 
 
 
-if (isset($_SESSION["email"])) {
-    $email = $_SESSION["email"];
+if (isset($_SESSION["idNumber"])) {
+    $idNumber = $_SESSION["idNumber"];
 
-    $query_account_type = mysqli_query($connections, "SELECT * FROM login WHERE email='$email'");
+    $query_account_type = mysqli_query($connections, "SELECT * FROM clients WHERE idNumber='$idNumber'");
 
     $get_account_type = mysqli_fetch_assoc($query_account_type);
 
@@ -20,15 +20,15 @@ if (isset($_SESSION["email"])) {
     }
 }
 
-$email = $password = "";
-$emailErr = $passwordErr = "";
+$idNumber = $password = "";
+$idNumberErr = $passwordErr = "";
 
 if (isset($_POST["btnLogin"])) {
 
-    if (empty($_POST["email"])) {
-        $emailErr = "Email is Required!";
+    if (empty($_POST["idNumber"])) {
+        $idNumberErr = "idNumber is Required!";
     } else {
-        $email = $_POST["email"];
+        $idNumber = $_POST["idNumber"];
     }
 
     if (empty($_POST["password"])) {
@@ -37,14 +37,14 @@ if (isset($_POST["btnLogin"])) {
         $password = $_POST["password"];
     }
 
-    if ($email and $password) {
-        $check_email = mysqli_query($connections, "SELECT email, password, account_type FROM login WHERE email='$email'
-        UNION SELECT email, password, account_type FROM clients WHERE email='$email'");
+    if ($idNumber and $password) {
+        $check_idNumber = mysqli_query($connections, "SELECT idNumber, password, account_type FROM login WHERE idNumber='$idNumber'
+        UNION SELECT idNumber, password, account_type FROM clients WHERE idNumber='$idNumber'");
 
-        $check_row = mysqli_num_rows($check_email);
+        $check_row = mysqli_num_rows($check_idNumber);
 
         if ($check_row > 0) {
-            $fetch = mysqli_fetch_assoc($check_email);
+            $fetch = mysqli_fetch_assoc($check_idNumber);
 
             $db_password = $fetch["password"];
 
@@ -53,7 +53,7 @@ if (isset($_POST["btnLogin"])) {
             if ($account_type == "1") {
 
                 if ($db_password == $password) {
-                    $_SESSION["email"] = $email;
+                    $_SESSION["idNumber"] = $idNumber;
                     echo "<script>window.location.href='Admin/controlPanel.php';</script>";
                 } else {
                     $passwordErr = "Hi Admin, Your Password is Incorrect!!";
@@ -61,16 +61,16 @@ if (isset($_POST["btnLogin"])) {
             } else {
                 if ($db_password == $password) {
 
-                    $_SESSION["email"] = $email;
-                    mysqli_query($connections, "UPDATE login SET last_login=NOW() WHERE email='$email'");
+                    $_SESSION["idNumber"] = $idNumber;
+                    mysqli_query($connections, "UPDATE login SET last_login=NOW() WHERE idNumber='$idNumber'");
                     echo "<script>window.location.href='Client/home.php';</script>";
                 } else {
-                    mysqli_query($connections, "UPDATE login SET last_login=NOW() WHERE email='$email'");
+                    mysqli_query($connections, "UPDATE login SET last_login=NOW() WHERE idNumber='$idNumber'");
                     $passwordErr = "Password is incorrect!";
                 }
             }
         } else {
-            $emailErr = "Email is not Registered!";
+            $idNumberErr = "idNumber is not Registered!";
         }
     }
 } else {
@@ -258,8 +258,8 @@ if (isset($_POST["btnLogin"])) {
                 </div>
                 <form class="login100-form validate-form" method="POST">
                     <span class="login100-form-title"> <b> Login to your account <b> </span>
-                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email" placeholder="Username" value="<?php echo "$email"; ?>">
+                    <div class="wrap-input100 validate-input" data-validate="Valid idNumber is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="idNumber" placeholder="Username" value="<?php echo "$idNumber"; ?>">
 
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
@@ -279,7 +279,7 @@ if (isset($_POST["btnLogin"])) {
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn" type="submit" name="btnLogin" value="Login">Login</button>
                         <span class="error">
-                            <?php echo $emailErr; ?>
+                            <?php echo $idNumberErr; ?>
                         </span>
                         <span class="error">
                             <?php echo $passwordErr; ?>

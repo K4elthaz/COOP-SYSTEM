@@ -2,9 +2,9 @@
 session_start();
 
 include("../connections.php");
-if (isset($_SESSION["email"])) {
-    $email = $_SESSION["email"];
-    $query_info = mysqli_query($connections, "SELECT * FROM login WHERE email='$email' ");
+if (isset($_SESSION["idNumber"])) {
+    $idNumber = $_SESSION["idNumber"];
+    $query_info = mysqli_query($connections, "SELECT * FROM login WHERE idNumber='$idNumber'");
     $fetch = mysqli_fetch_assoc($query_info);
     $account_type = $fetch["account_type"];
 } else {
@@ -17,7 +17,7 @@ if (isset($_SESSION["email"])) {
 // while ($row_users = mysqli_fetch_assoc($query_info)) {
 //     $id_user = $row_users['id'];
 //     $account_type = $row_users['account_type'];
-//     $email = $row_users['email'];
+//     $idNumber = $row_users['idNumber'];
 // }
 
 
@@ -77,7 +77,7 @@ if (isset($_SESSION["email"])) {
                     <div class="card-body text-center">
                         <img class="img-account-profile rounded-circle mb-2" src="../Client/IDPicture.jpg" alt="">
                         <h2 class="fw-bold">
-                            <?php echo $email ?>
+                            <?php echo $idNumber ?>
                         </h2>
                         <p> President </p>
                     </div>
@@ -95,7 +95,7 @@ if (isset($_SESSION["email"])) {
                         <div class="card-body">
                             <!-- table -->
                             <h1>Welcome<b>
-                                    <?php echo $email ?>!
+                                    <?php echo $idNumber ?>!
                                 </b>
                             </h1>
                             <div class="row">

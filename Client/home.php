@@ -2,14 +2,14 @@
 
 session_start();
 include("../connections.php");
-if (isset($_SESSION["email"])) {
-    $email = $_SESSION["email"];
+if (isset($_SESSION["idNumber"])) {
+    $idNumber = $_SESSION["idNumber"];
 
     $querylog = mysqli_query($connections, "SELECT c.classification,c.account_type, c.idNumber, c.name, c.classification, c.birthday, cb.id_no, cb.savings_deposits, 
     cb.regular_loan, cb.share_capital, cb.emergency_loan, cb.petty_cash, cb.stl, cb.stlb, cb.stl_calamity, cb.special_project, cb.special_promo, cb.stl_healthCard
         FROM clients c
         JOIN clients_balance cb ON c.idNumber = cb.id_no
-        WHERE c.email = '$email'");
+        WHERE c.idNumber = '$idNumber'");
 
     $my_info = mysqli_fetch_assoc($querylog);
     $classification = $my_info["classification"];
