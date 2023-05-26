@@ -94,7 +94,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="text-container">
-                        <h1 class="h1-large"><span class="blue">ERDB <br></span> Multi-Purpose Cooperatibve</h1>
+                        <h1 class="h1-large"><span class="blue">ERDB <br></span> Multi-Purpose Cooperative</h1>
                         <p class="p-large">Lorem ipsum dolor sit amet </p>
                         <a class="btn-solid-lg" href="../login.php">Login</a>
                     </div> <!-- end of text-container -->
@@ -124,8 +124,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h2 class="h2-heading">Cooperative Services</h2>
-                    <p class="p-heading">Etiam eleifend enim a nisi pharetra, a malesuada turpis lacinia. Nulla euismod
-                        fermen tristique maecenas quis augue ut arcu placerat sagittis in quam ante ristio</p>
+                    <p class="p-heading">The ERDBMC offers services such as saving deposits, share capital built-up and granting loans.</p>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
             <div class="row">
@@ -137,9 +136,8 @@
                             <img class="img-fluid" src="images/services-icon-1.svg" alt="alternative">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Market Analysis</h5>
-                            <p>Ornare in ornare sit amet variuset urna. Vivamus egestas cursus diam euismod fermen quis
-                                rolit de</p>
+                            <h5 class="card-title">Saving Deposits</h5>
+                            <p>test</p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -150,9 +148,8 @@
                             <img class="img-fluid" src="images/services-icon-2.svg" alt="alternative">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Opportunity Scan</h5>
-                            <p>Ornare in ornare sit amet variuset urna. Vivamus egestas cursus diam euismod fermen quis
-                                rolit de</p>
+                            <h5 class="card-title">Share capital built-up</h5>
+                            <p>test</p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -163,9 +160,8 @@
                             <img class="img-fluid" src="images/services-icon-3.svg" alt="alternative">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Action Plan</h5>
-                            <p>Ornare in ornare sit amet variuset urna. Vivamus egestas cursus diam euismod fermen quis
-                                rolit de</p>
+                            <h5 class="card-title">Granting loans</h5>
+                            <p>test</p>
                         </div>
                     </div>
                     <!-- end of card -->

@@ -156,7 +156,7 @@ if (isset($_SESSION["idNumber"])) {
         <div class="row">
             <div class="col-sm-3 mr-5">
                 <div class="card mb-2 mb-xl-0">
-                    <div class="card-header"><b>Client Information</b></div>
+                    <div class="card-header bg-secondary text-white"><b>Client Information</b></div>
                     <div class="card-body text-center">
                         <img class="img-account-profile rounded-circle mb-2" src="../Client/IDPicture.jpg" alt="">
                         <h2 class="fw-bold">
@@ -178,12 +178,15 @@ if (isset($_SESSION["idNumber"])) {
                 <img class="img-account-profile rounded-circle mb-2" src="../Client/IDPicture.jpg" alt="">
             </div> -->
             <div class="col-sm-9">
-                <div class="card" id="form" position="aboslute">
-                    <nav class="card-header" id="btn">
+                
+                <div class="card " id="form" position="aboslute">
+                    
+                    <nav class="card-header bg-secondary text-white" id="btn">
                         <b> Dashboard </b>
                     </nav>
-                    <div class="row px-4">
-                        <div class="card-body">
+                    
+                        
+                        <div class="card-body bg-light text-black">
                             <!-- table -->
                             <h1>Welcome <b>
                                     <?php
@@ -192,6 +195,7 @@ if (isset($_SESSION["idNumber"])) {
                                 </b>
 
                             </h1>
+<<<<<<< Updated upstream
                             <br>
                             <div id="account-area">
                                 <div class="col-auto mb-3">
@@ -204,6 +208,38 @@ if (isset($_SESSION["idNumber"])) {
                                                     <?php echo $savings; ?>
                                                 </span>
                                             </h1>
+=======
+
+                            <div class="row my-4">
+                                <div id="account-area">
+                                    <div class="col-auto mb-3">
+                                        <div class="row">
+                                            <div class="col-auto mb-3">
+                                                <div class="savings status">
+                                                    <h5 class="mb-4" style="color:white">Savings</h5>
+                                                    <h4 style="color:white">₱ <span id="current-savings">
+                                                        <?php echo $savings; ?> </span>
+                                                    </h4>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-auto mb-3">
+                                                <div class="shareC status">
+                                                    <h5 class="mb-4"> Share Capital</h5>
+                                                    <h4>₱ <span id="current-shareC"></span>
+                                                        <?php echo $share_capital ?>
+                                                    </h4>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-auto mb-3">
+                                                <div class="balance status">
+                                                    <h5 class="mb-4">Balance</h5>
+                                                    <h4 style="color:white">₱ <span id="current-balance" style="color:white">5,000,000</span>
+                                                    </h4>
+                                                </div>
+                                            </div>
+>>>>>>> Stashed changes
                                         </div>
                                     </div>
                                 </div>
@@ -243,6 +279,7 @@ if (isset($_SESSION["idNumber"])) {
 
 <style>
     .savings {
+<<<<<<< Updated upstream
         background-color: darkslategray;
     }
 
@@ -252,6 +289,29 @@ if (isset($_SESSION["idNumber"])) {
 
     .balance {
         background-color: darkgoldenrod;
+=======
+        background: rgba( 226, 114, 91, 1 );
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        backdrop-filter: blur( 7px );
+        -webkit-backdrop-filter: blur( 7px );
+        border-radius: 10px;
+    }
+
+    .shareC {
+        background: rgba( 32, 98, 40, 0.9 );
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        backdrop-filter: blur( 0px );
+        -webkit-backdrop-filter: blur( 0px );
+        border-radius: 10px;
+    }
+
+    .balance {
+        background: rgba( 62, 54, 63, 1 );
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        backdrop-filter: blur( 9.5px );
+        -webkit-backdrop-filter: blur( 9.5px );
+        border-radius: 10px;
+>>>>>>> Stashed changes
     }
 
     .status {
@@ -260,7 +320,7 @@ if (isset($_SESSION["idNumber"])) {
         padding: 15px;
         border-radius: 10px;
     }
-
+    
     /* #account-area {
         margin-top: 5%;
     } */
