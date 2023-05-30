@@ -178,25 +178,24 @@ if (isset($_SESSION["idNumber"])) {
                 <img class="img-account-profile rounded-circle mb-2" src="../Client/IDPicture.jpg" alt="">
             </div> -->
             <div class="col-sm-9">
-                
+
                 <div class="card " id="form" position="aboslute">
-                    
+
                     <nav class="card-header bg-secondary text-white" id="btn">
                         <b> Dashboard </b>
                     </nav>
-                    
-                        
-                        <div class="card-body bg-light text-black">
-                            <!-- table -->
-                            <h1>Welcome <b>
-                                    <?php
+
+
+                    <div class="card-body bg-light text-black">
+                        <!-- table -->
+                        <h1>Welcome <b>
+                                <?php
                                     echo $name;
                                     ?>
-                                </b>
+                            </b>
 
-                            </h1>
-<<<<<<< Updated upstream
-                            <br>
+                        </h1>
+                        <<<<<<< Updated upstream <br>
                             <div id="account-area">
                                 <div class="col-auto mb-3">
                                     <div class="row">
@@ -208,120 +207,98 @@ if (isset($_SESSION["idNumber"])) {
                                                     <?php echo $savings; ?>
                                                 </span>
                                             </h1>
-=======
+                                            =======
 
-                            <div class="row my-4">
-                                <div id="account-area">
-                                    <div class="col-auto mb-3">
-                                        <div class="row">
-                                            <div class="col-auto mb-3">
-                                                <div class="savings status">
-                                                    <h5 class="mb-4" style="color:white">Savings</h5>
-                                                    <h4 style="color:white">₱ <span id="current-savings">
-                                                        <?php echo $savings; ?> </span>
-                                                    </h4>
+                                            <div class="row my-4">
+                                                <div id="account-area">
+                                                    <div class="col-auto mb-3">
+                                                        <div class="row">
+                                                            <div class="col-auto mb-3">
+                                                                <div class="savings status">
+                                                                    <h5 class="mb-4" style="color:white">Savings</h5>
+                                                                    <h4 style="color:white">₱ <span
+                                                                            id="current-savings">
+                                                                            <?php echo $savings; ?> </span>
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-auto mb-3">
+                                                                <div class="shareC status">
+                                                                    <h5 class="mb-4"> Share Capital</h5>
+                                                                    <h4>₱ <span id="current-shareC"></span>
+                                                                        <?php echo $share_capital ?>
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-auto mb-3">
+                                                                <div class="balance status">
+                                                                    <h5 class="mb-4">Balance</h5>
+                                                                    <h4 style="color:white">₱ <span id="current-balance"
+                                                                            style="color:white">5,000,000</span>
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                            >>>>>>> Stashed changes
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-
                                             <div class="col-auto mb-3">
                                                 <div class="shareC status">
-                                                    <h5 class="mb-4"> Share Capital</h5>
-                                                    <h4>₱ <span id="current-shareC"></span>
+                                                    <h4>Share Capital</h4>
+                                                    <h1>₱ <span id="current-shareC"></span>
                                                         <?php echo $share_capital ?>
-                                                    </h4>
+                                                    </h1>
                                                 </div>
                                             </div>
-
                                             <div class="col-auto mb-3">
                                                 <div class="balance status">
-                                                    <h5 class="mb-4">Balance</h5>
-                                                    <h4 style="color:white">₱ <span id="current-balance" style="color:white">5,000,000</span>
-                                                    </h4>
+                                                    <h4>Total Loan Balance</h4>
+                                                    <h1>₱ <span id="current-balance"></span>
+                                                        <?php echo $totalLoan ?>
+                                                    </h1>
                                                 </div>
                                             </div>
->>>>>>> Stashed changes
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-auto mb-3">
-                                <div class="shareC status">
-                                    <h4>Share Capital</h4>
-                                    <h1>₱ <span id="current-shareC"></span>
-                                        <?php echo $share_capital ?>
-                                    </h1>
-                                </div>
-                            </div>
-                            <div class="col-auto mb-3">
-                                <div class="balance status">
-                                    <h4>Total Loan Balance</h4>
-                                    <h1>₱ <span id="current-balance"></span>
-                                        <?php echo $totalLoan ?>
-                                    </h1>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- </div> -->
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-                crossorigin="anonymous">
-                </script>
-            <script src="web/js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
-            <script src="web/js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
-            <script src="web/js/scripts.js"></script> <!-- Custom scripts -->
+                            <!-- </div> -->
+                            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                                crossorigin="anonymous">
+                            </script>
+                            <script src="web/js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+                            <script src="web/js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+                            <script src="web/js/scripts.js"></script> <!-- Custom scripts -->
 </body>
 
 </html>
 
 
 <style>
-    .savings {
-<<<<<<< Updated upstream
-        background-color: darkslategray;
-    }
+.savings {
+    background-color: darkslategray;
+}
 
-    .shareC {
-        background-color: darkolivegreen;
-    }
+.shareC {
+    background-color: darkolivegreen;
+}
 
-    .balance {
-        background-color: darkgoldenrod;
-=======
-        background: rgba( 226, 114, 91, 1 );
-        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-        backdrop-filter: blur( 7px );
-        -webkit-backdrop-filter: blur( 7px );
-        border-radius: 10px;
-    }
+.balance {
+    background-color: darkgoldenrod;
+}
 
-    .shareC {
-        background: rgba( 32, 98, 40, 0.9 );
-        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-        backdrop-filter: blur( 0px );
-        -webkit-backdrop-filter: blur( 0px );
-        border-radius: 10px;
-    }
+.status {
+    margin: 0 10px;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+}
 
-    .balance {
-        background: rgba( 62, 54, 63, 1 );
-        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-        backdrop-filter: blur( 9.5px );
-        -webkit-backdrop-filter: blur( 9.5px );
-        border-radius: 10px;
->>>>>>> Stashed changes
-    }
-
-    .status {
-        margin: 0 10px;
-        color: white;
-        padding: 15px;
-        border-radius: 10px;
-    }
-    
-    /* #account-area {
+/* #account-area {
         margin-top: 5%;
     } */
 </style>
