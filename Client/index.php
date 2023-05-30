@@ -2,8 +2,8 @@
 
 
 
-if (isset($_SESSION["email"])) {
-    $email = $_SESSION["email"];
+if (isset($_SESSION["idNumber"])) {
+    $email = $_SESSION["idNumber"];
 } else {
     echo "<script>window.location.href='home.php';</script>";
 }

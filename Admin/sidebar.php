@@ -5,9 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" 
-    integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" 
-    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+        integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
 </head>
 
 <body>
@@ -40,7 +39,7 @@
                     </span>
                 </a>
             </li>
-            
+
             <li>
                 <a href=".php">
                     <!-- <i class="fa bi bi-card-list fa-2x"></i> -->
@@ -59,7 +58,7 @@
                     </span>
                 </a>
             </li>
-            
+
             <li>
                 <a href="notification.php">
                     <i class="fa bi-bell-fill fa-2x"></i>
@@ -96,7 +95,7 @@
 
         <ul class="logout">
             <li>
-                <a href="../login.php">
+                <a href="../logout.php">
                     <i class="fa fa-power-off fa-2x"></i>
                     <span class="nav-text">
                         Logout
@@ -200,14 +199,14 @@ nav.main-menu.expanded {
     vertical-align: middle;
     width: 190px;
     font-family: 'Kanit', sans-serif;
-    
+
 }
 
 .main-menu>ul.logout {
     position: absolute;
     left: 0;
     bottom: 0;
-    
+
 }
 
 .no-touch .scrollable.hover {

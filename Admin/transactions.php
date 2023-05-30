@@ -1,61 +1,37 @@
 <?php
-include("../connections.php");
 
-$id = $memberId = $name = $paymentType = $transactionDate = $referenceNo = $transactionRemarks = $collector = "";
-$memberIdErr = $nameErr = $paymentTypeErr = $transactionDateErr = $referenceNoErr = $transactionRemarksErr = $collectorErr = "";
+include("../connections.php");
+session_start();
+
+if (isset($_SESSION["idNumber"])) {
+    $idNumber = $_SESSION["idNumber"];
+
+    $query_info = mysqli_query($connections, "SELECT *, login.idNumber, login.email FROM login WHERE idNumber='$idNumber'");
+
+    $my_info = mysqli_fetch_assoc($query_info);
+    $idNumber = $my_info['idNumber'];
+    $email = $my_info['email'];
+} else {
+    // echo "<script>window.location.href='';</script>";
+}
+
+$memberID = $name = $paymentType = $amount = $transactionDate = $referenceNo = $transactionRemarks = "";
+
 
 if (isset($_POST["btnRegister"])) {
+    $memberID = $_POST['memberID'];
+    $name = $_POST['name'];
+    $paymentType = $_POST['paymentType'];
+    $amount = $_POST['amount'];
+    $transactionDate = $_POST['transactionDate'];
+    $referenceNo = $_POST['referenceNo'];
+    $transactionRemarks = $_POST['transactionRemarks'];
 
-    if (empty($_POST["memberId"])) {
-        $memberIdErr = "Required!";
-    } else {
-        $memberId = $_POST["memberId"];
-    }
-
-    if (empty($_POST["name"])) {
-        $nameErr = "Required!";
-    } else {
-        $name = $_POST["name"];
-    }
-
-    if (empty($_POST["paymentType"])) {
-        $paymentTypeErr = "Required!";
-    } else {
-        $paymentType = $_POST["paymentType"];
-    }
-
-    if (empty($_POST["transactionDate"])) {
-        $transactionDateErr = "Required!";
-    } else {
-        $transactionDate = $_POST["transactionDate"];
-    }
-
-    if (empty($_POST["referenceNo"])) {
-        $referenceNoErr = "Required!";
-    } else {
-        $referenceNo = $_POST["referenceNo"];
-    }
-
-    if (empty($_POST["transactionRemarks"])) {
-        $transactionRemarksErr = "Required!";
-    } else {
-        $transactionRemarks = $_POST["transactionRemarks"];
-    }
-
-    if (empty($_POST["collector"])) {
-        $collectorErr = "Required!";
-    } else {
-        $collector = $_POST["collector"];
-    }
-
-    if ($memberId && $name && $paymentType && $transactionDate && $referenceNo && $transactionRemarks && $collector) {
-        $query = mysqli_query($connections, "INSERT INTO dailytransact (memberId,name,paymentType,transactionDate,referenceNo,transactionRemarks,collector) 
-        VALUES('$memberId', '$name' ,'$paymentType', '$transactionDate', '$referenceNo', '$transactionRemarks', '$collector') ");
-        echo "<script language='javascript'>alert('New record has been inserted!')</script>";
-        echo "<script> window.location.href='transactions.php';</script>";
-    } else {
-    }
+    $query = mysqli_query($connections, "INSERT INTO dailytransact (memberID, name, paymentType, amount, transactionDate, referenceNo, transactionRemarks, collector) 
+    VALUES ('$memberID', '$name', '$paymentType', '$amount', '$transactionDate', '$referenceNo', '$transactionRemarks', '$email')");
+} else {
 }
+
 ?>
 
 <!doctype html>
@@ -67,8 +43,7 @@ if (isset($_POST["btnRegister"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/9c35be8496.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link rel="stylesheet" href="members.css">
@@ -80,9 +55,7 @@ if (isset($_POST["btnRegister"])) {
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="controlPanel.php">Coop</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -90,9 +63,7 @@ if (isset($_POST["btnRegister"])) {
                         <li class="nav-item">
                             <a class="nav-link Active" href="./controlPanel.php">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link Active" href="../login.php">Logout</a>
-                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -105,14 +76,12 @@ if (isset($_POST["btnRegister"])) {
                 </button>
 
                 <!-- Delete Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 Are you sure you want to delete all?
@@ -136,20 +105,17 @@ if (isset($_POST["btnRegister"])) {
                 </div>
                 <!-- // TODO: Make popup for add new -->
                 <!-- Button to trigger Add new -->
-                <button type="button" class="btn btn-primary add-new float-end mx-1" data-bs-toggle="modal"
-                    data-bs-target="#addModal">
+                <button type="button" class="btn btn-primary add-new float-end mx-1" data-bs-toggle="modal" data-bs-target="#addModal">
                     <i class="fa fa-plus"></i> Add New
                 </button>
 
                 <!-- Add new Modal -->
-                <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
+                <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div id="myPopup" class="popup">
@@ -157,55 +123,49 @@ if (isset($_POST["btnRegister"])) {
                                         <form method="POST">
                                             <div class="row">
                                                 <div class="col">
-                                                    <input type="number" class="form-control" name="memberId"
-                                                        placeholder="Member ID" value="<?php echo $memberId; ?>">
-                                                    <span class="error">
-                                                        <?php echo $memberIdErr; ?>
+                                                    <input type="text" class="form-control" name="memberID" placeholder="Member ID" required>
                                                     </span>
                                                 </div>
                                                 <div class="col">
-                                                    <input type="text" class="form-control" name="name"
-                                                        placeholder="Name" value="">
-                                                    <span class="error">
-                                                        <?php echo $nameErr; ?>
+                                                    <input type="text" class="form-control" name="name" placeholder="Name" value="" required>
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control" name="paymentType" placeholder="Payment Type" value="" required>
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control" name="amount" placeholder="Amount" value="" required>
                                                     </span>
                                                 </div>
                                                 <div class="col">
-                                                    <input type="text" class="form-control" name="paymentType"
-                                                        placeholder="Payment Type" value="">
-                                                    <span class="error">
-                                                        <?php echo $paymentTypeErr; ?>
-                                                    </span>
-                                                </div>
-                                                <div class="col">
-                                                    <input type="date" class="form-control" name="transactionDate"
-                                                        placeholder="Transactrion Date" value="">
-                                                    <span class="error">
-                                                        <?php echo $transactionDateErr; ?>
-                                                    </span>
+                                                    <input type="date" class="form-control" name="transactionDate" placeholder="Transactrion Date" value="" required>
                                                 </div>
                                             </div>
                                             <div class="row mt-2">
                                                 <div class="col">
-                                                    <input type="number" class="form-control" name="referenceNo"
-                                                        placeholder="Reference No" value="">
-                                                    <span class="error">
-                                                        <?php echo $referenceNoErr; ?>
-                                                    </span>
+                                                    <button type="button" onclick="generateReferenceNumber()">Generate
+                                                        Reference Number</button>
+                                                    <input type="number" class="form-control" name="referenceNo" placeholder="Reference No" id="referenceNumberInput" value="" required>
                                                 </div>
                                                 <div class="col">
-                                                    <input type="text" class="form-control" name="transactionRemarks"
-                                                        placeholder="Transaction Remarks" value="">
-                                                    <span class="error">
-                                                        <?php echo $transactionRemarksErr; ?>
-                                                    </span>
+                                                    <select class="form-select" name="transactionRemarks" id="transactionRemarks" value="" required>
+                                                        <option value="" selected disabled hidden>Transaction Type
+                                                        </option>
+                                                        <option value="Regular Loan">Savings</option>
+                                                        <option value="Regular Loan">Regular Loan</option>
+                                                        <option value="Emergency Loan">Emergency Loan</option>
+                                                        <option value="Petty Cash">Petty Cash</option>
+                                                        <option value="Short Term Loan">Short Term Loan</option>
+                                                        <option value="Short Term Loan B">Short Term Loan B</option>
+                                                        <option value="Short Term Loan Calamity">Short Term Loan
+                                                            Calamity</option>
+                                                        <option value="Special Project">Special Project</option>
+                                                        <option value="Special Promo">Special Promo</option>
+                                                        <option value="Short Term Loan Health Card">Short Term Loan
+                                                            Health Card</option>
+                                                    </select>
                                                 </div>
                                                 <div class="col">
-                                                    <input type="text" class="form-control" name="collector"
-                                                        placeholder="Collector" value="">
-                                                    <span class="error">
-                                                        <?php echo $collectorErr; ?>
-                                                    </span>
+                                                    <input type="text" class="form-control" name="collector" placeholder="Collector" value="<?php echo $email ?>" disabled>
                                                 </div>
                                             </div>
                                     </div>
@@ -213,8 +173,7 @@ if (isset($_POST["btnRegister"])) {
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button value="btnRegister" name="btnRegister" type="submit"
-                                    class="btn btn-primary">Add</button>
+                                <button value="btnRegister" name="btnRegister" type="submit" class="btn btn-primary">Add</button>
                                 </form>
                             </div>
                         </div>
@@ -227,14 +186,12 @@ if (isset($_POST["btnRegister"])) {
                 </button>
 
                 <!-- Export Modal -->
-                <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
+                <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 Are you sure you want to download this file?
@@ -247,10 +204,9 @@ if (isset($_POST["btnRegister"])) {
                 </div>
             </div>
             <form class="d-flex mt-1 mx-1 justify-content-start" action="search.php">
-                <input class="form-control-sm me-2" type="search" placeholder="Search" aria-label="Search" name="search"
-                    value="<?php if (isset($_GET['search'])) {
-                        echo $_GET['search'];
-                    } ?>">
+                <input class="form-control-sm me-2" type="search" placeholder="Search" aria-label="Search" name="search" value="<?php if (isset($_GET['search'])) {
+                                                                                                                                    echo $_GET['search'];
+                                                                                                                                } ?>">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
@@ -280,7 +236,7 @@ if (isset($_POST["btnRegister"])) {
                             // Check if the edit form was submitted EDIT FORM
                             if (isset($_POST['edit'])) {
                                 // Get the updated values from the form
-                            
+
                                 $id = $_POST['id'];
                                 $memberID = $_POST['memberID'];
                                 $name = $_POST['name'];
@@ -364,7 +320,22 @@ if (isset($_POST["btnRegister"])) {
                                                 </div>
                                                 <div class='form-group'>
                                                     <label for='edit-transactionRemarks'>Transaction Remarks:</label>
-                                                    <input type='text' class='form-control' id='edit-transactionRemarks' value='$db_transactionRemarks' name='transactionRemarks' required>
+                                                    <select class='form-select' id='edit-transactionRemarks' value='$db_transactionRemarks' name='transactionRemarks' required>
+                                                        <option value='' selected disabled hidden>Transaction Type
+                                                        </option>
+                                                        <option value='Regular Loan'>Savings</option>
+                                                        <option value='Regular Loan'>Regular Loan</option>
+                                                        <option value='Emergency Loan'>Emergency Loan</option>
+                                                        <option value='Petty Cash'>Petty Cash</option>
+                                                        <option value='Short Term Loan'>Short Term Loan</option>
+                                                        <option value='Short Term Loan B'>Short Term Loan B</option>
+                                                        <option value='Short Term Loan Calamity'>Short Term Loan
+                                                            Calamity</option>
+                                                        <option value='Special Project'>Special Project</option>
+                                                        <option value='Special Promo'>Special Promo</option>
+                                                        <option value='Short Term Loan Health Card'>Short Term Loan
+                                                            Health Card</option>
+                                                    </select>
                                                 </div>
                                                 <div class='form-group'>
                                                     <label for='edit-collector'>Collector:</label>
@@ -405,16 +376,31 @@ if (isset($_POST["btnRegister"])) {
                             ?>
 
                             <!-- Option 1: Bootstrap Bundle with Popper -->
-                            <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'
-                                integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM'
-                                crossorigin='anonymous'>
+                            <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous'>
                             </script>
 </body>
 
 </html>
 
 <script>
-$(document).ready(function() {
-    $('[data-toggle="tooltip"]').tooltip();
-});
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    function generateReferenceNumber() {
+        // Get the current date
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = ("0" + (date.getMonth() + 1)).slice(-2);
+        var day = ("0" + date.getDate()).slice(-2);
+
+        // Generate a random number between 1000 and 9999
+        var randomNumber = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+
+        // Combine the date and random number to create the reference number
+        var referenceNumber = year + month + day + randomNumber;
+
+        // Display the generated reference number in the input field
+        document.getElementById("referenceNumberInput").value = referenceNumber;
+    }
 </script>
