@@ -15,7 +15,7 @@ if (isset($_SESSION["idNumber"])) {
     // echo "<script>window.location.href='';</script>";
 }
 
-$memberID = $name = $paymentType = $amount = $transactionDate = $referenceNo = $transactionRemarks = "";
+$memberID = $name = $paymentType = $amount = $transactionDate = $referenceNo = $transactionRemarks = $paymentMethod = "";
 
 
 if (isset($_POST["btnRegister"])) {
@@ -26,10 +26,10 @@ if (isset($_POST["btnRegister"])) {
     $transactionDate = $_POST['transactionDate'];
     $referenceNo = $_POST['referenceNo'];
     $transactionRemarks = $_POST['transactionRemarks'];
+    $paymentMethod = $_POST['paymentMethod'];
 
-    $query = mysqli_query($connections, "INSERT INTO dailytransact (memberID, name, paymentType, amount, transactionDate, referenceNo, transactionRemarks, collector) 
-    VALUES ('$memberID', '$name', '$paymentType', '$amount', '$transactionDate', '$referenceNo', '$transactionRemarks', '$email')");
-} else {
+    $query = mysqli_query($connections, "INSERT INTO dailytransact (memberID, name, paymentType, amount, transactionDate, referenceNo, transactionRemarks, paymentMethod, collector) 
+    VALUES ('$memberID', '$name', '$paymentType', '$amount', '$transactionDate', '$referenceNo', '$transactionRemarks', '$paymentMethod','$email')");
 }
 
 ?>
@@ -43,7 +43,8 @@ if (isset($_POST["btnRegister"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/9c35be8496.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link rel="stylesheet" href="members.css">
@@ -55,13 +56,15 @@ if (isset($_POST["btnRegister"])) {
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="controlPanel.php">Coop</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link Active" href="./controlPanel.php">Home</a>
+                            <a class="nav-link Active" href="controlPanel.php">Home</a>
                         </li>
 
                     </ul>
@@ -76,12 +79,14 @@ if (isset($_POST["btnRegister"])) {
                 </button>
 
                 <!-- Delete Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 Are you sure you want to delete all?
@@ -105,17 +110,20 @@ if (isset($_POST["btnRegister"])) {
                 </div>
                 <!-- // TODO: Make popup for add new -->
                 <!-- Button to trigger Add new -->
-                <button type="button" class="btn btn-primary add-new float-end mx-1" data-bs-toggle="modal" data-bs-target="#addModal">
+                <button type="button" class="btn btn-primary add-new float-end mx-1" data-bs-toggle="modal"
+                    data-bs-target="#addModal">
                     <i class="fa fa-plus"></i> Add New
                 </button>
 
                 <!-- Add new Modal -->
-                <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Transaction</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div id="myPopup" class="popup">
@@ -123,31 +131,45 @@ if (isset($_POST["btnRegister"])) {
                                         <form method="POST">
                                             <div class="row">
                                                 <div class="col">
-                                                    <input type="text" class="form-control" name="memberID" placeholder="Member ID" required>
+                                                    <input type="text" class="form-control" name="memberID"
+                                                        placeholder="Member ID" required>
                                                     </span>
                                                 </div>
                                                 <div class="col">
-                                                    <input type="text" class="form-control" name="name" placeholder="Name" value="" required>
+                                                    <input type="text" class="form-control" name="name"
+                                                        placeholder="Name" value="" required>
                                                 </div>
                                                 <div class="col">
-                                                    <input type="text" class="form-control" name="paymentType" placeholder="Payment Type" value="" required>
+                                                    <select class="form-select" name="paymentType" id="paymentType"
+                                                        value="" required>
+                                                        <option value="" selected disabled hidden>Payment Type
+                                                        </option>
+                                                        <option value="Withdraw">Withdraw</option>
+                                                        <option value="Deposit">Deposit</option>
+                                                        <option value="Payment">Payment</option>
+                                                    </select>
                                                 </div>
                                                 <div class="col">
-                                                    <input type="text" class="form-control" name="amount" placeholder="Amount" value="" required>
+                                                    <input type="number" class="form-control" name="amount"
+                                                        placeholder="Amount" value="" required>
                                                     </span>
                                                 </div>
                                                 <div class="col">
-                                                    <input type="date" class="form-control" name="transactionDate" placeholder="Transactrion Date" value="" required>
+                                                    <input type="date" class="form-control" name="transactionDate"
+                                                        placeholder="Transactrion Date" value="" required>
                                                 </div>
                                             </div>
                                             <div class="row mt-2">
                                                 <div class="col">
+                                                    <input type="number" class="form-control" name="referenceNo"
+                                                        placeholder="Reference No" id="referenceNumberInput" value=""
+                                                        required>
                                                     <button type="button" onclick="generateReferenceNumber()">Generate
                                                         Reference Number</button>
-                                                    <input type="number" class="form-control" name="referenceNo" placeholder="Reference No" id="referenceNumberInput" value="" required>
                                                 </div>
                                                 <div class="col">
-                                                    <select class="form-select" name="transactionRemarks" id="transactionRemarks" value="" required>
+                                                    <select class="form-select" name="transactionRemarks"
+                                                        id="transactionRemarks" value="" required>
                                                         <option value="" selected disabled hidden>Transaction Type
                                                         </option>
                                                         <option value="Regular Loan">Savings</option>
@@ -165,7 +187,18 @@ if (isset($_POST["btnRegister"])) {
                                                     </select>
                                                 </div>
                                                 <div class="col">
-                                                    <input type="text" class="form-control" name="collector" placeholder="Collector" value="<?php echo $email ?>" disabled>
+                                                    <select class="form-select" name="paymentMethod" id="paymentMethod"
+                                                        value="" required>
+                                                        <option value="" selected disabled hidden>Payment Method
+                                                        </option>
+                                                        <option value="Cash">Cash</option>
+                                                        <option value="E-Wallet">E-Wallet</option>
+                                                        <option value="Bank Transfer">Bank Transfer</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control" name="collector"
+                                                        placeholder="Collector" value="<?php echo $email ?>" disabled>
                                                 </div>
                                             </div>
                                     </div>
@@ -173,7 +206,11 @@ if (isset($_POST["btnRegister"])) {
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button value="btnRegister" name="btnRegister" type="submit" class="btn btn-primary">Add</button>
+                                <button value="btnRegister" name="btnRegister" type="submit"
+                                    class="btn btn-primary">Add</button>
+                                <script>
+                                swal("Good job!", "Successfuly Added!", "success")
+                                </script>
                                 </form>
                             </div>
                         </div>
@@ -186,12 +223,14 @@ if (isset($_POST["btnRegister"])) {
                 </button>
 
                 <!-- Export Modal -->
-                <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 Are you sure you want to download this file?
@@ -204,7 +243,8 @@ if (isset($_POST["btnRegister"])) {
                 </div>
             </div>
             <form class="d-flex mt-1 mx-1 justify-content-start" action="search.php">
-                <input class="form-control-sm me-2" type="search" placeholder="Search" aria-label="Search" name="search" value="<?php if (isset($_GET['search'])) {
+                <input class="form-control-sm me-2" type="search" placeholder="Search" aria-label="Search" name="search"
+                    value="<?php if (isset($_GET['search'])) {
                                                                                                                                     echo $_GET['search'];
                                                                                                                                 } ?>">
                 <button class="btn btn-outline-success" type="submit">Search</button>
@@ -220,9 +260,11 @@ if (isset($_POST["btnRegister"])) {
                                 <th>MemberID</th>
                                 <th class="third">Name</th>
                                 <th>Payment Type</th>
-                                <th>TransactionDate</th>
+                                <th>Amount</th>
+                                <th>Transaction Date</th>
                                 <th>Reference No</th>
-                                <th>Transaction Remarks</th>
+                                <th>Transaction Type</th>
+                                <th>Payment Method</th>
                                 <th>Collector</th>
                                 <th>Actions</th>
                             </tr>
@@ -241,14 +283,43 @@ if (isset($_POST["btnRegister"])) {
                                 $memberID = $_POST['memberID'];
                                 $name = $_POST['name'];
                                 $paymentType = $_POST['paymentType'];
+                                $amount = $_POST['amount'];
                                 $transactionDate = $_POST['transactionDate'];
                                 $referenceNo = $_POST['referenceNo'];
                                 $transactionRemarks = $_POST['transactionRemarks'];
-                                $collector = $_POST['collector'];
+                                $paymentMethod = $_POST['paymentMethod'];
+
 
                                 // Update the dailytransact table with the new values
-                                $query = "UPDATE dailytransact SET memberID='$memberID', name='$name', paymentType='$paymentType', transactionDate='$transactionDate', referenceNo='$referenceNo', transactionRemarks='$transactionRemarks', collector='$collector' WHERE id=$id";
+                                $query = "UPDATE dailytransact SET memberID='$memberID', name='$name', paymentType='$paymentType', amount='$amount', transactionDate='$transactionDate', referenceNo='$referenceNo', transactionRemarks='$transactionRemarks',paymentMethod='$paymentMethod', collector='$email' WHERE id=$id";
                                 mysqli_query($connections, $query);
+                                if ($query) {
+                                    // Display success message using SweetAlert
+                                    echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                                    echo '<script>
+                                    swal({
+                                        title: "Success",
+                                        text: "Transaction Successful!",
+                                        icon: "success",
+                                        button: "OK",
+                                    }).then(function() {
+                                        document.getElementById("myForm").submit();
+                                    });
+                                    </script>';
+                                } else {
+                                    // Display error message using SweetAlert
+                                    echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                                    echo '<script>
+                                    swal({
+                                        title: "Error",
+                                        text: "Transaction Failed!",
+                                        icon: "error",
+                                        button: "OK",
+                                    }).then(function() {
+                                        document.getElementById("myForm").submit();
+                                    });
+                                    </script>';
+                                }
                             }
 
                             if (isset($_POST["btnDelete"])) {
@@ -263,9 +334,11 @@ if (isset($_POST["btnRegister"])) {
                                 $db_memberID = $row["memberID"];
                                 $db_name = $row["name"];
                                 $db_paymentType = $row["paymentType"];
+                                $db_amount = $row["amount"];
                                 $db_transactionDate = $row["transactionDate"];
                                 $db_referenceNo = $row["referenceNo"];
                                 $db_transactionRemarks = $row["transactionRemarks"];
+                                $db_paymentMethod = $row["paymentMethod"];
                                 $db_collector = $row["collector"];
 
                                 // Edit and delete links
@@ -277,11 +350,13 @@ if (isset($_POST["btnRegister"])) {
                                         <td>$db_memberID</td>
                                         <td>$db_name</td>
                                         <td>$db_paymentType</td>
+                                        <td>$db_amount</td>
                                         <td>$db_transactionDate</td>
                                         <td>$db_referenceNo</td>
                                         <td>$db_transactionRemarks</td>
+                                        <td>$db_paymentMethod</td>
                                         <td>$db_collector</td>
-                                        <td> $editLink $deleteLink </td>
+                                        <td>$editLink $deleteLink </td>
                                     </tr>
                                 ";
 
@@ -308,7 +383,19 @@ if (isset($_POST["btnRegister"])) {
                                                 </div>
                                                 <div class='form-group'>
                                                     <label for='edit-paymentType'>Payment Type:</label>
-                                                    <input type='text' class='form-control' id='edit-paymentType' value='$db_paymentType' name='paymentType' required>
+                                                    <select class='form-select' name='paymentType' id='edit-paymentType'
+                                                        value='$db_paymentType' required>
+                                                        <option value='' selected disabled hidden>Payment Type
+                                                        </option>
+                                                        <option value='Withdraw'>Withdraw</option>
+                                                        <option value='Deposit'>Deposit</option>
+                                                        <option value='Payment'>Payment</option>
+                                                    </select>
+                                                    
+                                                </div>
+                                                <div class='form-group'>
+                                                    <label for='edit-amount'>Amount:</label>
+                                                    <input type='number' class='form-control' id='edit-amount' value='$db_amount' name='amount' required>
                                                 </div>
                                                 <div class='form-group'>
                                                     <label for='edit-transactionDate'>Transaction Date:</label>
@@ -319,7 +406,7 @@ if (isset($_POST["btnRegister"])) {
                                                     <input type='text' class='form-control' id='edit-referenceNo' value='$db_referenceNo' name='referenceNo' required>
                                                 </div>
                                                 <div class='form-group'>
-                                                    <label for='edit-transactionRemarks'>Transaction Remarks:</label>
+                                                    <label for='edit-transactionRemarks'>Transaction Type:</label>
                                                     <select class='form-select' id='edit-transactionRemarks' value='$db_transactionRemarks' name='transactionRemarks' required>
                                                         <option value='' selected disabled hidden>Transaction Type
                                                         </option>
@@ -338,8 +425,18 @@ if (isset($_POST["btnRegister"])) {
                                                     </select>
                                                 </div>
                                                 <div class='form-group'>
+                                                    <label for='edit-paymentMethod'>Payment Method:</label>
+                                                        <select class='form-select' name='paymentMethod' id='paymentMethod' value='$db_paymentMethod' required>
+                                                            <option value='' selected disabled hidden>Payment Method
+                                                            </option>
+                                                            <option value='Cash'>Cash</option>
+                                                            <option value='E-Wallet'>E-Wallet</option>
+                                                            <option value='Bank Transfer'>Bank Transfer</option>
+                                                        </select>
+                                                </div>
+                                                <div class='form-group'>
                                                     <label for='edit-collector'>Collector:</label>
-                                                    <input type='text' class='form-control' id='edit-collector' value='$db_collector' name='collector' required>
+                                                    <input type='text' class='form-control' id='edit-collector' value='$db_collector' name='collector' required disabled>
                                                 </div>
                                                 <div class='modal-footer'>
                                                         <button type='submit' class='btn btn-primary' name='edit'>Save changes</button>
@@ -376,31 +473,36 @@ if (isset($_POST["btnRegister"])) {
                             ?>
 
                             <!-- Option 1: Bootstrap Bundle with Popper -->
-                            <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous'>
+                            <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'
+                                integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM'
+                                crossorigin='anonymous'>
                             </script>
 </body>
 
 </html>
 
 <script>
-    $(document).ready(function() {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
+$(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+});
 
-    function generateReferenceNumber() {
-        // Get the current date
-        var date = new Date();
-        var year = date.getFullYear();
-        var month = ("0" + (date.getMonth() + 1)).slice(-2);
-        var day = ("0" + date.getDate()).slice(-2);
+function generateReferenceNumber() {
+    // Get the current date
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = ("0" + (date.getMonth() + 1)).slice(-2);
+    var day = ("0" + date.getDate()).slice(-2);
 
-        // Generate a random number between 1000 and 9999
-        var randomNumber = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+    // Generate a random number between 1000 and 9999
+    var randomNumber = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
 
-        // Combine the date and random number to create the reference number
-        var referenceNumber = year + month + day + randomNumber;
+    // Combine the date and random number to create the reference number
+    var referenceNumber = year + month + day + randomNumber;
 
-        // Display the generated reference number in the input field
-        document.getElementById("referenceNumberInput").value = referenceNumber;
-    }
+    // Display the generated reference number in the input field
+    document.getElementById("referenceNumberInput").value = referenceNumber;
+}
 </script>
+
+<script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
