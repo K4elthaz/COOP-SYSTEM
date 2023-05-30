@@ -130,6 +130,19 @@ if (isset($_SESSION["idNumber"])) {
                                     </div>
                                 </div>
                             </div>
+                            <div class="row mt-3">
+                                <div class="col-sm-4  d-flex align-items-stretch">
+                                    <div class="card">
+                                        <div class="card-body d-flex flex-column" style="background-color: #F2C2D4;">
+                                            <b class="card-title">View Request Loans</b>
+                                            <p class="card-text mb-4">This action shows clients who applied for loans.
+                                            </p>
+                                            <a href="viewLoans.php" class="btn btn-primary mt-auto align-self-end">Go
+                                                To</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
