@@ -201,34 +201,34 @@ if (isset($_SESSION["idNumber"])) {
 
                     <!-- JavaScript code to handle adding more co-makers -->
                     <script>
-                        document.getElementById('addCoMakerBtn').addEventListener('click', function () {
-                            const container = document.getElementById('coMakerContainer');
-                            const coMakerDiv = document.createElement('div');
-                            coMakerDiv.className = 'col-sm-6';
-                            const coMakerLabel = document.createElement('label');
-                            coMakerLabel.setAttribute('for', `coMaker${container.children.length}`);
-                            coMakerLabel.className = 'form-label';
-                            coMakerLabel.textContent = 'Co-Maker';
-                            const coMakerInput = document.createElement('input');
-                            coMakerInput.setAttribute('type', 'text');
-                            coMakerInput.className = 'form-control';
-                            coMakerInput.setAttribute('name', 'comaker[]');
-                            coMakerInput.setAttribute('id', `coMaker${container.children.length}`);
-                            coMakerInput.setAttribute('placeholder', 'Enter Co-Maker');
-                            coMakerInput.required = true;
-                            coMakerDiv.appendChild(coMakerLabel);
-                            coMakerDiv.appendChild(coMakerInput);
-                            container.appendChild(coMakerDiv);
+                    document.getElementById('addCoMakerBtn').addEventListener('click', function() {
+                        const container = document.getElementById('coMakerContainer');
+                        const coMakerDiv = document.createElement('div');
+                        coMakerDiv.className = 'col-sm-6';
+                        const coMakerLabel = document.createElement('label');
+                        coMakerLabel.setAttribute('for', `coMaker${container.children.length}`);
+                        coMakerLabel.className = 'form-label';
+                        coMakerLabel.textContent = 'Co-Maker';
+                        const coMakerInput = document.createElement('input');
+                        coMakerInput.setAttribute('type', 'text');
+                        coMakerInput.className = 'form-control';
+                        coMakerInput.setAttribute('name', 'comaker[]');
+                        coMakerInput.setAttribute('id', `coMaker${container.children.length}`);
+                        coMakerInput.setAttribute('placeholder', 'Enter Co-Maker');
+                        coMakerInput.required = true;
+                        coMakerDiv.appendChild(coMakerLabel);
+                        coMakerDiv.appendChild(coMakerInput);
+                        container.appendChild(coMakerDiv);
 
-                            // Add a delete button to the new co-maker input field
-                            const deleteButton = document.createElement('button');
-                            deleteButton.className = 'btn btn-danger';
-                            deleteButton.textContent = 'Delete';
-                            deleteButton.addEventListener('click', function () {
-                                container.removeChild(coMakerDiv);
-                            });
-                            coMakerDiv.appendChild(deleteButton);
+                        // Add a delete button to the new co-maker input field
+                        const deleteButton = document.createElement('button');
+                        deleteButton.className = 'btn btn-danger';
+                        deleteButton.textContent = 'Delete';
+                        deleteButton.addEventListener('click', function() {
+                            container.removeChild(coMakerDiv);
                         });
+                        coMakerDiv.appendChild(deleteButton);
+                    });
                     </script>
 
                     <!-- PHP code to handle form submission and database updates -->

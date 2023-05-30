@@ -1,3 +1,8 @@
+<?php
+include ("../connections.php");
+include ("editFunction.php");
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -9,6 +14,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+
     <title>Edit Account</title>
 </head>
 
@@ -41,17 +49,22 @@
                 <!-- Profile picture card-->
                 <div class="card mb-4 mb-xl-0">
                     <div class="card-header">Profile Picture</div>
-                    <div class="card-body text-center">
-                        <!-- Profile picture image-->
-                        <img class="img-account-profile rounded-circle mb-2" src="../Client/IDPicture.jpg" alt="">
-                        <!-- Profile picture help block-->
-                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                        <!-- Profile picture upload button-->
-                        <button class="btn btn-primary" type="button">Upload new image</button>
-                    </div>
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="card-body text-center">
+                            <!-- Profile picture image-->
+                            <img class="img-account-profile rounded-circle mb-2" src="<?php echo $profile_pic ?>"
+                                alt="">
+                            <!-- Profile picture help block-->
+                            <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                            <input type="file" id="profile_img" name="profile_img"
+                                onchange="displayPreview(this.files)">
+                            <!-- Profile picture upload button-->
+                            <button class="btn btn-primary" name="imgBtn" type="submit">Upload new image</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="col-xl-8">
+            <div class="col-xl-7">
                 <!-- Account details card-->
                 <div class="card mb-4">
                     <nav class="card-header" id="formSelector">
@@ -62,123 +75,115 @@
                     </nav>
                     <div class="card-body">
                         <div id="edit-btn">
-                            <form id="edit-btn">
+                            <form id="edit-btn" method="POST">
                                 <div class="row gx-3 mb-3">
-                                    <!-- Form Group (surname)-->
+                                    <!-- Form Group (Full Name)-->
                                     <div class="col-md-6">
-                                        <label class="small mb-1" for="inputFirstName">Surname</label>
-                                        <input class="form-control" id="inputFirstName" type="text"
-                                            placeholder="Enter your surname" value="">
+                                        <label class="form-label small mb-1" for="inputName">Name</label>
+                                        <input class="form-control" id="inputName" name="name" type="text"
+                                            value=" <?php echo $name ?>">
                                     </div>
-                                    <!-- Form Group (given name)-->
+                                    <!-- Form Group (Email Address)-->
                                     <div class="col-md-6">
-                                        <label class="small mb-1" for="inputLastName">Given name</label>
-                                        <input class="form-control" id="inputLastName" type="text"
-                                            placeholder="Enter your given name" value="">
+                                        <label class="form-label small mb-1" for="inputEmailAddress">Email
+                                            Address</label>
+                                        <input class="form-control" id="inputEmailAddress" name="email" type="email"
+                                            value=" <?php echo $email ?>">
                                     </div>
                                 </div>
-                                <!-- Form Row-->
                                 <div class="row gx-3 mb-3">
-                                    <!-- Form Group (middle name)-->
+                                    <!-- Form Group (Contact Number)-->
                                     <div class="col-md-6">
-                                        <label class="small mb-1" for="inputFirstName">Middle name</label>
-                                        <input class="form-control" id="inputFirstName" type="text"
-                                            placeholder="Enter your middle name" value="">
+                                        <label class="form-label small mb-1" for="inputNumber">Contact No.</label>
+                                        <input class="form-control" id="inputNumber" name="contactNo" type="number"
+                                            value=" <?php echo $contactNo ?>">
                                     </div>
-                                    <!-- Form Group (last name)-->
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputLastName">Extension name</label>
-                                        <input class="form-control" id="inputLastName" type="text"
-                                            placeholder="Enter your extension name" value="">
-                                    </div>
-                                </div>
-                                <!-- Form Row        -->
-                                <div class="row gx-3 mb-3">
-                                    <!-- Form Group (organization name)-->
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputOrgName">Email Address</label>
-                                        <input class="form-control" id="inputOrgName" type="text"
-                                            placeholder="Enter your email address" value="">
-                                    </div>
-                                    <!-- Form Group (location)-->
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputLocation">Contact No.</label>
-                                        <input class="form-control" id="inputLocation" type="text"
-                                            placeholder="Enter your contact number" value="">
-                                    </div>
-                                </div>
-                                <!-- Form Group (address)-->
-                                <div class="mb-3">
-                                    <label class="small mb-1" for="inputEmailAddress">Address</label>
-                                    <input class="form-control" id="inputEmailAddress" type="email"
-                                        placeholder="Enter your current address" value="">
-                                </div>
-                                <!-- Form Group (civil status)-->
-
-                                <!-- Form Row-->
-                                <div class="row gx-3 mb-3">
-                                    <!-- Form Group (phone number)-->
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputPhone">TIN</label>
-                                        <input class="form-control" id="inputPhone" type="tel"
-                                            placeholder="Enter your TIN number" value="">
-                                    </div>
-
+                                    <!-- Form Group (Civil Status)-->
                                     <div class="col-md-2 ">
-                                        <label class="small mb-1" for="inputBirthday">Civil Status</label>
-                                        <select class="form-select " id="inputBirthday" name="birthday">
-                                            <option value="Option">Civil Status</option>
-                                            <option value="Male">Single</option>
-                                            <option value="Female">Married</option>
+                                        <label class="form-label small mb-1" for="inputCivilStatus">Civil Status</label>
+                                        <select class="form-select" id="inputCivilStatus" name="civilStatus">
+                                            <option value=""><?php echo $civilStatus ?></option>
+                                            <option value="Single">Single</option>
+                                            <option value="Married">Married</option>
                                             <option value="Divorced">Divorced</option>
                                             <option value="Seperated">Seperated</option>
                                             <option value="Widowed">Widowed</option>
                                         </select>
                                     </div>
-
                                     <!-- Form Group (gender)-->
-                                    <div class="col-auto ">
-                                        <label class="small mb-1" for="inputBirthday">Gender</label>
-                                        <select class="form-select " id="inputBirthday" name="birthday"
-                                            placeholder="Gender">
-                                            <option value="Option">Select Gender</option>
+                                    <div class="col-md-2 ">
+                                        <label class="form-label small mb-1" for="inputGender">Gender</label>
+                                        <select class="form-select" id="inputGender" name="gender">
+                                            <option value=""><?php echo $gender ?></option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                         </select>
                                     </div>
                                     <!-- Form Group (birthday)-->
-                                    <div class="col-auto">
-                                        <label class="small mb-1" for="inputBirthday">Birthday</label>
+                                    <div class="col-md-2">
+                                        <label class="form-label small mb-1" for="inputBirthday">Birthday</label>
                                         <input class="form-control" id="inputBirthday" type="date" name="birthday"
-                                            placeholder="Enter your birthday" value="06/10/1988">
+                                            value="<?php echo $birthday ?>">
                                     </div>
+                                </div>
+                                <!-- Form Group (TIN)-->
+                                <div class="row mb-3">
+                                    <div class="col-md-5">
+                                        <label class="form-label small mb-1" for="inputTin">TIN</label>
+                                        <input class="form-control" id="inputTin" name="tin" type="text"
+                                            value="<?php echo $tin ?>">
+                                    </div>
+                                    <!-- Form Group (Address)-->
+                                    <div class="col-lg-7">
+                                        <label class="form-label small mb-1" for="inputAddress">Address</label>
+                                        <input class="form-control" id="inputAddress" name="address" type="text"
+                                            value="<?php echo $address ?>">
+                                    </div>
+
                                 </div>
                                 <!-- Save changes button-->
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-primary me-md-2" type="submit">Save changes</button>
+                                    <button class="btn btn-primary me-md-2" name="editBtn" type="submit">Save
+                                        changes</button>
                                 </div>
-                                <script src="../assets//js//bootstrap.min.js"></script>
-
                             </form>
                         </div>
                         <div id="pass-btn">
-                            <form id="pass-btn" style="display: none;">
+                            <form id="pass-btn" method="POST" style="display: none;">
                                 <div class="row gx-3 mb-3">
                                     <!-- Form Group (Change password)-->
                                     <div class="col-md-6">
-                                        <label class="small mb-1" for="inputPhone">Password</label>
-                                        <input class="form-control" id="inputPhone" type="tel"
-                                            placeholder="Enter your new password" value="">
+                                        <label class="small mb-1" for="inputPassword">New Password</label>
+                                        <div class="input-group">
+                                            <input class="form-control" id="inputPassword" type="password"
+                                                name="password" value="<?php echo $password ?>">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" onclick="password_show_hide();">
+                                                    <i class="fas fa-eye" id="show_eye"></i>
+                                                    <i class="fas fa-eye-slash d-none" id="hide_eye"></i>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <!-- Form Group (Confirm password)-->
                                     <div class="col-md-6">
-                                        <label class="small mb-1" for="inputBirthday">Confirm Password</label>
-                                        <input class="form-control" id="inputBirthday" type="text" name="birthday"
-                                            placeholder="Confirm your password" value="">
+                                        <label class="small mb-1" for="inputPassword">Confirm Password</label>
+                                        <div class="input-group">
+                                            <input class="form-control" id="inputPassword1" type="password"
+                                                name="password" placeholder="Confirm your password" value="">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" onclick="password_show_hide1();">
+                                                    <i class="fas fa-eye" id="show_eye1"></i>
+                                                    <i class="fas fa-eye-slash d-none" id="hide_eye1"></i>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-primary me-md-2" type="submit">Save changes</button>
+                                    <button class="btn btn-primary me-md-2" name="passwordBtn" type="submit">Save
+                                        changes</button>
                                 </div>
                             </form>
                         </div>
@@ -198,26 +203,7 @@
 
 </html>
 
-<script type="text/javascript">
-// const btn = document.getElementById('formSelector');
-
-// btn.addEventListener('click', () => {
-
-//     const pass = document.getElementById('form-pass');
-//     const edit = document.getElementById('form-edit');
-
-//     if (pass.style.display === 'none' && edit.style.display != 'none') {
-//         // 👇️ this SHOWS the form
-//         pass.style.display = 'block';
-//         edit.style.display = 'none';
-//     } else if (pass.style.display === 'none'){
-//         // 👇️ this HIDES the form
-//         pass.style.display = 'block';
-//     } else {
-//         edit.style.display = 'none';
-//     }
-// });
-
+<script type="application/javascript">
 $("#edit-btn").click(function() {
     var id = $(this).attr('id');
     $('#pages form#pass-btn').css('display', 'none');
@@ -229,4 +215,58 @@ $("#pass-btn").click(function() {
     $('#pages div#edit-btn').css('display', 'none');
     $('#pages form#' + id + '').css('display', 'block');
 });
+
+function password_show_hide() {
+    var x = document.getElementById("inputPassword");
+    var show_eye = document.getElementById("show_eye");
+    var hide_eye = document.getElementById("hide_eye");
+    hide_eye.classList.remove("d-none");
+    if (x.type === "password") {
+        x.type = "text";
+        show_eye.style.display = "none";
+        hide_eye.style.display = "block";
+    } else {
+        x.type = "password";
+        show_eye.style.display = "block";
+        hide_eye.style.display = "none";
+    }
+}
+
+function password_show_hide1() {
+    var x = document.getElementById("inputPassword1");
+    var show_eye = document.getElementById("show_eye1");
+    var hide_eye = document.getElementById("hide_eye1");
+    hide_eye.classList.remove("d-none");
+    if (x.type === "password") {
+        x.type = "text";
+        show_eye.style.display = "none";
+        hide_eye.style.display = "block";
+    } else {
+        x.type = "password";
+        show_eye.style.display = "block";
+        hide_eye.style.display = "none";
+    }
+}
+
+var _URL = window.URL || window.webkitURL;
+
+function displayPreview(files) {
+    var file = files[0];
+    var img = new Image();
+    var sizeKB = file.size / 1024;
+    img.onload = function() {
+        $('#preview').append(img);
+    }
+
+    img.src = _URL.createObjectURL(file);
+
+}
 </script>
+
+<style>
+/* Style for Show and hide pass and input  */
+.form-control,
+.input-group-text {
+    height: 40px;
+    /* Adjust the height value as per your requirement */
+}
