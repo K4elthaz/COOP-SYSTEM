@@ -39,7 +39,8 @@
         <div class="container">
 
             <!-- Image Logo -->
-            <a class="navbar-brand logo-image" href="index.php"><img src="images/coopnobg.png" alt="alternative"></a>
+            <a class="navbar-brand logo-image" href="index.php"><img src="images/coopnobg.png" style="width: 60px; height: auto;" alt="alternative"></a>
+            <a class="navbar-brand logo-image" href="index.php"><img src="images/denrlogo.png" style="width: 50px; height: auto;" alt="alternative"></a>
 
             <!-- Text Logo - Use this if you don't have a graphic logo -->
             <!-- <a class="navbar-brand logo-text" href="index.html">Evolo</a> -->
@@ -95,13 +96,13 @@
                 <div class="col-lg-6">
                     <div class="text-container">
                         <h1 class="h1-large"><span class="blue">ERDB <br></span> Multi-Purpose Cooperative</h1>
-                        <p class="p-large">Lorem ipsum dolor sit amet </p>
+                        <p class="p-large">Empowering Communities, Enriching Lives: Your Multi-Purpose Cooperative</p>
                         <a class="btn-solid-lg" href="../login.php">Login</a>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of div -->
                 <div class="col-lg-6">
                     <div class="image-container">
-                        <img class="img-fluid" src="images/header-teamwork.svg" alt="alternative">
+                        <img class="img-fluid" src="images/coopnobg.png" alt="alternative">
                     </div> <!-- end of image-container -->
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -133,7 +134,7 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-image">
-                            <img class="img-fluid" src="images/services-icon-1.svg" alt="alternative">
+                            <img class="img-fluid" src="images/services-handmoney-icon.svg" alt="alternative">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Saving Deposits</h5>
@@ -145,10 +146,10 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-image">
-                            <img class="img-fluid" src="images/services-icon-2.svg" alt="alternative">
+                            <img class="img-fluid" src="images/services-handshake-icon.svg" alt="alternative">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Share capital built-up</h5>
+                            <h5 class="card-title">Share capital</h5>
                             <p>test</p>
                         </div>
                     </div>
@@ -157,7 +158,7 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-image">
-                            <img class="img-fluid" src="images/services-icon-3.svg" alt="alternative">
+                            <img class="img-fluid" src="images/services-grantingloan-icon.svg" alt="alternative">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Granting loans</h5>
@@ -383,8 +384,8 @@
                             <img class="img-fluid" src="images/team-member-1.svg" alt="alternative">
                         </div>
                         <div class="card-body">
-                            <h6 class="card-title">Lorem ipsum dolor sit amet</h6>
-                            <p>Lorem ipsum dolor sit amet</p>
+                            <h6 class="card-title">Angelito Exconde</h6>
+                            <p>Director</p>
                             <span class="fa-stack">
                                 <a href="#your-link">
                                     <i class="fas fa-circle fa-stack-2x"></i>
@@ -407,8 +408,8 @@
                             <img class="img-fluid" src="images/team-member-2.svg" alt="alternative">
                         </div>
                         <div class="card-body">
-                            <h6 class="card-title">Lorem ipsum dolor sit amet</h6>
-                            <p>Lorem ipsum dolor sit amet</p>
+                            <h6 class="card-title">Manager</h6>
+                            <p>Lazali Altoveros</p>
                             <span class="fa-stack">
                                 <a href="#your-link">
                                     <i class="fas fa-circle fa-stack-2x"></i>
@@ -431,8 +432,8 @@
                             <img class="img-fluid" src="images/team-member-3.svg" alt="alternative">
                         </div>
                         <div class="card-body">
-                            <h6 class="card-title">Lorem ipsum dolor sit amet</h6>
-                            <p>Lorem ipsum dolor sit amet</p>
+                            <h6 class="card-title">Bookkeeper</h6>
+                            <p>Raymond Ramos</p>
                             <span class="fa-stack">
                                 <a href="#your-link">
                                     <i class="fas fa-circle fa-stack-2x"></i>
@@ -455,8 +456,8 @@
                             <img class="img-fluid" src="images/team-member-4.svg" alt="alternative">
                         </div>
                         <div class="card-body">
-                            <h6 class="card-title">Lorem ipsum dolor sit amet</h6>
-                            <p>Lorem ipsum dolor sit amet</p>
+                            <h6 class="card-title">Mryna</h6>
+                            <p>Cashier</p>
                             <span class="fa-stack">
                                 <a href="#your-link">
                                     <i class="fas fa-circle fa-stack-2x"></i>

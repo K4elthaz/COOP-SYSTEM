@@ -15,7 +15,7 @@
     <nav class="main-menu">
         <ul>
             <li>
-                <a href="controlPanel.php">
+                <a href="home.php">
                     <i class="fa fa-home fa-2x"></i>
                     <span class="nav-text">
                         Home
@@ -24,7 +24,7 @@
 
             </li>
             <li class="has-subnav">
-                <a href="members.php">
+                <a href="balance.php">
                     <i class="fa bi-wallet-fill fa-2x"></i>
                     <span class="nav-text">
                         View Balance
@@ -42,7 +42,7 @@
             </li>
             
             <li>
-                <a href=".php">
+                <a href="CreateLoan.php">
                     <i class="fa bi-file-post-fill fa-2x"></i>
                     <span class="nav-text">
                         Apply Loan
@@ -51,7 +51,7 @@
             </li>
 
             <li class="has-subnav">
-                <a href="pdfUpload.php">
+                <a href="EditProfile.php">
                     <i class="fa bi-pencil-fill fa-2x"></i>
                     <span class="nav-text">
                         Edit Profile
