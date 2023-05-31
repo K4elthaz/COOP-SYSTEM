@@ -138,7 +138,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Saving Deposits</h5>
-                            <p>test</p>
+                            <p>With attractive interest rates and flexible terms, we empower our members to save and watch their money grow.</p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -150,7 +150,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Share capital</h5>
-                            <p>test</p>
+                            <p>Invest in your financial future with our cooperative's share capital offerings and gaining ownership in our cooperative.</p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -162,7 +162,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Granting loans</h5>
-                            <p>test</p>
+                            <p>Whether you're looking to start a business, buy a home, or pursue higher education, our cooperative is here to support you.</p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -180,16 +180,17 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="text-container">
-                        <h2>Design and plan your business growth steps</h2>
-                        <p>Euismod dui egestas vel nulla facilisi. Quisque iaculis mauris lacus, vitae bibendum quam
-                            scelerisque et. Curabitur tinci urna ac luctus vehicula vivam <a class="blue" href="#registration">magna tellus egestas</a></p>
-                        <a class="btn-solid-reg" data-bs-toggle="modal" data-bs-target="#detailsModal1">Modal</a>
+                        <h2>ERDB Insitutional Video</h2>
+                        <p> ERDB is the research unit of DENR, focusing on ecosystems in the Philippines: forests, upland farms, grassland, coastal zones, freshwater, and urban areas. 
+                            <a class="blue" href="https://www.denr.gov.ph/">Visit Website</a>
+                        </p>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-6">
-                    <div class="image-container">
-                        <img class="img-fluid" src="images/details-1.svg" alt="alternative">
-                    </div> <!-- end of image-container -->
+                <div class="embed-responsive embed-responsive-16by9">           
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/VaMDd5mG5Pg" title="YouTube video player" 
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
         </div> <!-- end of container -->
@@ -370,110 +371,157 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h2 class="h2-heading">About the team</h2>
-                    <p class="p-heading">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Aliquam at ligula maximus, consequat enim id, aliquet enim. Aenean quis sem elit. Suspendisse
-                        aliquet scelerisque lacinia.</p>
+                    <p class="p-heading">test</p>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
             <div class="row">
                 <div class="col-lg-12">
+                    <div class="scroll-container">
+                        <!-- Card -->
+                        <div class="card">
+                            <div class="card-image">
+                                <img class="img-fluid" src="images/team-ianrobin.jpg" alt="Angelito">
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title">Ian Robin Breva</h6>
+                                <p>Director</p>
+                                <span class="fa-stack">
+                                    <a href="#your-link">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-twitter fa-stack-1x"></i>
+                                    </a>
+                                </span>
+                                <span class="fa-stack">
+                                    <a href="#your-link">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x"></i>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- end of card -->
 
-                    <!-- Card -->
-                    <div class="card">
-                        <div class="card-image">
-                            <img class="img-fluid" src="images/team-member-1.svg" alt="alternative">
+                        <!-- Card -->
+                        <div class="card">
+                            <div class="card-image">
+                                <img class="img-fluid" src="images/team-jeremy.jpg" alt="Lazali">
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title">Jeremy Daniel Alcantara</h6>
+                                <p>Manager</p>
+                                <span class="fa-stack">
+                                    <a href="#your-link">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-twitter fa-stack-1x"></i>
+                                    </a>
+                                </span>
+                                <span class="fa-stack">
+                                    <a href="#your-link">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x"></i>
+                                    </a>
+                                </span>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h6 class="card-title">Angelito Exconde</h6>
-                            <p>Director</p>
-                            <span class="fa-stack">
-                                <a href="#your-link">
-                                    <i class="fas fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-twitter fa-stack-1x"></i>
-                                </a>
-                            </span>
-                            <span class="fa-stack">
-                                <a href="#your-link">
-                                    <i class="fas fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-linkedin-in fa-stack-1x"></i>
-                                </a>
-                            </span>
+                        <!-- end of card -->
+
+                        <!-- Card -->
+                        <div class="card">
+                            <div class="card-image">
+                                <img class="img-fluid" src="images/team-james.jpg" alt="Raymond">
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title">James Bryan Lumawag</h6>
+                                <p>Bookkeeper</p>
+                                <span class="fa-stack">
+                                    <a href="#your-link">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-twitter fa-stack-1x"></i>
+                                    </a>
+                                </span>
+                                <span class="fa-stack">
+                                    <a href="#your-link">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x"></i>
+                                    </a>
+                                </span>
+                            </div>
                         </div>
+                        <!-- end of card -->
+                        
+
+                        <!-- Card -->
+                        <div class="card">
+                            <div class="card-image">
+                                <img class="img-fluid" src="images/team-breva.jpg" alt="Myrna">
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title">Brad Pitt</h6>
+                                <p>Cashier</p>
+                                <span class="fa-stack">
+                                    <a href="#your-link">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-twitter fa-stack-1x"></i>
+                                    </a>
+                                </span>
+                                <span class="fa-stack">
+                                    <a href="#your-link">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x"></i>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- end of card -->
+
+                        <!-- Card -->
+                        <div class="card" style="margin-left: 75px;">
+                            <div class="card-image">
+                                <img class="img-fluid" src="images/team-daniel.jpg" alt="Myrna">
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title">Robert Downey Jr.</h6>
+                                <p>Escort</p>
+                                <span class="fa-stack">
+                                    <a href="#your-link">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-twitter fa-stack-1x"></i>
+                                    </a>
+                                </span>
+                                <span class="fa-stack">
+                                    <a href="#your-link">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x"></i>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- end of card -->
+
+                        <!-- Card -->
+                        <div class="card" style="margin-left: 75px;">
+                            <div class="card-image">
+                                <img class="img-fluid" src="images/team-bryan.jpg" alt="Myrna">
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title">Will Smith</h6>
+                                <p>Muse</p>
+                                <span class="fa-stack">
+                                    <a href="#your-link">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-twitter fa-stack-1x"></i>
+                                    </a>
+                                </span>
+                                <span class="fa-stack">
+                                    <a href="#your-link">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x"></i>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- end of card -->
                     </div>
-                    <!-- end of card -->
-
-                    <!-- Card -->
-                    <div class="card">
-                        <div class="card-image">
-                            <img class="img-fluid" src="images/team-member-2.svg" alt="alternative">
-                        </div>
-                        <div class="card-body">
-                            <h6 class="card-title">Manager</h6>
-                            <p>Lazali Altoveros</p>
-                            <span class="fa-stack">
-                                <a href="#your-link">
-                                    <i class="fas fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-twitter fa-stack-1x"></i>
-                                </a>
-                            </span>
-                            <span class="fa-stack">
-                                <a href="#your-link">
-                                    <i class="fas fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-linkedin-in fa-stack-1x"></i>
-                                </a>
-                            </span>
-                        </div>
-                    </div>
-                    <!-- end of card -->
-
-                    <!-- Card -->
-                    <div class="card">
-                        <div class="card-image">
-                            <img class="img-fluid" src="images/team-member-3.svg" alt="alternative">
-                        </div>
-                        <div class="card-body">
-                            <h6 class="card-title">Bookkeeper</h6>
-                            <p>Raymond Ramos</p>
-                            <span class="fa-stack">
-                                <a href="#your-link">
-                                    <i class="fas fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-twitter fa-stack-1x"></i>
-                                </a>
-                            </span>
-                            <span class="fa-stack">
-                                <a href="#your-link">
-                                    <i class="fas fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-linkedin-in fa-stack-1x"></i>
-                                </a>
-                            </span>
-                        </div>
-                    </div>
-                    <!-- end of card -->
-
-                    <!-- Card -->
-                    <div class="card">
-                        <div class="card-image">
-                            <img class="img-fluid" src="images/team-member-4.svg" alt="alternative">
-                        </div>
-                        <div class="card-body">
-                            <h6 class="card-title">Mryna</h6>
-                            <p>Cashier</p>
-                            <span class="fa-stack">
-                                <a href="#your-link">
-                                    <i class="fas fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-twitter fa-stack-1x"></i>
-                                </a>
-                            </span>
-                            <span class="fa-stack">
-                                <a href="#your-link">
-                                    <i class="fas fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-linkedin-in fa-stack-1x"></i>
-                                </a>
-                            </span>
-                        </div>
-                    </div>
-                    <!-- end of card -->
-
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
         </div> <!-- end of container -->
@@ -491,14 +539,17 @@
                         <h6>About Website</h6>
                         <p class="p-small">Aliquam ultrices turpis a auctor commodo. Etiam consectetur tincidunt elit ac
                             euismod. Duis et finibus felis, non porttitor rapena live dolor</p>
+                            <p class="p-small">Developed by Jeremy Daniel Alcantara, Ian Robin Breva and James Bryan Lumawag</p>
+                            <p class="p-small">For inquiries, email us at <a href="mailto:contact@site.com"><strong>letranDEVS@gmail.com</strong></a></p>
                     </div> <!-- end of footer-col -->
                     <div class="footer-col second">
                         <h6>Links</h6>
                         <ul class="list-unstyled li-space-lg p-small">
-                            <li>Important: <a href="terms.php">Terms & Conditions</a>, <a href="privacy.php">Privacy
-                                    Policy</a></li>
+                            <li>Important: <a href="terms.php">Terms & Conditions</a>, <a href="privacy.php">Privacy Policy</a></li>
                             <li>Useful: <a href="#">Colorpicker</a>, <a href="#">Icon Library</a>, <a href="#">Illustrations</a></li>
                             <li>Menu: <a href="index.php">Home</a>, <a href="#services">Services</a>, <a href="details.php">Details</a>, <a href="#contact">Contact</a></li>
+                            <br>
+                            <p class="p-small">For inquiries, email us at <a href="mailto:contact@site.com"><strong>erdbmc78@gmail.com</strong></a></p>
                         </ul>
                     </div> <!-- end of footer-col -->
                     <!-- <div class="footer-col third">
@@ -526,7 +577,6 @@
                                 <i class="fab fa-instagram fa-stack-1x"></i>
                             </a>
                         </span> -->
-                    <p class="p-small">Quam posuerei pellent esque vam <a href="mailto:contact@site.com"><strong>contact@site.com</strong></a></p>
                 </div> <!-- end of footer-col -->
             </div> <!-- end of col -->
         </div> <!-- end of row -->
@@ -540,7 +590,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p class="p-small">Copyright © <a href="#your-link">Your name</a></p>
+                    <p class="p-small">Copyright © <a href="#your-link">erdbmc</a></p>
                 </div> <!-- end of col -->
             </div> <!-- enf of row -->
         </div> <!-- end of container -->
@@ -561,3 +611,16 @@
 </body>
 
 </html>
+
+<style>
+.scroll-container {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.card {
+    display: inline-block;
+    margin-right: 10px; /* optional margin between cards */
+}
+</style>

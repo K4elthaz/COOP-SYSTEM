@@ -39,7 +39,7 @@
         <div class="container">
 
             <!-- Image Logo -->
-            <a class="navbar-brand logo-image" href="index.php"><img src="images/coopnobg.png" alt="alternative"></a>
+            <a class="navbar-brand logo-image" href="index.php"><img src="images/coopnobg.png" style="width: 60px; height: auto;" alt="alternative"></a>
 
             <!-- Text Logo - Use this if you don't have a graphic logo -->
             <!-- <a class="navbar-brand logo-text" href="index.html">Evolo</a> -->
