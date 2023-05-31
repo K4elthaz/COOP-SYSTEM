@@ -1,6 +1,8 @@
 <?php
 include ("../connections.php");
 include ("viewLoansFunction.php");
+
+$queryView = mysqli_query($connections, "SELECT * FROM co_maker");
 ?>
 
 <!doctype html>
@@ -35,18 +37,21 @@ include ("viewLoansFunction.php");
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php 
+                                    while ($viewInfo = mysqli_fetch_assoc($queryView)) {
+                                    ?>
                                     <tr>
-                                        <td class="text-center"><?php echo $id ?></td>
-                                        <td class="text-center"><?php echo $name ?></td>
+                                        <td class="text-center"><?php echo $viewInfo['id'] ?></td>
+                                        <td class="text-center"><?php echo $viewInfo['name'] ?></td>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-sm btn-outline-primary flex-end"
                                                 id="info" data-toggle="tooltip" data-bs-toggle="modal"
-                                                data-bs-target="#infoModal">
+                                                data-bs-target="#infoModal-<?php echo $viewInfo['id'] ?>">
                                                 <i class="fa fa-info-circle" aria-hidden="true"></i> View Info
                                             </button>
 
-                                            <div class="modal fade" id="infoModal" tabindex="-1"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="infoModal-<?php echo $viewInfo['id'] ?>"
+                                                tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
                                                 <div class="modal-dialog modal-md">
                                                     <div class="modal-content">
@@ -65,68 +70,77 @@ include ("viewLoansFunction.php");
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <input type="text" class="form-control text-center"
-                                                                        name="name" value="<?php echo $name ?>"
+                                                                        name="name"
+                                                                        value="<?php echo $viewInfo['name']?>" disabled>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control text-center"
+                                                                        name="idNumber"
+                                                                        value="<?php echo $viewInfo['idNumber'] ?>"
                                                                         disabled>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input type="number"
-                                                                        class="form-control text-center" name="idNumber"
-                                                                        value="<?php echo $idNumber1 ?>" disabled>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input type="number"
-                                                                        class="form-control text-center" name="tin"
-                                                                        value="<?php echo $tin ?>" disabled>
+                                                                    <input type="text" class="form-control text-center"
+                                                                        name="tin"
+                                                                        value="<?php echo $viewInfo['tin'] ?>" disabled>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <input type="date" class="form-control text-center"
-                                                                        name="birthday" value="<?php echo $birthday ?>"
+                                                                        name="birthday"
+                                                                        value="<?php echo $viewInfo['birthday'] ?>"
                                                                         disabled>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input type="email" class="form-control text-center"
-                                                                        name="email" value="<?php echo $email ?>"
+                                                                    <input type="text" class="form-control text-center"
+                                                                        name="email"
+                                                                        value="<?php echo $viewInfo['email'] ?>"
                                                                         disabled>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <input type="text" class="form-control text-center"
                                                                         name="civilStatus"
-                                                                        value="<?php echo $civilStatus ?>" disabled>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input type="text" class="form-control text-center"
-                                                                        name="gender" value="<?php echo $gender ?>"
+                                                                        value="<?php echo $viewInfo['civilStatus'] ?>"
                                                                         disabled>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <input type="text" class="form-control text-center"
-                                                                        name="loanType" value="<?php echo $loanType ?>"
+                                                                        name="gender"
+                                                                        value="<?php echo $viewInfo['gender'] ?>"
+                                                                        disabled>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control text-center"
+                                                                        name="loanType"
+                                                                        value="<?php echo $viewInfo['loanType'] ?>"
                                                                         disabled>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <input type="number"
                                                                         class="form-control text-center"
                                                                         name="paymentTerm"
-                                                                        value="<?php echo $paymentTerm ?>" disabled>
+                                                                        value="<?php echo $viewInfo['paymentTerm'] ?>"
+                                                                        disabled>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <input type="number"
                                                                         class="form-control text-center" name="amount"
-                                                                        value="<?php echo $amount ?>" disabled>
+                                                                        value="<?php echo $viewInfo['amount'] ?>"
+                                                                        disabled>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button class="btn btn-primary"
-                                                                data-bs-target="#coMakerModal" data-bs-toggle="modal">Co
+                                                                data-bs-target="#coMakerModal-<?php echo $viewInfo['id'] ?>"
+                                                                data-bs-toggle="modal">Co
                                                                 Makers</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="modal fade" id="coMakerModal" aria-hidden="true"
-                                                aria-labelledby="coMakerModalLabel" tabindex="-1">
+                                            <div class="modal fade" id="coMakerModal-<?php echo $viewInfo['id'] ?>"
+                                                aria-hidden="true" aria-labelledby="coMakerModalLabel" tabindex="-1">
                                                 <div class="modal-dialog modal-md">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -135,7 +149,6 @@ include ("viewLoansFunction.php");
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-
                                                         <div class="modal-body">
                                                             <div class="modal-body">
                                                                 <div class="row gap-2">
@@ -143,58 +156,73 @@ include ("viewLoansFunction.php");
                                                                         <input type="text"
                                                                             class="form-control text-center"
                                                                             name="co_maker_1"
-                                                                            value="<?php echo $co_maker_1 ?>" disabled>
+                                                                            value="<?php echo $viewInfo['co_maker_1'] ?>"
+                                                                            disabled>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <input type="text"
                                                                             class="form-control text-center"
                                                                             name="co_maker_2"
-                                                                            value="<?php echo $co_maker_2 ?>" disabled>
+                                                                            value="<?php echo $viewInfo['co_maker_2'] ?>"
+                                                                            disabled>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <input type="text"
                                                                             class="form-control text-center"
                                                                             name="co_maker_3"
-                                                                            value="<?php echo $co_maker_3 ?>" disabled>
+                                                                            value="<?php echo $viewInfo['co_maker_3'] ?>"
+                                                                            disabled>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <input type="text"
                                                                             class="form-control text-center"
                                                                             name="co_maker_4"
-                                                                            value="<?php echo $co_maker_4 ?>" disabled>
+                                                                            value="<?php echo $viewInfo['co_maker_4'] ?>"
+                                                                            disabled>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <input type="text"
                                                                             class="form-control text-center"
                                                                             name="co_maker_5"
-                                                                            value="<?php echo $co_maker_5 ?>" disabled>
+                                                                            value="<?php echo $viewInfo['co_maker_5'] ?>"
+                                                                            disabled>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <input type="text"
                                                                             class="form-control text-center"
                                                                             name="co_maker_6"
-                                                                            value="<?php echo $co_maker_6 ?>" disabled>
+                                                                            value="<?php echo $viewInfo['co_maker_6'] ?>"
+                                                                            disabled>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <input type="text"
                                                                             class="form-control text-center"
                                                                             name="co_maker_7"
-                                                                            value="<?php echo $co_maker_7 ?>" disabled>
+                                                                            value="<?php echo $viewInfo['co_maker_7'] ?>"
+                                                                            disabled>
                                                                     </div>
+                                                                    <button class="btn btn-primary"
+                                                                        data-bs-target="#infoModal-<?php echo $viewInfo['id'] ?>"
+                                                                        data-bs-toggle="modal">View Information</button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer d-flex justify-content-center">
-                                                            <button class="btn btn-danger">Declined</button>
-                                                            <button class="btn btn-success">Approved</button>
-                                                            <button class="btn btn-primary" data-bs-target="#infoModal"
-                                                                data-bs-toggle="modal">Information</button>
+                                                            <form method="POST">
+                                                                <input type="hidden" name="id"
+                                                                    value="<?php echo $viewInfo['id']; ?>">
+                                                                <button class="btn btn-danger" type="submit"
+                                                                    name="declineBtn"
+                                                                    id="<?php echo $viewInfo['id'] ?>">Declined</button>
+                                                                <button class="btn btn-success">Approved</button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
