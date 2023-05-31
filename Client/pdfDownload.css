@@ -26,3 +26,8 @@ body {
     background-color: gray;
   }
   
+  .centered-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

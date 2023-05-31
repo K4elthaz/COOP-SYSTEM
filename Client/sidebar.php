@@ -21,8 +21,8 @@
                         Home
                     </span>
                 </a>
-
             </li>
+
             <li class="has-subnav">
                 <a href="balance.php">
                     <i class="fa bi-wallet-fill fa-2x"></i>
@@ -30,8 +30,8 @@
                         View Balance
                     </span>
                 </a>
-
             </li>
+            
             <li class="has-subnav">
                 <a href="pdfDownload.php">
                     <i class="fa bi-file-earmark-fill fa-2x"></i>
@@ -95,7 +95,7 @@
 
         <ul class="logout">
             <li>
-                <a href="../login.php">
+                <a href="../logout.php">
                     <i class="fa fa-power-off fa-2x"></i>
                     <span class="nav-text">
                         Logout
@@ -137,15 +137,9 @@ nav.main-menu.expanded {
 }
 
 .main-menu {
-    /* glassmorphism */
-    /* background: rgba(30, 29, 29, 0.75);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(18.7px);
-    -webkit-backdrop-filter: blur(18.7px); */
-
     background: #212121;
     border-right: 1px solid #e5e5e5;
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     height: 100%;
