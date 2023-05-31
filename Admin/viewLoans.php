@@ -19,6 +19,7 @@ $queryView = mysqli_query($connections, "SELECT * FROM co_maker");
 </head>
 
 <body>
+    <?php include ("sidebar.php"); ?>
     <div class="container-xl px-5 mt-5">
         <div class="row d-flex justify-content-center">
             <div class="col-sm-6">
