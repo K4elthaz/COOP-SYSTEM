@@ -46,7 +46,7 @@ if (isset($_SESSION["idNumber"])) {
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
-    <title>Home</title>
+    <title>Apply Loan</title>
     <!-- Favicon  -->
     <link rel="icon" href="../web/images/coopnobg.png">
 </head>
@@ -68,9 +68,9 @@ if (isset($_SESSION["idNumber"])) {
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="home.php">Home</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="../logout.php">Logout</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>

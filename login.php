@@ -121,9 +121,6 @@ if (isset($_POST["btnLogin"])) {
     <link rel="stylesheet" type="text/css" href="main.css">
     <link rel="stylesheet" type="text/css" href="main.css">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap"
-        rel="stylesheet">
     <link href="web/css/bootstrap.min.css" rel="stylesheet">
     <link href="web/css/fontawesome-all.min.css" rel="stylesheet">
     <link href="web/css/swiper.css" rel="stylesheet">
@@ -206,8 +203,7 @@ if (isset($_POST["btnLogin"])) {
         <div class="container">
 
             <!-- Image Logo -->
-            <a class="navbar-brand logo-image" href="web/index.php"><img src="web/images/coopnobg.png"
-                    alt="alternative"></a>
+            <a class="navbar-brand logo-image" href="web/index.php"><img src="web/images/coopnobg.png" style="width: 60px; height: auto;" alt="cooplogo"></a> 
 
             <!-- Text Logo - Use this if you don't have a graphic logo -->
             <!-- <a class="navbar-brand logo-text" href="index.html">Evolo</a> -->

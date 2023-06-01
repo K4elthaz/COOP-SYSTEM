@@ -41,7 +41,7 @@
             </li>
 
             <li>
-                <a href=".php">
+                <a href="viewLoans.php">
                     <!-- <i class="fa bi bi-card-list fa-2x"></i> -->
                     <i class="fa bi-person-lines-fill fa-2x"></i>
                     <span class="nav-text">
